@@ -1,0 +1,8 @@
+{
+  "name": "CircuitoDeVivencias",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "bootstrap": "^4.1.3"
+  }
+}
