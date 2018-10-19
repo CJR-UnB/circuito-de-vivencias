@@ -9,7 +9,7 @@ Quando("eu clicar no link {string}") do |string|
     click_link(string)
 end
 
-Entao("devo ser redirecionado a uma pagina de cadastro") do
+Entao("devo ser redirecionado para a pagina de cadastro") do
     assert_current_path(new_user_registration_path)
 end
 
@@ -27,8 +27,8 @@ Quando("clicar no botão {string}") do |string|
     click_button(string)
 end
 
-Entao("devo ser redirecionado para a pagina de login") do
-    assert_current_path(new_user_session_path)
+Entao("devo ser redirecionado para a pagina inicial") do
+    assert_current_path(root_path)
 end
 
 Entao("ver a mensgem {string} na pagina") do |string|

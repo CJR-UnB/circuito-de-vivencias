@@ -1,6 +1,10 @@
 <div class="container">
-  <%= link_to 'Cadastrar-se', new_user_registration_path %>
-  <%= link_to 'SingOut', destroy_user_session_path, method: :delete %>
+  <%= link_to 'Cadastrar-se', new_user_registration_path %><br>
+  <%= link_to 'Entrar', new_user_session_path %>
+  <% if @logedUser != nil %>
+    <h4>Seja Bem Vindo <%= @logedUser.name %></h4>
+  <% end %>
+  <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
   <h1>Welcome to Bootstrap 4</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et,
      distinctio perspiciatis, fuga minus facilis ea quae qui laborum 
