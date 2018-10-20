@@ -17,7 +17,7 @@ Funcionalidade: entrar_no_sistema
       |userPassword            |12345678      |
       |userPasswordConfirmation|12345678      |
       |cpf                     |06062549192   |
-      |name                    |Joao          |
+      |name                    |João          |
       |surname                 |Lima          |
     E que eu nao esteja logado
     E que eu esteja na pagina de login do sistema
@@ -36,4 +36,3 @@ Funcionalidade: entrar_no_sistema
       |password|12345678      |
     E clicar no botão "Entrar"
     Entao devo ser redirecionado para a pagina de login do sistema
-    E ver a mensgem "email ou senha invalidos" na pagina

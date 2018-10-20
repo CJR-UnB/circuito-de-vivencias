@@ -12,7 +12,7 @@ Funcionalidade: sair_do_sistema
       |userPassword            |12345678      |
       |userPasswordConfirmation|12345678      |
       |cpf                     |06062549192   |
-      |name                    |Joao          |
+      |name                    |João          |
       |surname                 |Lima          |
     E que eu esteja na pagina inicial do sistema
     Quando eu clicar no link "Sair"

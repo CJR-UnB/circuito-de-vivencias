@@ -35,3 +35,8 @@ Entao("ver a mensgem {string} na pagina") do |string|
     expect(page).to have_content string
 end
 
+Entao("devo ser redirecionado para a pagina de cadastro novamente") do
+    assert_current_path('/users')
+end
+  
+

@@ -22,7 +22,7 @@ Funcionalidade: Cadastro
       |userPasswordConfirmation|12345678      |
     E clicar no botão "Cadastrar-se"
     Entao devo ser redirecionado para a pagina inicial
-    E ver a mensgem "Seja Bem Vindo João Gabriel" na pagina
+    E ver a mensgem "Seja Bem Vindo João" na pagina
 
   Cenario: Preencher o formulario de cadastro incorretamente
     Dado que eu esteja na pagina de cadastro de novo usuario
@@ -33,5 +33,4 @@ Funcionalidade: Cadastro
       |userPassword            |12345678      |
       |userPasswordConfirmation|12345678      |
     E clicar no botão "Cadastrar-se"
-    Entao devo ser redirecionado para a pagina de cadastro
-    E ver a mensgem "Seja Bem Vindo João Gabriel" na pagina
+    Entao devo ser redirecionado para a pagina de cadastro novamente
