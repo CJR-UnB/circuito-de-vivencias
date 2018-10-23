@@ -17,4 +17,4 @@ Funcionalidade: sair_do_sistema
     E que eu esteja na pagina inicial do sistema
     Quando eu clicar no link "Sair"
     Entao devo ser redirecionado para a pagina inicial
-    E nao devo ver a mensagem de "Seja Bem Vindo João"
+    E nao devo ver a mensagem de "João"
