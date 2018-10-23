@@ -2,7 +2,7 @@ class WorkshopsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @workshops = Workshop.all
+    @workshops = Workshop.order(:id)
   end
 
   def show

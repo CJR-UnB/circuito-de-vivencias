@@ -4,17 +4,24 @@
   <div class="alert"><%= flash[:alert] %></div>
 <% end %>
 
-<%= form_for @workshop do |f| %>
-  <%= f.label(:title, 'Título') %>
-  <%= f.text_field(:title, value: @workshop.title) %>
+<div class='container mt-5'>
+  <%= form_for @workshop do |f| %>
+    <div class='form-group'>
+      <%= f.label(:title, 'Título') %>
+      <%= f.text_field(:title, value: @workshop.title, class: 'form-control') %>
+    </div>
 
-  <%= f.label(:categories, 'Categorias') %>
-  <%= f.text_field(:categories, value: @workshop.categories) %>
+    <div class='form-group'>
+      <%= f.label(:categories, 'Categorias') %>
+      <%= f.text_field(:categories, value: @workshop.categories, class: 'form-control') %>
+    </div>
 
-  <%= f.label(:resume, 'Resumo') %>
-  <%= f.text_field(:resume,  value: @workshop.resume) %>
+    <div class='form-group'>
+      <%= f.label(:resume, 'Resumo') %>
+      <%= f.text_field(:resume,  value: @workshop.resume, class: 'form-control') %>
+    </div>
 
-  <%= f.submit %>
-<% end %>
-
-<%= link_to 'Voltar', workshops_path %>
+    <%= f.submit('Salvar', class: 'btn btn-success')%>
+    <%= link_to 'Voltar', workshops_path, class: 'btn btn-info'%>
+  <% end %>
+</div>
