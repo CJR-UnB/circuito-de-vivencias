@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Categorias</th>
+      <th>Resumo</th>
+      <th>Autor</th>
+      <th>Editor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @workshop.title %></td>
+      <td><%= @workshop.categories %></td>
+      <td><%= @workshop.resume %></td>
+      <td><%= User.find(@workshop.author_id).name %></td>
+      <td><%= User.find(@workshop.editor_id).name %></td>
+    </tr>
+  </tbody>
+</table>

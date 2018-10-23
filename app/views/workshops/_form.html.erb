@@ -1,12 +1,20 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% elsif flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+
 <%= form_for @workshop do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.label(:title, 'Título') %>
+  <%= f.text_field(:title, value: @workshop.title) %>
 
-  <%= f.label :categories %>
-  <%= f.text_field :categories %>
+  <%= f.label(:categories, 'Categorias') %>
+  <%= f.text_field(:categories, value: @workshop.categories) %>
 
-  <%= f.label :resume %>
-  <%= f.text_field :resume %>
+  <%= f.label(:resume, 'Resumo') %>
+  <%= f.text_field(:resume,  value: @workshop.resume) %>
 
   <%= f.submit %>
 <% end %>
+
+<%= link_to 'Voltar', workshops_path %>
