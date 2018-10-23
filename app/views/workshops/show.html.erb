@@ -1,0 +1,26 @@
+<div class='container mt-5'>
+  <table class='table table-striped'>
+    <thead>
+      <tr class='thead-light'>
+        <th scope='col'>#</th>
+        <th scope='col'>Título</th>
+        <th scope='col'>Categorias</th>
+        <th scope='col'>Resumo</th>
+        <th scope='col'>Autor</th>
+        <th scope='col'>Editor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope='row'><%= @workshop.id %></th>
+        <td><%= @workshop.title %></td>
+        <td><%= @workshop.categories %></td>
+        <td><%= @workshop.resume %></td>
+        <td><%= User.find(@workshop.author_id).name %></td>
+        <td><%= User.find(@workshop.editor_id).name %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= link_to 'Voltar', workshops_path, class: 'btn btn-info' %>
+</div>
