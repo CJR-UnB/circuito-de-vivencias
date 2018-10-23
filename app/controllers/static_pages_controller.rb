@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
-    def index
+    def home
+        @logedUser =  current_user
     end
 end

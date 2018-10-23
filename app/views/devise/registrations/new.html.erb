@@ -1,0 +1,76 @@
+<%= stylesheet_link_tag 'login'%>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Sign In</h5>
+                    <%= form_for @user, url: registration_path(resource_name) do |f| %>
+                        <%= devise_error_messages! %>
+                        <div class="form-label-group">
+                            <%= f.label :Email %><br />
+                            <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "email", class: "form-control spacing-fields", placeholder: "Email" %>
+                        </div>
+
+                        <div class="form-label-group">
+                            <%= f.label :Nome %><br />
+                            <%= f.text_field :name, id: "name", class: "form-control spacing-fields", placeholder: "Nome" %>
+                        </div>
+
+                        <div class="form-label-group">
+                            <%= f.label :Sobrenome %><br />
+                            <%= f.text_field :surname, id: "surname", class: "form-control spacing-fields", placeholder: "Sobrenome" %>
+                        </div>
+
+                        <div class="form-label-group">
+                            <%= f.label :CPF %><br />
+                            <%= f.text_field :cpf, id: "cpf", placeholder: "CPF",  autofocus: true, autocomplete: "off", onkeypress: "mascara(this, '###.###.###-##')", maxlength:"14", class: "form-control spacing-fields",placeholder: "Cpf" %>
+                        </div>
+
+                        <div class="form-label-group">
+                            <%= f.label :Senha %><br />
+                            <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", id: "userPassword", class: "form-control spacing-fields" %>
+                        </div>
+
+                        <div class="form-label-group">
+                            <%= f.label :Confirmação_de_senha %><br />
+                            <%= f.password_field :userPasswordConfirmation, placeholder: "Confirmação de Senha", autocomplete: "off", id: "userPasswordConfirmation", class: "form-control spacing-fields" %>
+                        </div>
+
+                        <div class="actions">
+                            <%= f.submit "Cadastrar-se", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
+                        </div>
+                    <% end %>
+                    <%= render "devise/shared/links" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="JavaScript">
+    /*
+    A função Mascara tera como valores no argumento os dados inseridos no input (ou no evento onkeypress)
+    onkeypress="mascara(this, '## ####-####')"
+    onkeypress = chama uma função quando uma tecla é pressionada, no exemplo acima, chama a função mascara e define os valores do argumento na função
+    O primeiro valor é o this, é o Apontador/Indicador da Mascara, o '## ####-####' é o modelo / formato da mascara
+    no exemplo acima o # indica os números, e o - (hifen) o caracter que será inserido entre os números, ou seja, no exemplo acima o telefone ficara assim: 11-4000-3562
+    para o celular de são paulo o modelo deverá ser assim: '## #####-####' [11 98563-1254]
+    para o RG '##.###.###.# [40.123.456.7]
+    para o CPF '###.###.###.##' [789.456.123.10]
+    Ou seja esta mascara tem como objetivo inserir o hifen ou espaço automáticamente quando o usuário inserir o número do celular, cpf, rg, etc
+
+    lembrando que o hifen ou qualquer outro caracter é contado tambem, como: 11-4561-6543 temos 10 números e 2 hifens, por isso o valor de maxlength será 12
+    <input type="text" name="telefone" onkeypress="mascara(this, '## ####-####')" maxlength="12">
+    neste código não é possivel inserir () ou [], apenas . (ponto), - (hifén) ou espaço
+    */
+
+    function mascara(t, mask){
+        var i = t.value.length;
+        var saida = mask.substring(1,0);
+        var texto = mask.substring(i)
+        if (texto.substring(0,1) != saida){
+            t.value += texto.substring(0,1);
+        }
+    }
+</script>
