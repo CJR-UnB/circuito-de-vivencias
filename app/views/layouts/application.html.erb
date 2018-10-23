@@ -7,10 +7,26 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag 'vendor/fontawesome-free/css/all.min.css'%>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <%= stylesheet_link_tag 'css/agency.min.css'%>
+
   </head>
 
   <body>
     <%= yield %>
+    <!-- Contact form JavaScript -->
+    <%= javascript_include_tag 'js/jqBootstrapValidation.js' %>
+    <%= javascript_include_tag 'js/contact_me.js' %>
+    <!-- Custom scripts for this template -->
+    <%= javascript_include_tag 'js/agency.min.js' %>
+    <%= javascript_include_tag 'vendor/jquery-easing/jquery.easing.min.js' %>
   </body>
 </html>
