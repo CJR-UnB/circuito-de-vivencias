@@ -1,17 +1,29 @@
 class WorkshopsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @workshops = Workshop.all
   end
 
   def show
-    set_workshop
   end
 
   def create
+    @workshop = Workshop.new(workshop_params)
+    @workshop.author_id = current_user.id
+    @workshop.editor_id = current_user.id
+
+    if @workshop.save!
+      flash['Sucesso!']
+      redirect_to workshops_path
+    else
+      flash['Falha!']
+      redirect_to new_workshop_path
+    end
   end
 
   def new
+    @workshop = Workshop.new
   end
 
   def edit
@@ -29,14 +41,7 @@ class WorkshopsController < ApplicationController
         :title,
         :categories,
         :resume,
-        :author_id,
-        :editor_id,
-        :document
       )
-    end
-
-    def set_workshop
-      @workshop = Workshop.find_by(:id)
     end
 
 end
