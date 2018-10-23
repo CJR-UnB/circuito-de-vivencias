@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comment/create'
+  get 'comment/delete'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'

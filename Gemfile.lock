@@ -80,6 +80,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    cpf_validator (0.2.1)
+      activemodel (>= 3.0)
     crass (1.0.4)
     cucumber (3.1.2)
       builder (>= 2.1.2)
@@ -272,6 +274,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  cpf_validator
   cucumber-rails
   database_cleaner
   devise
