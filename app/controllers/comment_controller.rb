@@ -36,4 +36,4 @@ class CommentController < ApplicationController
         params.require(:comment).permit(:commentContent)
     end
 
-endd
+end
