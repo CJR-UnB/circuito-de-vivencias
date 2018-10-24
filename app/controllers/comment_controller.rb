@@ -15,15 +15,14 @@ class CommentController < ApplicationController
     @comment = Comment.new(params[:comment])
     if @comment.save
       redirect_to root_path
-      else
-        flash.now[:error] = "Erro na insersão do comentário"
-        redirect_to root_path
-      end
+    else
+      flash.now[:error] = "Erro na insersão do comentário"
+      redirect_to root_path
     end
   end
 
   def destroy
-    @comment.destroy 
+    @comment.destroy
     redirect_to root_path
   end
 
@@ -37,4 +36,4 @@ class CommentController < ApplicationController
         params.require(:comment).permit(:commentContent)
     end
 
-end
+endd

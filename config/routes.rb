@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-
+  get '/users', to: 'users/registrations#new'
   get '/workshops', to: 'workshops#index', as: 'workshops'
   get '/workshops/new', to: 'workshops#new', as: 'new_workshop'
   post '/workshops', to: 'workshops#create'
