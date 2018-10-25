@@ -9,8 +9,6 @@ class User < ApplicationRecord
   validates_presence_of :cpf
 
   with_options :allow_blank => true do |v|
-    v.validates_length_of :cpf, :is => 11
-    v.validates_numericality_of :cpf
     v.validates_uniqueness_of :cpf
     validates :cpf, format: { with: /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/ }
   end

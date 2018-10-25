@@ -1,47 +1,52 @@
-<h2>Sign up</h2>
+<%= stylesheet_link_tag 'login'%>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Sign In</h5>
+                    <%= form_for @user, url: registration_path(resource_name) do |f| %>
+                        <%= devise_error_messages! %>
+                        <div class="form-label-group">
+                            <%= f.label :Email %><br /><br />
+                            <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "email", class: "form-control spacing-fields", placeholder: "Email" %>
+                        </div>
 
-<%= form_for @user, url: registration_path(resource_name) do |f| %>
-  <%= devise_error_messages! %>
+                        <div class="form-label-group">
+                            <%= f.label :Nome %><br /><br />
+                            <%= f.text_field :name, id: "name", class: "form-control spacing-fields", placeholder: "Nome" %>
+                        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "email" %>
-  </div>
+                        <div class="form-label-group">
+                            <%= f.label :Sobrenome %><br /><br />
+                            <%= f.text_field :surname, id: "surname", class: "form-control spacing-fields", placeholder: "Sobrenome" %>
+                        </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, id: "name" %>
-  </div>
+                        <div class="form-label-group">
+                            <%= f.label :CPF %><br /><br />
+                            <%= f.text_field :cpf, id: "cpf", placeholder: "CPF",  autofocus: true, autocomplete: "off", onkeypress: "mascara(this, '###.###.###-##')", maxlength:"14", class: "form-control spacing-fields",placeholder: "Cpf" %>
+                        </div>
 
-  <div class="field">
-    <%= f.label :surname %><br />
-    <%= f.text_field :surname, id: "surname"%>
-  </div>
+                        <div class="form-label-group">
+                            <%= f.label :Senha %><br /><br />
+                            <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", id: "userPassword", class: "form-control spacing-fields" %>
+                        </div>
 
-  <div class="field">
-    <%= f.label :cpf %><br />
-    <%= f.text_field :cpf, id: "cpf",  autofocus: true, autocomplete: "off",onkeypress: "mascara(this, '###.###.###-##')", maxlength:"14", class: "form-control input-md",placeholder: "Cpf" %>
-  </div>
+                        <div class="form-label-group">
+                            <%= f.label :Confirmação_de_senha %><br /><br />
+                            <%= f.password_field :userPasswordConfirmation, placeholder: "Confirmação de Senha", autocomplete: "off", id: "userPasswordConfirmation", class: "form-control spacing-fields" %>
+                        </div>
 
-  <div class="field">
-    <%= f.label :userPassword %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", id: "userPassword" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :userPasswordConfirmation %><br />
-    <%= f.password_field :userPasswordConfirmation, autocomplete: "off", id: "userPasswordConfirmation" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Cadastrar-se" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+                        <div class="actions">
+                            <%= f.submit "Cadastrar-se", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
+                        </div>
+                    <% end %>
+                    <%= render "devise/shared/links" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script language="JavaScript">
     /*
