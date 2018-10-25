@@ -43,6 +43,9 @@ gem 'toastr-rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Para fazer a validacao do cpf
 gem "cpf_validator"
+gem "cancancan"
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
