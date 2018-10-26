@@ -19,7 +19,7 @@
 
     <div class='form-group'>
       <%= f.label(:document, 'Documento') %>
-      <%= f.file_field(:document, value: @workshop.document, class: 'form-control') %>
+      <%= f.file_field(:document, accept: 'application/vnd.oasis.opendocument.text,	application/msword', class: 'form-control') %>
     </div>
 
     <%= f.submit('Salvar', class: 'btn btn-success')%>
