@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  get 'comment/create'
+  get 'comment/delete'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-
+  devise_scope :user do
+    get 'users', to: 'users/registrations#new'
+  end
+  get '/users', to: 'users/registrations#new'
   get '/workshops', to: 'workshops#index', as: 'workshops'
   get '/workshops/new', to: 'workshops#new', as: 'new_workshop'
   post '/workshops', to: 'workshops#create'
