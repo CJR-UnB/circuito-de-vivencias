@@ -26,17 +26,13 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <% if user_signed_in? %>
-                    <li class="nav-item">
-                        <%= link_to 'Sair', destroy_user_session_path, method: 'delete' %>
-                    </li>
+                    <%= link_to 'Sair', destroy_user_session_path, method: 'delete', class: 'nav-link btn btn-outline-danger btn-nav' %>
+                    <% if current_user.adminRole? %>
+                        <%= link_to 'Area de Admin', adminDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
+                    <% end %>
                 <% else %>
-                    <li class="nav-item">
-                        <%= link_to 'Entrar', new_user_session_path %>
-                    </li>
-                    <div style="color: #F7CE2E;">/</div>
-                    <li class="nav-item">
-                        <%= link_to 'Cadastrar-se', new_user_registration_path%>
-                    </li>
+                    <%= link_to 'Entrar', new_user_session_path, class: 'nav-link btn btn-outline-primary btn-nav' %>
+                    <%= link_to 'Cadastrar-se', new_user_registration_path, class: 'nav-link btn btn-outline-success btn-nav'%>
                 <% end %>
             </ul>
         </div>

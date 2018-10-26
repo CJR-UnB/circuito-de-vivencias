@@ -13,20 +13,20 @@ class User < ApplicationRecord
     validates :cpf, format: { with: /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/ }
   end
   def turnIntoAdmin
-    this.adminRole = true
-    this.userRole = false
-    this.supervisorRole = false
+    self.adminRole = true
+    self.userRole = false
+    self.supervisorRole = false
   end
 
   def turnIntoUser
-    this.adminRole = false
-    this.userRole = true
-    this.supervisorRole = false
+    self.adminRole = false
+    self.userRole = true
+    self.supervisorRole = false
   end
 
   def turnIntoSupervisor
-    this.adminRole = false
-    this.userRole = false
-    this.supervisorRole = true
+    self.adminRole = false
+    self.userRole = false
+    self.supervisorRole = true
   end
 end
