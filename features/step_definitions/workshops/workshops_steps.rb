@@ -1,26 +1,27 @@
 # This is the steps file referred to workshops feature
 # Place your code relative to that feature here
 
-Dado("que eu esteja logado no sistema como:") do
-  visit(new_user_session_path)
-  fill_in :email, with: 'joao@email.com'
-  fill_in :password, with: '12345678'
-  click_button('Entrar')
-end
-
 Dado("exista uma oficina com os dados:") do |table|
-  # table is a Cucumber::MultilineArgument::DataTable
-  pending # Write code here that turns the phrase above into concrete actions
+  workshop = Workshop.new()
+  user = User.create(name: 'teste', surname: 'teste 2', cpf: '12345678901', email: 'foo@foo.com', password: '123456')
+  table.rows_hash.each do |field, value|
+    workshop[field] = value
+  end
+  workshop.author_id = user.id
+  workshop.editor_id = user.id
+  workshop.save
 end
 
 Dado("eu estar na página inicial do sistema") do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit(root_path)
 end
 
 Quando("eu clicar no botão {string}") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+  click_link(string)
 end
 
-Então("devo ver as oficinas criadas no sistema {string},{string},{string}") do |string, string2, string3|
-  pending # Write code here that turns the phrase above into concrete actions
+Então("devo ver na tabela a oficina criada com os dados:") do |table|
+  table.rows_hash.each do |field, value|
+    expect(page).to have_content value
+  end
 end
