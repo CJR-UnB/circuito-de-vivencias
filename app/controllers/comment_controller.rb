@@ -1,5 +1,6 @@
-class CommentController < ApplicationController
+# frozen_string_literal: true
 
+class CommentController < ApplicationController
   before_action :set_post, only: [:destroy]
 
   def index
@@ -10,13 +11,12 @@ class CommentController < ApplicationController
     @comment = Comment.new
   end
 
-
   def create
     @comment = Comment.new(params[:comment])
     if @comment.save
       redirect_to root_path
     else
-      flash.now[:error] = "Erro na insersão do comentário"
+      flash.now[:error] = 'Erro na insersão do comentário'
       redirect_to root_path
     end
   end
@@ -28,12 +28,11 @@ class CommentController < ApplicationController
 
   private
 
-    def set_comment
-        @comment = Comment.find(params[:id])
-    end
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    def comment_params
-        params.require(:comment).permit(:commentContent)
-    end
-
+  def comment_params
+    params.require(:comment).permit(:commentContent)
+  end
 end

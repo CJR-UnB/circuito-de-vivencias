@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -6,12 +8,12 @@ class User < ApplicationRecord
 
   has_many :evaluations
   has_many :workshops, through: :evaluations
-  
+
   validates :name, presence: true
   validates :surname, presence: true
   validates_presence_of :cpf
 
-  with_options :allow_blank => true do |v|
+  with_options allow_blank: true do |v|
     v.validates_uniqueness_of :cpf
     validates :cpf, format: { with: /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/ }
   end

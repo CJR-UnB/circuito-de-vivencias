@@ -6,9 +6,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :user_params, if: :devise_controller?
 
   # GET /resource/sign_up
-  #def new
+  # def new
   #  @user = User.new
-  #end
+  # end
 
   # POST /resource
   def create
@@ -43,7 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def user_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :surname, :cpf])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name surname cpf])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -52,9 +52,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  #def after_sign_up_path_for(resource)
+  # def after_sign_up_path_for(resource)
   #  "./users/sign_in"
-  #end
+  # end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Workshop < ApplicationRecord
   has_one :user, foreign_key: 'author_id'
   has_one :user, foreign_key: 'editor_id'
