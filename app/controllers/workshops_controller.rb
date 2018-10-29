@@ -3,6 +3,7 @@ class WorkshopsController < ApplicationController
 
   def index
     @workshops = Workshop.order(:id)
+    @myWorkshops = Workshop.find_by(author_id: current_user.id)
   end
 
   def show
@@ -61,6 +62,7 @@ class WorkshopsController < ApplicationController
         :title,
         :categories,
         :resume,
+        :document
       )
     end
 
