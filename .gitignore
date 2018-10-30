@@ -12,6 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+.env
+Procfile
 
 # Ignore uploaded files in development
 /storage/*
