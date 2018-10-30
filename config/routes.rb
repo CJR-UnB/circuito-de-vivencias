@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'comment/create'
   get 'comment/delete'
@@ -13,14 +15,8 @@ Rails.application.routes.draw do
     get '/home', to: 'admin_dashboard#home'
   end
   get '/users', to: 'users/registrations#new'
-  get '/workshops', to: 'workshops#index', as: 'workshops'
-  get '/workshops/new', to: 'workshops#new', as: 'new_workshop'
-  post '/workshops', to: 'workshops#create'
-  get '/workshops/:id', to: 'workshops#show', as: 'workshop'
-  get '/workshops/:id/edit', to: 'workshops#edit', as: 'edit_workshop'
-  patch '/workshops/:id', to: 'workshops#update', as: 'update_workshop'
-  delete '/workshops/:id', to: 'workshops#destroy', as: 'destroy_workshop'
-
+  resources :workshops
+  resources :evaluations
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "static_pages#home"
+  root to: 'static_pages#home'
 end
