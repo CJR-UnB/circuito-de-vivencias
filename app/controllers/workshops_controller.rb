@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WorkshopsController < ApplicationController
   before_action :authenticate_user!
 
@@ -35,10 +37,10 @@ class WorkshopsController < ApplicationController
     @workshop = Workshop.find(params[:id])
 
     if @workshop.update(workshop_params)
-      flash[:notice] = "Workshop atualizado com sucesso!"
+      flash[:notice] = 'Workshop atualizado com sucesso!'
       redirect_to workshops_path
     else
-      flash[:alert] = "Não foi possível atualizar o workshop!"
+      flash[:alert] = 'Não foi possível atualizar o workshop!'
       render 'edit'
     end
   end
@@ -56,12 +58,12 @@ class WorkshopsController < ApplicationController
   end
 
   private
-    def workshop_params
-      params.require(:workshop).permit(
-        :title,
-        :categories,
-        :resume,
-      )
-    end
 
+  def workshop_params
+    params.require(:workshop).permit(
+      :title,
+      :categories,
+      :resume
+    )
+  end
 end
