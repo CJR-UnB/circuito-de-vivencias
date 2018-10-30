@@ -12,13 +12,13 @@ class CommentController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(params[:comment])
+    @comment = Comment.new(comment_params)
     if @comment.save
       flash[:notice] = 'Comentário criado com sucesso!'
-      redirect_to root_path
+      redirect_to workshop_path(params[:workshop_id])
     else
       flash.now[:error] = 'Erro na insersão do comentário'
-      redirect_to root_path
+      redirect_to workshop_path(params[:workshop_id])
     end
   end
 
@@ -34,6 +34,6 @@ class CommentController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:commentContent)
+    params.require(:comment).permit(:commentContent, :workshop_id)
   end
 end

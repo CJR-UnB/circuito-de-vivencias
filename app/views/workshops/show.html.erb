@@ -1,4 +1,6 @@
 <div class='container my-5'>
+  <%= render 'alert' %>
+
   <!-- Page Content -->
   <div class="row">
 
@@ -33,16 +35,20 @@
       <div class="card my-4">
         <h5 class="card-header">Leave a Comment:</h5>
         <div class="card-body">
-          <%= form_for @comment, url: comment_create_path(@comment, @workshop) do |f|%>
+          <%= form_for @comment, url: comment_create_path(workshop_id: @workshop.id) do |f| %>
+            <div class='form-group'>
+              <%= f.text_area(:commentContent, class: 'form-control') %>
+            </div>
+            <%= f.submit('Comentar', class: 'btn btn-sm btn-success') %>
+          <% end %>
         </div>
       </div>
 
       <!-- Single Comment -->
       <div class="media mb-4">
-        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
         <div class="media-body">
           <h5 class="mt-0">Commenter Name</h5>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          <%= Comment.find_by(workshop_id: @workshop.id) %>
         </div>
       </div>
 

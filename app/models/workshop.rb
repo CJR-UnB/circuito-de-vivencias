@@ -6,6 +6,7 @@ class Workshop < ApplicationRecord
   has_one_attached :document
   has_many :evaluations
   has_many :users, through: :evaluations
+  has_many :comments
 
   validates :title, presence: true
   validates :document, presence: true, blob: {content_type: ['application/vnd.oasis.opendocument.text', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']}
