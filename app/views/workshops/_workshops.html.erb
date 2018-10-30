@@ -11,6 +11,7 @@
         </tr>
       </thead>
       <tbody>
+        <% if workshops.present? %>
           <% workshops.each do |workshop| %>
             <tr>
               <th scope='row'><%= workshop.id %></th>
@@ -18,9 +19,10 @@
               <td><%= User.find(workshop.author_id).name %></td>
               <td><%= link_to 'Ver', workshop_path(workshop) %></td>
               <td><%= link_to 'Editar', edit_workshop_path(workshop) %></td>
-              <td><%= link_to 'Excluir', destroy_workshop_path(workshop), method: 'delete', data: {confirm: 'Tem certeza?'} %></td>
+              <td><%= link_to 'Excluir', workshop_path(workshop), method: 'delete', data: {confirm: 'Tem certeza?'} %></td>
             </tr>
           <% end %>
+        <% end %>
       </tbody>
     </table>
   </div>
