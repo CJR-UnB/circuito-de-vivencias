@@ -1,26 +1,57 @@
-<div class='container mt-5'>
-  <table class='table table-striped'>
-    <thead>
-      <tr class='thead-light'>
-        <th scope='col'>#</th>
-        <th scope='col'>Título</th>
-        <th scope='col'>Categorias</th>
-        <th scope='col'>Resumo</th>
-        <th scope='col'>Autor</th>
-        <th scope='col'>Editor</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope='row'><%= @workshop.id %></th>
-        <td><%= @workshop.title %></td>
-        <td><%= @workshop.categories %></td>
-        <td><%= @workshop.resume %></td>
-        <td><%= User.find(@workshop.author_id).name %></td>
-        <td><%= User.find(@workshop.editor_id).name %></td>
-      </tr>
-    </tbody>
-  </table>
+<div class='container my-5'>
+  <%= render 'alert' %>
 
-  <%= link_to 'Voltar', workshops_path, class: 'btn btn-info' %>
+  <!-- Page Content -->
+  <div class="row">
+
+    <!-- Post Content Column -->
+    <div class="col-lg-12">
+      <!-- Title -->
+      <h1 class="mt-4"><%= @workshop.title %></h1>
+
+      <!-- Author -->
+      <p class="lead">
+      by
+      <%= User.find(@workshop.author_id).name %>
+      </p>
+
+      <hr>
+
+      <!-- Date/Time -->
+      <p><%= @workshop.updated_at.strftime("Última atualização: %d/%m/%Y às %H:%M") %></p>
+
+      <hr>
+
+      <!-- Post Content -->
+      <p class="lead"><%= @workshop.resume %></p>
+
+      <hr>
+
+      <!-- Attachment -->
+      <%= link_to  "Baixar", @workshop.document, download: true, class: 'btn btn-sm btn-success' %>
+      <hr>
+
+      <!-- Comments Form -->
+      <div class="card my-4">
+        <h5 class="card-header">Leave a Comment:</h5>
+        <div class="card-body">
+          <%= form_for @comment, url: comment_create_path(workshop_id: @workshop.id) do |f| %>
+            <div class='form-group'>
+              <%= f.text_area(:commentContent, class: 'form-control') %>
+            </div>
+            <%= f.submit('Comentar', class: 'btn btn-sm btn-success') %>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Single Comment -->
+      <div class="media mb-4">
+        <div class="media-body">
+          <h5 class="mt-0">Commenter Name</h5>
+          <%= Comment.find_by(workshop_id: @workshop.id) %>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

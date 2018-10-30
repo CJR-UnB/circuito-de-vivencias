@@ -1,10 +1,6 @@
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% elsif flash[:alert] %>
-  <div class="alert"><%= flash[:alert] %></div>
-<% end %>
-
 <div class='container mt-5'>
+  <%= render 'alert' %>
+
   <%= form_for @workshop do |f| %>
     <div class='form-group'>
       <%= f.label(:title, 'Título') %>
@@ -19,6 +15,11 @@
     <div class='form-group'>
       <%= f.label(:resume, 'Resumo') %>
       <%= f.text_field(:resume,  value: @workshop.resume, class: 'form-control') %>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label(:document, 'Documento') %>
+      <%= f.file_field(:document, accept: '.docx, .odt', class: 'form-control') %>
     </div>
 
     <%= f.submit('Salvar', class: 'btn btn-success')%>

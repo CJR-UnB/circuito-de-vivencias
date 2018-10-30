@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_29_010121) do
+ActiveRecord::Schema.define(version: 2018_10_30_192401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2018_10_29_010121) do
     t.string "commentContent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "workshop_id"
+    t.index ["workshop_id"], name: "index_comments_on_workshop_id"
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -83,8 +85,10 @@ ActiveRecord::Schema.define(version: 2018_10_29_010121) do
     t.datetime "updated_at", null: false
     t.integer "author_id"
     t.integer "editor_id"
+    t.boolean "display", default: false
   end
 
+  add_foreign_key "comments", "workshops"
   add_foreign_key "evaluations", "users"
   add_foreign_key "evaluations", "workshops"
 end

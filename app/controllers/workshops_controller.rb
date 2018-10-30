@@ -5,10 +5,12 @@ class WorkshopsController < ApplicationController
 
   def index
     @workshops = Workshop.order(:id)
+    @myWorkshops = Workshop.where(author_id: current_user.id)
   end
 
   def show
     @workshop = Workshop.find(params[:id])
+    @comment = Comment.new
   end
 
   def create
@@ -58,12 +60,13 @@ class WorkshopsController < ApplicationController
   end
 
   private
+    def workshop_params
+      params.require(:workshop).permit(
+        :title,
+        :categories,
+        :resume,
+        :document
+      )
+    end
 
-  def workshop_params
-    params.require(:workshop).permit(
-      :title,
-      :categories,
-      :resume
-    )
-  end
 end

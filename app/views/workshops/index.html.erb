@@ -1,36 +1,11 @@
 <div class='container'>
-  <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% elsif flash[:alert] %>
-    <div class="alert"><%= flash[:alert] %></div>
-  <% end %>
+  <%= render 'alert' %>
 
-  <div class='mt-5'>
-    <table class='table table-striped'>
-      <thead class='thead-light'>
-        <tr>
-          <th scope='col'>#</th>
-          <th scope='col'>Título</th>
-          <th scope='col'>Autor</th>
-          <th scope='col'>Ver</th>
-          <th scope='col'>Editar</th>
-          <th scope='col'>Excluir</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @workshops.each do |workshop| %>
-          <tr>
-            <th scope='row'><%= workshop.id %></th>
-            <td><%= workshop.title %></td>
-            <td><%= User.find(workshop.author_id).name %></td>
-            <td><%= link_to 'Ver', workshop_path(workshop) %></td>
-            <td><%= link_to 'Editar', edit_workshop_path(workshop) %></td>
-            <td><%= link_to 'Excluir', destroy_workshop_path(workshop), method: 'delete', data: {confirm: 'Tem certeza?'} %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+  <% if (current_user.adminRole || current_user.supervisorRole) %>
+    <%= render partial: 'workshops', object: @workshops %>
+  <% elsif (current_user.userRole) %>
+    <%= render partial: 'workshops', object: @myWorkshops %>
+  <% end %>
 
   <%= link_to 'Nova Oficina', new_workshop_path, class: 'btn btn-info' %>
   <%= link_to 'Voltar', root_path, class: 'btn btn-info' %>

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'comment/create'
-  get 'comment/delete'
+  post 'comment/create'
+  delete 'comment/delete'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     passwords: 'users/passwords',
