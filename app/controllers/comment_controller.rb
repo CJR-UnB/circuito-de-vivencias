@@ -14,6 +14,7 @@ class CommentController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     if @comment.save
+      flash[:notice] = 'Comentário criado com sucesso!'
       redirect_to root_path
     else
       flash.now[:error] = 'Erro na insersão do comentário'
