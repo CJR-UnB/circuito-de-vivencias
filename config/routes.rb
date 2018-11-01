@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get '/home', to: 'admin_dashboard#home'
   end
   get '/users', to: 'users/registrations#new'
+  get '/my_profile', to: 'users#profile', as: "profile"
   resources :workshops
   resources :evaluations
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
