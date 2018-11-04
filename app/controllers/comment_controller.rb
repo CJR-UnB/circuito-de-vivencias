@@ -15,10 +15,10 @@ class CommentController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
       flash[:notice] = 'Comentário criado com sucesso!'
-      redirect_to workshop_path(params[:workshop_id])
+      redirect_to workshop_path(@comment.workshop_id)
     else
       flash.now[:error] = 'Erro na insersão do comentário'
-      redirect_to workshop_path(params[:workshop_id])
+      redirect_to workshop_path(@comment.workshop_id)
     end
   end
 
