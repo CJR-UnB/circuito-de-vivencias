@@ -22,7 +22,7 @@ Funcionalidade: Cadastro
       |userPasswordConfirmation|12345678      |
     E clicar no botão "Cadastrar-se"
     Entao devo ser redirecionado para a pagina inicial
-    E ver a mensgem "João" na pagina
+    E ver a mensagem "João" na pagina
 
   Cenario: Preencher o formulario de cadastro incorretamente
     Dado que eu esteja na pagina de cadastro de novo usuario

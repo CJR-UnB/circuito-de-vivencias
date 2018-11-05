@@ -26,7 +26,7 @@ Funcionalidade: entrar_no_sistema
       |password|12345678      |
     E clicar no botão "Entrar"
     Entao devo ser redirecionado para a pagina inicial
-    E ver a mensgem "João" na pagina
+    E ver a mensagem "João" na pagina
 
   Cenario: preencher o formulario de login com uma conta nao cadastrada
     Dado que eu nao esteja logado

@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   scope path: 'adminDashboard', as: 'adminDashboard' do
     get '/home', to: 'admin_dashboard#home'
   end
+  scope path: 'supervisorDashboard', as: 'supervisorDashboard' do
+    get 'home', to: 'supervisor_dashboard#home'
+  end
   get '/users', to: 'users/registrations#new'
   resources :workshops
   resources :evaluations
