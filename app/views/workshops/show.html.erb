@@ -37,7 +37,9 @@
         <div class="card-body">
           <%= form_for @comment, url: comment_index_path(@comment) do |f| %>
             <div class='form-group'>
-              <%= f.text_area(:commentContent, class: 'form-control') %>
+              <%= f.text_field(:name, class: 'form-control', placeholder: 'Nome') %>
+              <%= f.text_field(:institution, class: 'form-control my-1', placeholder: 'Instituição') %>
+              <%= f.text_area(:commentContent, class: 'form-control', placeholder: 'Comentário') %>
               <%= f.text_field(:workshop_id, hidden: true, value: @workshop.id) %>
             </div>
             <%= f.submit('Comentar', class: 'btn btn-sm btn-success') %>
@@ -49,7 +51,7 @@
       <% Comment.where(workshop_id: @workshop.id).each do |c| %>
         <div class="media mb-4">
           <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
+            <h5 class="mt-0"><%= c.name %>, <%= c.institution %></h5>
             <%= c.commentContent %>
           </div>
         </div>

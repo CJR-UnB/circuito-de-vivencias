@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   scope path: 'adminDashboard', as: 'adminDashboard' do
     get '/home', to: 'admin_dashboard#home'
+    get '/users', to: 'admin_dashboard#users'
   end
   get '/users', to: 'users/registrations#new'
   resources :workshops
