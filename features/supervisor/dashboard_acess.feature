@@ -21,7 +21,7 @@ Funcionalidade: dashboard_acess
     E ver botão "Area do Supervisor"
 
     Cenario: como supervisor do sistema logado acessar o dashboard de supervisor
-     Dado que eu seja um supervisor cadastrado no siatema com os dados:
+     Dado que eu seja um supervisor cadastrado no sistema com os dados:
       |name    |Joao          |
       |surname |Lima          |
       |cpf     |00000000000   |

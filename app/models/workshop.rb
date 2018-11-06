@@ -11,4 +11,20 @@ class Workshop < ApplicationRecord
   validates :title, presence: true
   validates :document, presence: true, blob: {content_type: ['application/vnd.oasis.opendocument.text', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']}
 
+  enum status: {in_hold: 0, accepted: 1, rejected: 2}
+
+
+
+  def accept
+    self.status = 'accepted'
+  end
+
+  def reject
+    self.status = 'rejected'
+  end
+
+  def put_in_hold
+    self.status = 'in_hold'
+  end
+
 end

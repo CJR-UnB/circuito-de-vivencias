@@ -30,6 +30,17 @@
       <!-- Attachment -->
       <%= link_to  "Baixar", @workshop.document, download: true, class: 'btn btn-sm btn-success' %>
       <hr>
+   
+      <% if current_user.supervisorRole? %>
+        <% if @workshop.status == 'in_hold' || @workshop.status == 'rejected'%>
+          <%= button_to 'Aceitar', supervisorDashboard_accept_workshop_path(id: @workshop.id), class: 'btn btn-md btn-success', method: :put%>
+        <% end %>
+        <br>
+        <% if @workshop.status == 'in_hold' || @workshop.status == 'accepted'%>
+          <%= button_to 'Rejeitar', supervisorDashboard_reject_workshop_path(id: @workshop.id), class: 'btn btn-md btn-danger', method: :put%>
+        <% end %>
+        <hr>
+      <% end %>
 
       <!-- Comments Form -->
       <div class="card my-4">
@@ -51,6 +62,7 @@
           <%= Comment.find_by(workshop_id: @workshop.id) %>
         </div>
       </div>
+
 
     </div>
   </div>
