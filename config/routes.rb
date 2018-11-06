@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     get '/edit_user/:id', to: 'admin_dashboard#edit_user', as: 'edit_user'
     patch '/edit_user/:id', to: 'admin_dashboard#update_user', as: 'update_user'
   end
+  scope path: 'supervisorDashboard', as: 'supervisorDashboard' do
+    get 'home', to: 'supervisor_dashboard#home'
+  end
   get '/users', to: 'users/registrations#new'
   resources :workshops
   resources :evaluations

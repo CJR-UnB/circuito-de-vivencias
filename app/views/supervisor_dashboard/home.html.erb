@@ -1,0 +1,208 @@
+<!-- @TOC -->
+<!-- =================================================== -->
+<!--
+    + @Page Loader
+    + @App Content
+        - #Left Sidebar
+            > $Sidebar Header
+            > $Sidebar Menu
+
+        - #Main
+            > $Topbar
+            > $App Screen Content
+-->
+
+<!-- @Page Loader -->
+<!-- =================================================== -->
+<div id='loader'>
+    <div class="spinner"></div>
+</div>
+
+<script>
+    window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    setTimeout(() => {
+        loader.classList.add('fadeOut');
+    }, 300);
+    });
+</script>
+
+<!-- @App Content -->
+<!-- =================================================== -->
+<div>
+    <!-- #Left Sidebar ==================== -->
+    <div class="sidebar">
+    <div class="sidebar-inner">
+        <!-- ### $Sidebar Header ### -->
+        <div class="sidebar-logo">
+        <div class="peers ai-c fxw-nw">
+            <div class="peer peer-greed">
+                <a class="sidebar-link td-n" href="index.html">
+                  <div class="peers ai-c fxw-nw">
+                    <div class="peer">
+                      <div class="logo">
+                      </div>
+                    </div>
+                    <div class="peer peer-greed">
+                      <h5 class="lh-1 mB-0 logo-text">Area do Supervisor</h5>
+                    </div>
+                  </div>
+                </a>
+            </div>
+            <div class="peer">
+            <div class="mobile-toggle sidebar-toggle">
+                <a href="" class="td-n">
+                <i class="ti-arrow-circle-left"></i>
+                </a>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- ### $Sidebar Menu ### -->
+        <ul class="sidebar-menu scrollable pos-r">
+            <li class="nav-item mT-30 active">
+                <%= link_to supervisorDashboard_home_path, class: 'sidebar-link' do %>
+                    <span class="icon-holder">
+                        <i class="c-blue-500 fas fa-home"></i>
+                    </span>
+                    <span class="title">Dashboard</span>
+                <% end %>
+            </li>
+            <li class="nav-item mT-30 active">
+                <%= link_to root_path, class: 'sidebar-link' do %>
+                    <span class="icon-holder">
+                        <i class="c-brown-500 fas fa-undo"></i>
+                    </span>
+                    <span class="title">Voltar ao site</span>
+                <% end %>
+            </li>
+        </ul>
+    </div>
+    </div>
+
+    <!-- #Main ============================ -->
+    <div class="page-container">
+    <!-- ### $Topbar ### -->
+    <div class="header navbar">
+        <div class="header-container">
+        <ul class="nav-right">
+            <li class="notifications dropdown">
+            <li class="dropdown">
+            <a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
+                <div class="peer">
+                <span class="fsz-sm c-grey-900"><%= current_user.name %></span>
+                </div>
+            </a>
+            <ul class="dropdown-menu fsz-sm">
+                <li>
+                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                    <i class="fa fa-user mR-10"></i>
+                    <span>Perfil</span>
+                </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                    <i class="fa fa-logout mR-10"></i>
+                    <span>Sair</span>
+                </a>
+                </li>
+            </ul>
+            </li>
+        </ul>
+        </div>
+    </div>
+
+    <!-- ### $App Screen Content ### -->
+    <main class='main-content bgc-grey-100'>
+        <div id='mainContent'>
+        <div class="row gap-20 masonry pos-r">
+            <div class="masonry-sizer col-md-6"></div>
+            <div class="masonry-item  w-100">
+            <div class="row gap-20">
+                <!-- #Toatl Visits ==================== -->
+                <div class='col-md-3'>
+                <div class="layers bd bgc-white p-20">
+                    <div class="layer w-100 mB-10">
+                    <h6 class="lh-1">Numero de usuarios</h6>
+                    </div>
+                    <div class="layer w-100">
+                    <div class="peers ai-sb fxw-nw">
+                        <div class="peer peer-greed">
+                        <span id="sparklinedash"></span>
+                        </div>
+                        <div class="peer">
+                        <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"><%=@users%></span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- #Total Page Views ==================== -->
+                <div class='col-md-3'>
+                <div class="layers bd bgc-white p-20">
+                    <div class="layer w-100 mB-10">
+                    <h6 class="lh-1">Numero de supervisores</h6>
+                    </div>
+                    <div class="layer w-100">
+                    <div class="peers ai-sb fxw-nw">
+                        <div class="peer peer-greed">
+                        <span id="sparklinedash2"></span>
+                        </div>
+                        <div class="peer">
+                        <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500"><%=@supervisors%></span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- #Unique Visitors ==================== -->
+                <div class='col-md-3'>
+                <div class="layers bd bgc-white p-20">
+                    <div class="layer w-100 mB-10">
+                    <h6 class="lh-1">Numero de oficinas</h6>
+                    </div>
+                    <div class="layer w-100">
+                    <div class="peers ai-sb fxw-nw">
+                        <div class="peer peer-greed">
+                        <span id="sparklinedash3"></span>
+                        </div>
+                        <div class="peer">
+                        <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500"><%= @workshops%></span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- #Bounce Rate ==================== -->
+                <div class='col-md-3'>
+                <div class="layers bd bgc-white p-20">
+                    <div class="layer w-100 mB-10">
+                    <h6 class="lh-1">Numero de comentarios</h6>
+                    </div>
+                    <div class="layer w-100">
+                    <div class="peers ai-sb fxw-nw">
+                        <div class="peer peer-greed">
+                        <span id="sparklinedash4"></span>
+                        </div>
+                        <div class="peer">
+                        <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500"><%= @comments%></span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+    </main>
+
+    <!-- ### $App Screen Footer ### -->
+    <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
+        <span>Copyright © 2017 Designed by <a href="https://colorlib.com" target='_blank' title="Colorlib">Colorlib</a>. All rights reserved.</span>
+    </footer>
+    </div>
+</div>
