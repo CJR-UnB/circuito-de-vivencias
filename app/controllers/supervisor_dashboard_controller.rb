@@ -6,5 +6,9 @@ class SupervisorDashboardController < ApplicationController
     end
 
     def home
+        @users = User.count
+        @workshops = Workshop.count
+        @supervisors = User.where(supervisorRole: true).length
+        @comments = Comment.count
     end
 end
