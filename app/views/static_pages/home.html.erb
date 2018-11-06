@@ -30,6 +30,10 @@
                     <%= link_to 'Sair', destroy_user_session_path, method: 'delete', class: 'nav-link btn btn-outline-danger btn-nav' %>
                     <% if current_user.adminRole? %>
                         <%= link_to 'Area de Admin', adminDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
+                    <% else %>
+                        <% if current_user.supervisorRole?%>
+                            <%= link_to 'Area do Supervisor', supervisorDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
+                        <% end %>
                     <% end %>
                 <% else %>
                     <%= link_to 'Entrar', new_user_session_path, class: 'nav-link btn btn-outline-primary btn-nav' %>
@@ -46,7 +50,7 @@
         <div class="intro-text">
             <div class="intro-lead-in">Bem vindo ao Circuito de Vivencias!</div>
             <% if user_signed_in? %>
-                <div class="intro-heading text-uppercase"><%= @logedUser.name %></div>
+                <div class="intro-heading text-uppercase"><%= current_user.name %></div>
             <% end %>
             <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
         </div>

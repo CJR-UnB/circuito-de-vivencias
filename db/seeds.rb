@@ -11,3 +11,7 @@ User.where(adminRole: true).destroy_all
 admin = User.create(name: 'Admin', surname: 'Admin', cpf: '00000000000', email: 'admin@email.com', password: '12345678')
 admin.turnIntoAdmin
 admin.save
+User.where(supervisorRole: true).destroy_all
+supervisor = User.create(name: 'Supervisor', surname: 'Supervisor', cpf: '11111111111', email: 'supervisor@email.com', password: '12345678')
+supervisor.turnIntoSupervisor
+supervisor.save

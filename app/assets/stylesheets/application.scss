@@ -13,12 +13,13 @@
  */
 
 @import "bootstrap";
-
+@import "supervisor_dashboard";
+@import "src/assets/styles/index";
 .custom-alert-position {
-  position: fixed;
-  top: 1vw;
-  right: 1vw;
-  text-align: right;
-  z-index: 1;
-  cursor: pointer;
+    position: fixed;
+    top: 1vw;
+    right: 1vw;
+    text-align: right;
+    z-index: 1;
+    cursor: pointer;
 }

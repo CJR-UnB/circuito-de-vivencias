@@ -1,0 +1,157 @@
+<!-- @TOC -->
+<!-- =================================================== -->
+<!--
+    + @Page Loader
+    + @App Content
+        - #Left Sidebar
+            > $Sidebar Header
+            > $Sidebar Menu
+
+        - #Main
+            > $Topbar
+            > $App Screen Content
+-->
+
+<!-- @Page Loader -->
+<!-- =================================================== -->
+
+
+<!-- @App Content -->
+<!-- =================================================== -->
+<div>
+    <!-- #Left Sidebar ==================== -->
+    <div class="sidebar">
+    <div class="sidebar-inner">
+        <!-- ### $Sidebar Header ### -->
+        <div class="sidebar-logo">
+        <div class="peers ai-c fxw-nw">
+            <div class="peer peer-greed">
+                <%= link_to supervisorDashboard_home_path, class: 'sidebar-link td-n' do %>
+                  <div class="peers ai-c fxw-nw">
+                    <div class="peer">
+                      <div class="logo">
+                      </div>
+                    </div>
+                    <div class="peer peer-greed">
+                      <h5 class="lh-1 mB-0 logo-text">Area do Supervisor</h5>
+                    </div>
+                  </div>
+                <% end %>
+            </div>
+            <div class="peer">
+            <div class="mobile-toggle sidebar-toggle">
+                <a href="" class="td-n">
+                <i class="ti-arrow-circle-left"></i>
+                </a>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- ### $Sidebar Menu ### -->
+        <ul class="sidebar-menu scrollable pos-r">
+            <li class="nav-item mT-30 active">
+                <%= link_to supervisorDashboard_home_path, class: 'sidebar-link' do %>
+                    <span class="icon-holder">
+                        <i class="c-blue-500 fas fa-home"></i>
+                    </span>
+                    <span class="title">Dashboard</span>
+                <% end %>
+            </li>
+            <li class="nav-item mT-30 active">
+                <%= link_to supervisorDashboard_unvalidated_workshops_path, class: 'sidebar-link' do %>
+                    <span class="icon-holder">
+                        <i class="c-green-500 fas fa-clipboard-list"></i>
+                    </span>
+                    <span class="title">Oficinas</span>
+                <% end %>
+            </li>
+            <li class="nav-item mT-30 active">
+                <%= link_to root_path, class: 'sidebar-link' do %>
+                    <span class="icon-holder">
+                        <i class="c-brown-500 fas fa-undo"></i>
+                    </span>
+                    <span class="title">Voltar ao site</span>
+                <% end %>
+            </li>
+        </ul>
+    </div>
+    </div>
+
+    <!-- #Main ============================ -->
+    <div class="page-container">
+    <!-- ### $Topbar ### -->
+    <div class="header navbar">
+        <div class="header-container">
+        <ul class="nav-right">
+            <li class="notifications dropdown">
+            <li class="dropdown">
+            <a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
+                <div class="peer">
+                <span class="fsz-sm c-grey-900"><%= current_user.name %></span>
+                </div>
+            </a>
+            <ul class="dropdown-menu fsz-sm">
+                <li>
+                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                    <i class="fa fa-user mR-10"></i>
+                    <span>Perfil</span>
+                </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                    <%= link_to destroy_user_session_path, class: 'd-b td-n pY-5 bgcH-grey-100 c-grey-700', method: :delete do %>
+                        <i class="fas fa-sign-out-alt mR-10"></i>
+                        <span>Sair</span>
+                    <% end %>
+                </li>
+            </ul>
+            </li>
+        </ul>
+        </div>
+    </div>
+
+    <!-- ### $App Screen Content ### -->
+    <main class='main-content bgc-grey-100'>
+        <div class='mt-5'>
+            <table class='table table-striped'>
+                <thead class='thead-light'>
+                    <tr>
+                        <th scope='col'>#</th>
+                        <th scope='col'>Título</th>
+                        <th scope='col'>Autor</th>
+                        <th scope='col'>Status</th>
+                        <th scope='col'>Ver</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if @workshops.present? %>
+                    <% @workshops.each do |workshop| %>
+                        <tr>
+                        <th scope='row'><%= workshop.id %></th>
+                        <td><%= workshop.title %></td>
+                        <td><%= User.find(workshop.author_id).name %></td>
+                        <% if  workshop.status == 'accepted'%>
+                            <td style="color: green;">Aceito</td>
+                        <% else %>
+                            <% if workshop.status == 'rejected' %>
+                                <td style="color: red;">Rejeitado</td>
+                            <% else %>
+                                <td style="color: gray;">Em espera</td>
+                            <%end%>
+                        <% end %>
+                        <td><%= link_to 'Ver oficina', workshop_path(workshop) %></td>
+                        </tr>
+                    <% end %>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- ### $App Screen Footer ### -->
+    <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
+        <span>Copyright © 2017 Designed by <a href="https://colorlib.com" target='_blank' title="Colorlib">Colorlib</a>. All rights reserved.</span>
+    </footer>
+    </div>
+</div>
