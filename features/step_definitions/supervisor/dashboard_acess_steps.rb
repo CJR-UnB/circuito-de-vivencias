@@ -1,7 +1,7 @@
 # This is the steps file referred to dashboard_acess feature
 # Place your code relative to that feature here
 
-Dado("que eu seja um supervisor cadastrado no siatema com os dados:") do |table|
+Dado("que eu seja um supervisor cadastrado no sistema com os dados:") do |table|
     @array = []
     table.rows_hash.each do |field, value|
         @array << value
