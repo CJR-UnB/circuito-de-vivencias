@@ -1,0 +1,30 @@
+<%= form_for @user, url: adminDashboard_update_user_path do |f| %>
+  <div class='form-group'>
+    <%= f.label(:name, 'Nome') %>
+    <%= f.text_field(:name, class: 'form-control') %>
+  </div>
+  <div class='form-group'>
+    <%= f.label(:surname, 'Sobrenome') %>
+    <%= f.text_field(:surname, class: 'form-control') %>
+  </div>
+  <div class='form-group'>
+    <%= f.label(:cpf, 'C.P.F.') %>
+    <%= f.text_field(:cpf, class: 'form-control') %>
+  </div>
+  <div class='form-check'>
+    <%= f.check_box(:adminRole, checked_value: true, unchecked_value: false, class: 'form-check-input') %>
+    <%= f.label(:adminRole, 'Administrador', class: 'form-check-label') %>
+  </div>
+  <div class='form-check'>
+    <%= f.check_box(:supervisorRole, checked_value: true, unchecked_value: false, class: 'form-check-input') %>
+    <%= f.label(:supervisorRole, 'Supervisor', class: 'form-check-label') %>
+  </div>
+  <div class='form-check'>
+    <%= f.check_box(:userRole, checked_value: true, unchecked_value: false, class: 'form-check-input') %>
+    <%= f.label(:userRole, 'Usuário', class: 'form-check-label') %>
+  </div>
+  <div class='form-group'>
+    <%= f.submit('Salvar', class: 'btn btn-sm btn-success') %>
+  </div>
+
+<% end %>
