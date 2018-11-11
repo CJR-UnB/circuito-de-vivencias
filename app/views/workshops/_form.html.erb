@@ -4,22 +4,22 @@
   <%= form_for @workshop do |f| %>
     <div class='form-group'>
       <%= f.label(:title, 'Título') %>
-      <%= f.text_field(:title, value: @workshop.title, class: 'form-control') %>
+      <%= f.text_field(:title, value: @workshop.title, class: 'form-control', id: 'title') %>
     </div>
 
     <div class='form-group'>
       <%= f.label(:categories, 'Categorias') %>
-      <%= f.text_field(:categories, value: @workshop.categories, class: 'form-control') %>
+      <%= f.text_field(:categories, value: @workshop.categories, class: 'form-control', id: 'categories') %>
     </div>
 
     <div class='form-group'>
       <%= f.label(:resume, 'Resumo') %>
-      <%= f.text_field(:resume,  value: @workshop.resume, class: 'form-control') %>
+      <%= f.text_field(:resume,  value: @workshop.resume, class: 'form-control', id: 'resume') %>
     </div>
 
     <div class='form-group'>
       <%= f.label(:document, 'Documento') %>
-      <%= f.file_field(:document, accept: '.docx, .odt', class: 'form-control') %>
+      <%= f.file_field(:document, accept: '.docx, .odt', class: 'form-control', id: 'document') %>
     </div>
 
     <%= f.submit('Salvar', class: 'btn btn-success')%>

@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   scope path: 'supervisorDashboard', as: 'supervisorDashboard' do
     get 'home', to: 'supervisor_dashboard#home'
     get 'unvalidated_workshops', to: 'supervisor_dashboard#show_unvalidated_workshops'
+    get 'write_feedback', to: 'feedbacks#new'
+    post 'feedback', to: 'feedbacks#create'
     put 'accept_workshop', to: 'supervisor_dashboard#accept_workshop'
     put 'reject_workshop', to: 'supervisor_dashboard#reject_workshop'
   end

@@ -7,7 +7,7 @@ Funcionalidade: dashboard_acess
   Eu quero poder acessar uma pagina de gerenciamento de oficinas apenas para supervisores
 
    Cenario: logar no sistema como supervisor
-    Dado que eu seja um supervisor cadastrado no siatema com os dados:
+    Dado que eu seja um supervisor cadastrado no sistema com os dados:
       |name    |Joao          |
       |surname |Lima          |
       |cpf     |00000000000   |
@@ -18,7 +18,7 @@ Funcionalidade: dashboard_acess
     E clicar no botão "Entrar"
     Entao devo ser redirecionado para a pagina inicial do sistema
     E ver a mensagem "Joao" na pagina
-    E ver botão "Area do Supervisor"
+    E devo ver um botão "Area do Supervisor" na pagina
 
     Cenario: como supervisor do sistema logado acessar o dashboard de supervisor
      Dado que eu seja um supervisor cadastrado no sistema com os dados:

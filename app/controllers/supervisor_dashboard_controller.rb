@@ -23,11 +23,4 @@ class SupervisorDashboardController < ApplicationController
         redirect_to supervisorDashboard_unvalidated_workshops_path
     end
 
-    def reject_workshop
-        @workshop = Workshop.find(params[:id])
-        @workshop.reject
-        @workshop.save
-        redirect_to supervisorDashboard_unvalidated_workshops_path
-    end
-
 end

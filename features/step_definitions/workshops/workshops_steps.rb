@@ -2,14 +2,22 @@
 # Place your code relative to that feature here
 
 Dado("exista uma oficina com os dados:") do |table|
-  workshop = Workshop.new()
   user = User.create(name: 'teste', surname: 'teste 2', cpf: '12345678901', email: 'foo@foo.com', password: '123456')
+  visit(new_user_session_path)
+  fill_in :email, with: 'foo@foo.com'
+  fill_in :password, with: '123456'
+  click_button("Entrar")
+  visit(new_workshop_path)
   table.rows_hash.each do |field, value|
-    workshop[field] = value
+    if(field != 'document')
+      fill_in field, with: value
+    else
+      attach_file(field, File.join(Rails.root, 'features', 'upload-files', 'valide_file.odt'))
+    end
   end
-  workshop.author_id = user.id
-  workshop.editor_id = user.id
-  workshop.save
+  click_link_or_button("Salvar")
+  visit(root_path)
+  click_link_or_button("Sair")
 end
 
 Dado("eu estar na página inicial do sistema") do
@@ -25,3 +33,39 @@ Então("devo ver na tabela a oficina criada com os dados:") do |table|
     expect(page).to have_content value
   end
 end
+
+Dado("que eu esteja na pagina de criacao de oficinas") do
+  visit(new_workshop_path)
+end
+
+Quando("eu preencher os campos de oficinas com os dados:") do |table|
+  table.rows_hash.each do |field, value|
+    if(field != 'document')
+      fill_in field, with: value
+    else
+      attach_file(field, File.join(Rails.root, 'features', 'upload-files', 'valide_file.odt'))
+    end
+  end
+end
+
+Então("devo ser redirecionado para a pagina index de oficinas") do
+  assert_current_path(workshops_path)
+end
+
+Dado("ela tenha sido validada por um supervisor") do
+  workshops = Workshop.all()
+  workshops.each do |workshop|
+    workshop.accept
+    workshop.save
+  end
+end
+
+Dado("ela nao tenha sido validada por um supervisor") do
+  workshops = Workshop.all()
+  workshops.each do |workshop|
+    workshop.put_in_hold
+    workshop.save
+  end
+end
+
+
