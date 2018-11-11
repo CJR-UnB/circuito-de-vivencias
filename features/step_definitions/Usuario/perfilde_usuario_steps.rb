@@ -9,13 +9,6 @@ Dado("que eu seja um usuario cadastrado no sistema:") do |table|
   User.create(name: @array[0],surname: @array[1], cpf: @array[2], email: @array[3], password: @array[4])
 end
 
-Dado("que eu esteja logado no sistema") do
-  visit(new_user_session_path)
-  fill_in :email, with: @array[3]
-  fill_in :password, with: @array[4]
-  click_button("Entrar")
-end
-
 Dado("esteja na pagina inicial do sistema") do
   visit(root_path)
 end
