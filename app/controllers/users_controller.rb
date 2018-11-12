@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
-    def show
-    end
+  before_action :authenticate_user!, only: [:profile]
+
+  def show
+  end
+  def profile
+  end
 end
