@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get '/users', to: 'users/registrations#new'
   get '/my_profile', to: 'users#profile', as: "profile"
   get '/my_profile/rejected_workshops', to: 'users#rejected_workshops', as: "rejected_workshops"
+  get '/my_profile/rejected_workshop/feedback', to: 'feedbacks#show', as: "rejected_workshop_feedback"
   resources :workshops
   resources :evaluations
   resources :comment

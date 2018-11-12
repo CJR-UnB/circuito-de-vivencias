@@ -47,15 +47,15 @@ Dado("ela tenha sido rejeitada com um feedback com os dados:") do |table|
   supervisor.turnIntoSupervisor()
   supervisor.save
   @user = User.find_by(name: @array[0])
-  workshop = Workshop.find_by(author_id: @user.id)
-  workshop.reject
-  workshop.save
+  @workshop = Workshop.find_by(author_id: @user.id)
+  @workshop.reject
+  @workshop.save
   feedback = Feedback.new
   table.rows_hash.each do |field, value|
     feedback[field] = value
   end
   feedback.supervisor = supervisor
-  feedback.workshop_author = @user
+  feedback.workshop = @workshop
   feedback.save
 end
 
@@ -72,7 +72,7 @@ Dado("eu esteja na pagina de visualisacao de oficinas rejeitadas") do
 end
 
 Entao("devo ser redirecionado para a pagina de visualisacao de feedback") do
-  assert_current_path(rejected_workshop_feedback_path(id: ))
+  assert_current_path(rejected_workshop_feedback_path(workshop_id: @workshop.id))
 end
 
 Entao("devo ver o feedback na pagina com os dados:") do |table|

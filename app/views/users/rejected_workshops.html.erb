@@ -14,7 +14,7 @@
             <tr>
               <th scope='row'><%= workshop.id %></th>
               <td><%= workshop.title %></td>
-              <td><%= link_to 'Ver feedback', rejected_workshop_feedback_path(id: workshop.id) %></td>
+              <td><%= link_to 'Ver feedback', rejected_workshop_feedback_path(workshop_id: workshop.id) %></td>
               <td><%= link_to 'Ver', workshop_path(workshop) %></td>
             </tr>
           <% end %>

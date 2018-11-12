@@ -8,8 +8,7 @@ class User < ApplicationRecord
 
   has_many :evaluations
   has_many :workshops, through: :evaluations
-  has_many :supervisors, through: :feedbacks, class_name: 'User'
-  has_many :workshop_authors, through: :feedbacks, class_name: 'User'
+  has_many :feedbacks
 
   validates :name, presence: true
   validates :surname, presence: true
