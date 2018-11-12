@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_06_113622) do
+ActiveRecord::Schema.define(version: 2018_11_12_150833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 2018_11_06_113622) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string "commentContent"
     t.datetime "created_at", null: false
@@ -57,6 +63,12 @@ ActiveRecord::Schema.define(version: 2018_11_06_113622) do
     t.index ["workshop_id"], name: "index_evaluations_on_workshop_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -70,19 +82,26 @@ ActiveRecord::Schema.define(version: 2018_11_06_113622) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "adminRole", default: false
-    t.boolean "supervisorRole", default: false
-    t.boolean "userRole", default: true
     t.string "name"
     t.string "surname"
     t.string "cpf"
+    t.bigint "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
+  end
+
+  create_table "workshop_categories", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "workshop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_workshop_categories_on_category_id"
+    t.index ["workshop_id"], name: "index_workshop_categories_on_workshop_id"
   end
 
   create_table "workshops", force: :cascade do |t|
     t.string "title"
-    t.string "categories"
     t.string "resume"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -95,4 +114,6 @@ ActiveRecord::Schema.define(version: 2018_11_06_113622) do
   add_foreign_key "comments", "workshops"
   add_foreign_key "evaluations", "users"
   add_foreign_key "evaluations", "workshops"
+  add_foreign_key "workshop_categories", "categories"
+  add_foreign_key "workshop_categories", "workshops"
 end
