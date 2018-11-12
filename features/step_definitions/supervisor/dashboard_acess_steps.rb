@@ -20,7 +20,7 @@ Entao("devo ser redirecionado para a pagina inicial do sistema") do
     assert_current_path(root_path)
 end
 
-Entao("ver botão {string}") do |string|
+Entao("devo ver um botão {string} na pagina") do |string|
     find_link(string)
 end
 
