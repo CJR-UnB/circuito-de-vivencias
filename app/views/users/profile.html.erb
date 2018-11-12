@@ -2,3 +2,4 @@
 <%= current_user.surname%>
 <%= current_user.cpf%>
 <%= current_user.email%>
+<%= link_to 'Oficinas rejeitadas', rejected_workshops_path(id: current_user.id), class: 'btn btn-md btn-danger' %>

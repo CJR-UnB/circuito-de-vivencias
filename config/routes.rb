@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
   get '/users', to: 'users/registrations#new'
   get '/my_profile', to: 'users#profile', as: "profile"
+  get '/my_profile/rejected_workshops', to: 'users#rejected_workshops', as: "rejected_workshops"
   resources :workshops
   resources :evaluations
   resources :comment
