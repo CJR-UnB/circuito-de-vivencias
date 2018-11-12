@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     put 'reject_workshop', to: 'supervisor_dashboard#reject_workshop'
   end
   get '/users', to: 'users/registrations#new'
+  get '/my_profile', to: 'users#profile', as: "profile"
   resources :workshops
   resources :evaluations
   resources :comment
