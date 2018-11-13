@@ -5,6 +5,7 @@ class Workshop < ApplicationRecord
   has_one :user, foreign_key: 'editor_id'
   has_one_attached :document
   has_many :evaluations
+  has_one :feedback
   has_many :users, through: :evaluations
   has_many :comments
 

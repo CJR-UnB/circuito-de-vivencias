@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 2018_11_12_150833) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+  
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "subject"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "supervisor_id"
+    t.integer "workshop_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -116,4 +125,6 @@ ActiveRecord::Schema.define(version: 2018_11_12_150833) do
   add_foreign_key "evaluations", "workshops"
   add_foreign_key "workshop_categories", "categories"
   add_foreign_key "workshop_categories", "workshops"
+  add_foreign_key "feedbacks", "users", column: "supervisor_id"
+  add_foreign_key "feedbacks", "workshops", on_delete: :cascade
 end
