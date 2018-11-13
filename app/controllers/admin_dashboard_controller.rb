@@ -4,7 +4,10 @@ class AdminDashboardController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin
 
-  def home
+  def home; end
+
+  def users
+    @users = User.order(:name)
   end
 
   def edit_user
@@ -34,14 +37,10 @@ class AdminDashboardController < ApplicationController
     end
   end
 
-  def users
-    @users = User.order(:name)
-  end
-
   private
 
   def authenticate_admin
-    redirect_to(root_path) unless current_user.adminRole?
+    redirect_to(root_path) unless Role.find(current_user.role_id).name == 'Admin'
   end
 
   def user_params
@@ -49,9 +48,7 @@ class AdminDashboardController < ApplicationController
       :name,
       :surname,
       :cpf,
-      :adminRole,
-      :supervisorRole,
-      :userRole
+      :role_id
     )
   end
 

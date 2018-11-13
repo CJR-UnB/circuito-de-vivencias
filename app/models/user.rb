@@ -19,20 +19,14 @@ class User < ApplicationRecord
     validates :cpf, format: { with: /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/ }
   end
   def turnIntoAdmin
-    self.adminRole = true
-    self.userRole = false
-    self.supervisorRole = false
+    self.role_id = Role.find_by(name: 'Admin').id
   end
 
   def turnIntoUser
-    self.adminRole = false
-    self.userRole = true
-    self.supervisorRole = false
+    self.role_id = Role.find_by(name: 'Supervisor').id
   end
 
   def turnIntoSupervisor
-    self.adminRole = false
-    self.userRole = false
-    self.supervisorRole = true
+    self.role_id = Role.find_by(name: 'User').id
   end
 end

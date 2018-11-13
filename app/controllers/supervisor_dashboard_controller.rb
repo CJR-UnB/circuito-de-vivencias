@@ -2,13 +2,13 @@ class SupervisorDashboardController < ApplicationController
     before_action :authenticate_user!
     before_action :authenticate_supervisor
     def authenticate_supervisor
-        redirect_to(root_path) unless current_user.supervisorRole?
+        redirect_to(root_path) unless Role.find(current_user.role_id).name == 'Supervisor'
     end
 
     def home
         @users = User.count
         @workshops = Workshop.count
-        @supervisors = User.where(supervisorRole: true).length
+        @supervisors = User.where(role_id: Role.find_by(name: 'Supervisor').id).length
         @comments = Comment.count
     end
 

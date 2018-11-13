@@ -13,7 +13,7 @@ class WorkshopsController < ApplicationController
       end
     end
   end
-  
+
   def index
     @workshops = Workshop.where(status: 'accepted')
     @myWorkshops = Workshop.where(author_id: current_user.id)
