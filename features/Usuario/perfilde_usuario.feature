@@ -58,7 +58,7 @@ Funcionalidade: perfilde_usuario
       |subject|oficina invalida          |
       |content|essa oficina esta invalida|
     E eu esteja na pagina de visualisacao de oficinas rejeitadas
-    Quando eu clicar no link "Ver feedback"
+    Quando eu clicar no link com o assunto do feedback
     Entao devo ser redirecionado para a pagina de visualisacao de feedback
     E devo ver o feedback na pagina com os dados:
       |subject|oficina invalida          |

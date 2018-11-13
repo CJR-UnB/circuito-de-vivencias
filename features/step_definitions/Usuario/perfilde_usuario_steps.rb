@@ -50,13 +50,17 @@ Dado("ela tenha sido rejeitada com um feedback com os dados:") do |table|
   @workshop = Workshop.find_by(author_id: @user.id)
   @workshop.reject
   @workshop.save
-  feedback = Feedback.new
+  @feedback = Feedback.new
   table.rows_hash.each do |field, value|
-    feedback[field] = value
+    @feedback[field] = value
   end
-  feedback.supervisor = supervisor
-  feedback.workshop = @workshop
-  feedback.save
+  @feedback.supervisor = supervisor
+  @feedback.workshop = @workshop
+  @feedback.save
+end
+
+Quando("eu clicar no link com o assunto do feedback") do
+  click_link(@feedback.subject)
 end
 
 Dado("que eu esteja na minha pagina de perfil") do
