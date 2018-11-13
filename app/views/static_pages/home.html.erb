@@ -28,10 +28,10 @@
                 <% if user_signed_in? %>
                     <%= link_to 'Perfil', profile_path(), class: 'nav-link btn btn-outline-info btn-nav' %>
                     <%= link_to 'Sair', destroy_user_session_path, method: 'delete', class: 'nav-link btn btn-outline-danger btn-nav' %>
-                    <% if current_user.adminRole? %>
+                    <% if Role.find(current_user.role_id).name == 'Admin' %>
                         <%= link_to 'Area de Admin', adminDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
                     <% else %>
-                        <% if current_user.supervisorRole?%>
+                        <% if Role.find(current_user.role_id).name == 'Supervisor' %>
                             <%= link_to 'Area do Supervisor', supervisorDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
                         <% end %>
                     <% end %>

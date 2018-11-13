@@ -5,6 +5,7 @@
           <th scope='col'>#</th>
           <th scope='col'>Nome</th>
           <th scope='col'>C.P.F.</th>
+          <th scope='col'>Tipo</th>
           <th scope='col'>Editar</th>
           <th scope='col'>Excluir</th>
         </tr>
@@ -17,6 +18,7 @@
                 <th scope='row'><%= user.id %></th>
                 <td><%= user.name %> <%= user.surname %></td>
                 <td><%= user.cpf %></td>
+                <td><%= Role.find(user.role_id).name %></td>
                 <td><%= link_to 'Editar', adminDashboard_edit_user_path(user.id) %></td>
                 <td><%#= link_to 'Excluir', adminDashboard_users_path(id: user.id), method: 'delete', data: {confirm: 'Tem certeza?'} %></td>
               </tr>
@@ -25,6 +27,7 @@
                 <th scope='row'><%= user.id %></th>
                 <td><%= user.name %> <%= user.surname %></td>
                 <td><%= user.cpf %></td>
+                <td><%= Role.find(user.role_id).name %></td>
                 <td><%= link_to 'Editar', adminDashboard_edit_user_path(user.id) %></td>
                 <td><%= link_to 'Excluir', adminDashboard_users_path(id: user.id), method: 'delete', data: {confirm: 'Tem certeza?'} %></td>
               </tr>
