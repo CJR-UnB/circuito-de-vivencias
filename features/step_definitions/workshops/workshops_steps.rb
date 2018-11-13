@@ -68,4 +68,11 @@ Dado("ela nao tenha sido validada por um supervisor") do
   end
 end
 
+Então("nao devo ver na tabela a oficina criada com os dados:") do |table|
+  table.rows_hash.each do |field, value|
+    expect(page).to have_no_content value
+  end
+end
+
+
 
