@@ -28,7 +28,7 @@ Funcionalidade: workshops
     E que eu esteja cadastrado como um admin do sistema
     E ela tenha sido validada por um supervisor
     E eu estar na página inicial do sistema
-    Quando eu clicar no botão "Oficinas"
+    Quando eu clicar no botão "Ver mais oficinas"
     Então devo ver na tabela a oficina criada com os dados:
       |title|Teste 1|
 

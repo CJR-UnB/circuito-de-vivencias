@@ -26,7 +26,6 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <% if user_signed_in? %>
-                    <%= link_to 'Oficinas', workshops_path(current_user), class: 'nav-link btn btn-outline-danger btn-nav' %>
                     <%= link_to 'Perfil', profile_path(), class: 'nav-link btn btn-outline-info btn-nav' %>
                     <%= link_to 'Sair', destroy_user_session_path, method: 'delete', class: 'nav-link btn btn-outline-danger btn-nav' %>
                     <% if current_user.adminRole? %>
@@ -65,6 +64,15 @@
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading text-uppercase">Oficinas</h2>
                 <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <% if user_signed_in? %>
+                            <%= link_to 'Ver mais oficinas', workshops_path(current_user), class: 'nav-link btn btn-outline-danger btn-nav' %>
+                        <% end %>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row text-center">
