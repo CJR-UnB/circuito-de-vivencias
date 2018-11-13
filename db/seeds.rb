@@ -7,11 +7,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.where(adminRole: true).destroy_all
-admin = User.create(name: 'Admin', surname: 'Admin', cpf: '00000000000', email: 'admin@email.com', password: '12345678')
+adminRole = Role.create(name: 'Admin')
+adminRole.save
+
+supervisorRole = Role.create(name: 'Supervisor')
+supervisorRole.save
+
+userRole = Role.create(name: 'User')
+userRole.save
+
+User.where(role_id: Role.find_by(name: 'Admin').id).destroy_all
+admin = User.create(name: 'Admin', surname: 'Admin', cpf: '123.456.789-09', email: 'admin@email.com', password: '12345678')
 admin.turnIntoAdmin
 admin.save
-User.where(supervisorRole: true).destroy_all
+
+User.where(role_id: Role.find_by(name: 'Supervisor').id).destroy_all
 supervisor = User.create(name: 'Supervisor', surname: 'Supervisor', cpf: '11111111111', email: 'supervisor@email.com', password: '12345678')
 supervisor.turnIntoSupervisor
 supervisor.save

@@ -9,7 +9,7 @@
 
     <div class='form-group'>
       <%= f.label(:categories, 'Categorias') %>
-      <%= f.text_field(:categories, value: @workshop.categories, class: 'form-control') %>
+      <%= f.select(:categories, Category.all.collect { |p| [p.name, p.id] }, {}, class: 'form-control', multiple: true) %>
     </div>
 
     <div class='form-group'>
