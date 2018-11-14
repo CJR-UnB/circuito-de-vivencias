@@ -18,15 +18,17 @@ class User < ApplicationRecord
     v.validates_uniqueness_of :cpf
     validates :cpf, format: { with: /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/ }
   end
+
   def turnIntoAdmin
     self.role_id = Role.find_by(name: 'Admin').id
   end
 
   def turnIntoUser
-    self.role_id = Role.find_by(name: 'Supervisor').id
+    self.role_id = Role.find_by(name: 'User').id
   end
 
   def turnIntoSupervisor
-    self.role_id = Role.find_by(name: 'User').id
+    self.role_id = Role.find_by(name: 'Supervisor').id
   end
+
 end

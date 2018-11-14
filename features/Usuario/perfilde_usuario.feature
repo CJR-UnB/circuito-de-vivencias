@@ -26,6 +26,8 @@ Funcionalidade: perfilde_usuario
       |cpf |12341234567|
       |email |thiago@hotmail.com|
       |password |12345678|
+    E que exista uma categoria com os dados:
+      |name|Categoria 1|
     E que eu tenha criado uma oficina com os dados:
       |title|Teste 1|
       |categories|Categoria 1|
@@ -48,6 +50,8 @@ Funcionalidade: perfilde_usuario
       |cpf |12341234567|
       |email |thiago@hotmail.com|
       |password |12345678|
+    E que exista uma categoria com os dados:
+      |name|Categoria 1|
     E que eu tenha criado uma oficina com os dados:
       |title|Teste 1|
       |categories|Categoria 1|

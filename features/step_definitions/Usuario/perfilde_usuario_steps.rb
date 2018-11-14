@@ -32,7 +32,11 @@ Dado("que eu tenha criado uma oficina com os dados:") do |table|
   visit(new_workshop_path)
   table.rows_hash.each do |field, value|
     if(field != 'document')
-      fill_in field, with: value
+      if(field != 'categories')
+        fill_in field, with: value
+      else
+        find('#' + field).select(value)
+      end
     else
       attach_file(field, File.join(Rails.root, 'features', 'upload-files', 'valide_file.odt'))
     end

@@ -30,7 +30,7 @@
       <!-- Attachment -->
       <%= link_to  "Baixar", @workshop.document, download: true, class: 'btn btn-sm btn-success' %>
       <hr>
-      <% if current_user.supervisorRole? %>
+      <% if Role.find(current_user.role_id).name == 'Supervisor' %>
         <% if @workshop.status == 'in_hold' || @workshop.status == 'rejected'%>
           <%= link_to 'Aceitar', supervisorDashboard_accept_workshop_path(id: @workshop.id), class: 'btn btn-md btn-success', method: :put%>
         <% end %>

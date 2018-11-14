@@ -7,7 +7,9 @@ Funcionalidade: supervisor_aprovar_oficina
   Eu quero poder validar as ofiinas do sistema
 
   Cenario: Ver as oficinas ainda não validada
-    Dado exista uma oficina com os dados:
+    Dado que exista uma categoria com os dados:
+      |name|Categoria 1|
+    E exista uma oficina com os dados:
       |title     |Teste 1    |
       |categories|Categoria 1|
       |resume    |Resumo 1   |
@@ -31,6 +33,8 @@ Funcionalidade: supervisor_aprovar_oficina
       |cpf     |00000000000   |
       |email   |joao@email.com|
       |password|12345678      |
+    E que exista uma categoria com os dados:
+      |name|Categoria 1|
     E exista uma oficina com os dados:
       |title     |Teste 1    |
       |categories|Categoria 1|
@@ -52,6 +56,8 @@ Funcionalidade: supervisor_aprovar_oficina
       |cpf     |00000000000   |
       |email   |joao@email.com|
       |password|12345678      |
+    E que exista uma categoria com os dados:
+      |name|Categoria 1|
     E exista uma oficina com os dados:
       |title     |Teste 1    |
       |categories|Categoria 1|

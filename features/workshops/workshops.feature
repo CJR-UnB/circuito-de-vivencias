@@ -9,6 +9,8 @@ Funcionalidade: workshops
 
   Cenario: criar uma oficina
     Dado que eu esteja cadastrado como um admin do sistema
+    E que exista uma categoria com os dados: 
+      |name|Categoria 1|
     E que eu esteja na pagina de criacao de oficinas
     Quando eu preencher os campos de oficinas com os dados:
       |title|Teste 1|
@@ -20,7 +22,9 @@ Funcionalidade: workshops
     E ver a mensagem "Workshop criado com sucesso!" na pagina
 
   Cenario: ver oficinas criadas e validadas por um supervisor
-    Dado exista uma oficina com os dados:
+    Dado que exista uma categoria com os dados:
+      |name|Categoria 1|
+    E exista uma oficina com os dados:
       |title|Teste 1|
       |categories|Categoria 1|
       |resume|Resumo 1|
@@ -33,7 +37,9 @@ Funcionalidade: workshops
       |title|Teste 1|
 
   Cenario: nao ver oficinas criadas e so que nao validadas por um supervisor
-    Dado exista uma oficina com os dados:
+    Dado que exista uma categoria com os dados:
+      |name|Categoria 1|
+    E exista uma oficina com os dados:
       |title|Teste 1|
       |categories|Categoria 1|
       |resume|Resumo 1|

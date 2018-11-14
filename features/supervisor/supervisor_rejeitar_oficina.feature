@@ -13,6 +13,8 @@ Funcionalidade: supervisor_rejeitar_oficina
       |cpf     |11111111111      |
       |email   |gabriel@email.com|
       |password|12345678         |
+    E que exista uma categoria com os dados:
+      |name|Categoria 1|
     E que ele tenha criado uma oficina com os dados:
       |title     |Teste 1    |
       |categories|Categoria 1|
@@ -36,6 +38,8 @@ Funcionalidade: supervisor_rejeitar_oficina
       |cpf     |11111111111      |
       |email   |gabriel@email.com|
       |password|12345678         |
+    E que exista uma categoria com os dados:
+      |name|Categoria 1|
     E que ele tenha criado uma oficina com os dados:
       |title     |Teste 1    |
       |categories|Categoria 1|

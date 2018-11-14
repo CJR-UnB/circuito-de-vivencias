@@ -8,7 +8,7 @@ class WorkshopsController < ApplicationController
   def verify_workshop
     @workshop = Workshop.find(params[:id])
     if @workshop.status != 'accepted'
-      if !current_user.supervisorRole?
+      if Role.find(current_user.role_id).name != 'Supervisor'
         redirect_to root_path
       end
     end

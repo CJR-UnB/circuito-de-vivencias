@@ -2,7 +2,7 @@ class FeedbacksController < ApplicationController
     before_action :authenticate_user!
     before_action :authenticate_supervisor, only: [:new, :create]
     def authenticate_supervisor
-        redirect_to(root_path) unless current_user.supervisorRole?
+        redirect_to(root_path) unless Role.find(current_user.role_id).name == 'Supervisor'
     end
 
     def new

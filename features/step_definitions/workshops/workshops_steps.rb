@@ -10,7 +10,11 @@ Dado("exista uma oficina com os dados:") do |table|
   visit(new_workshop_path)
   table.rows_hash.each do |field, value|
     if(field != 'document')
-      fill_in field, with: value
+      if(field != 'categories')
+        fill_in field, with: value
+      else
+        find('#' + field).select(value)
+      end
     else
       attach_file(field, File.join(Rails.root, 'features', 'upload-files', 'valide_file.odt'))
     end
@@ -41,7 +45,11 @@ end
 Quando("eu preencher os campos de oficinas com os dados:") do |table|
   table.rows_hash.each do |field, value|
     if(field != 'document')
-      fill_in field, with: value
+      if(field != 'categories')
+        fill_in field, with: value
+      else
+        find('#' + field).select(value)
+      end
     else
       attach_file(field, File.join(Rails.root, 'features', 'upload-files', 'valide_file.odt'))
     end
@@ -72,6 +80,14 @@ Então("nao devo ver na tabela a oficina criada com os dados:") do |table|
   table.rows_hash.each do |field, value|
     expect(page).to have_no_content value
   end
+end
+
+Dado("que exista uma categoria com os dados:") do |table|
+  categorie = Category.new
+  table.rows_hash.each do |field, value|
+    categorie[field] = value
+  end
+  categorie.save
 end
 
 

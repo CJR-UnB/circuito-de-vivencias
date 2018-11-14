@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_150833) do
+ActiveRecord::Schema.define(version: 2018_11_14_110511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,12 +63,6 @@ ActiveRecord::Schema.define(version: 2018_11_12_150833) do
     t.index ["workshop_id"], name: "index_evaluations_on_workshop_id"
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-  
   create_table "feedbacks", force: :cascade do |t|
     t.string "subject"
     t.text "content"
@@ -76,6 +70,12 @@ ActiveRecord::Schema.define(version: 2018_11_12_150833) do
     t.datetime "updated_at", null: false
     t.integer "supervisor_id"
     t.integer "workshop_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_150833) do
     t.string "name"
     t.string "surname"
     t.string "cpf"
-    t.bigint "role_id"
+    t.integer "role_id", default: 3
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
@@ -123,8 +123,8 @@ ActiveRecord::Schema.define(version: 2018_11_12_150833) do
   add_foreign_key "comments", "workshops"
   add_foreign_key "evaluations", "users"
   add_foreign_key "evaluations", "workshops"
-  add_foreign_key "workshop_categories", "categories"
-  add_foreign_key "workshop_categories", "workshops"
   add_foreign_key "feedbacks", "users", column: "supervisor_id"
   add_foreign_key "feedbacks", "workshops", on_delete: :cascade
+  add_foreign_key "workshop_categories", "categories"
+  add_foreign_key "workshop_categories", "workshops"
 end

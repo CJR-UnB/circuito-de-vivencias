@@ -10,7 +10,7 @@
     <div class='form-group'>
       <%= f.label(:categories, 'Categorias') %>
 
-      <%= f.select(:categories, Category.all.collect { |p| [p.name, p.id] }, {}, class: 'form-control', multiple: true) %>
+      <%= f.select(:categories, Category.all.collect { |p| [p.name, p.id] }, {}, id: 'categories', class: 'form-control', multiple: true) %>
     </div>
 
     <div class='form-group'>
