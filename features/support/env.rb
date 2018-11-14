@@ -38,6 +38,21 @@ rescue NameError
   raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
 end
 
+Before do
+  adminRole = Role.new(name: 'Admin')
+  adminRole.id = 1
+  adminRole.save!
+
+  supervisorRole = Role.new(name: 'Supervisor')
+  supervisorRole.id = 2
+  supervisorRole.save!
+
+  userRole = Role.create(name: 'User')
+  userRole.id = 3
+  userRole.save!
+end
+
+
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
 #

@@ -18,3 +18,5 @@
 //= require_tree .
 //= require popper
 //= require bootstrap-sprockets
+
+import '../../../vendor/assets/Adminator-admin-dashboard-master/src/assets/scripts/index'

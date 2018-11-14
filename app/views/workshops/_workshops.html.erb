@@ -6,8 +6,6 @@
           <th scope='col'>Título</th>
           <th scope='col'>Autor</th>
           <th scope='col'>Ver</th>
-          <th scope='col'>Editar</th>
-          <th scope='col'>Excluir</th>
         </tr>
       </thead>
       <tbody>
@@ -18,8 +16,6 @@
               <td><%= workshop.title %></td>
               <td><%= User.find(workshop.author_id).name %></td>
               <td><%= link_to 'Ver', workshop_path(workshop) %></td>
-              <td><%= link_to 'Editar', edit_workshop_path(workshop) %></td>
-              <td><%= link_to 'Excluir', workshop_path(workshop), method: 'delete', data: {confirm: 'Tem certeza?'} %></td>
             </tr>
           <% end %>
         <% end %>

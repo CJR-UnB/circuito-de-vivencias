@@ -11,10 +11,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                    <a class="nav-link js-scroll-trigger" href="#oficinas">Oficinas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+                    <a class="nav-link js-scroll-trigger" href="#portfolio">Videos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#about">About</a>
@@ -26,10 +26,14 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <% if user_signed_in? %>
-                    <%= link_to 'Oficinas', workshops_path(current_user), class: 'nav-link btn btn-outline-danger btn-nav' %>
+                    <%= link_to 'Perfil', profile_path(), class: 'nav-link btn btn-outline-info btn-nav' %>
                     <%= link_to 'Sair', destroy_user_session_path, method: 'delete', class: 'nav-link btn btn-outline-danger btn-nav' %>
-                    <% if current_user.adminRole? %>
+                    <% if Role.find(current_user.role_id).name == 'Admin' %>
                         <%= link_to 'Area de Admin', adminDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
+                    <% else %>
+                        <% if Role.find(current_user.role_id).name == 'Supervisor' %>
+                            <%= link_to 'Area do Supervisor', supervisorDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
+                        <% end %>
                     <% end %>
                 <% else %>
                     <%= link_to 'Entrar', new_user_session_path, class: 'nav-link btn btn-outline-primary btn-nav' %>
@@ -46,20 +50,29 @@
         <div class="intro-text">
             <div class="intro-lead-in">Bem vindo ao Circuito de Vivencias!</div>
             <% if user_signed_in? %>
-                <div class="intro-heading text-uppercase"><%= @logedUser.name %></div>
+                <div class="intro-heading text-uppercase"><%= current_user.name %></div>
             <% end %>
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#oficinas">Tell Me More</a>
         </div>
     </div>
 </header>
 
-<!-- Services -->
-<section id="services">
+<!-- Oficinas -->
+<section id="oficinas">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading text-uppercase">Services</h2>
+                <h2 class="section-heading text-uppercase">Oficinas</h2>
                 <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                        <% if user_signed_in? %>
+                            <%= link_to 'Ver mais oficinas', workshops_path(current_user), class: 'nav-link btn btn-outline-danger btn-nav' %>
+                        <% end %>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row text-center">
@@ -68,7 +81,7 @@
           <i class="fas fa-circle fa-stack-2x text-primary"></i>
           <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
         </span>
-                <h4 class="service-heading">E-Commerce</h4>
+                <h4 class="service-heading">Álgebra</h4>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
             <div class="col-md-4">
@@ -76,7 +89,7 @@
           <i class="fas fa-circle fa-stack-2x text-primary"></i>
           <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
         </span>
-                <h4 class="service-heading">Responsive Design</h4>
+                <h4 class="service-heading">Aritmética</h4>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
             <div class="col-md-4">
@@ -84,7 +97,7 @@
           <i class="fas fa-circle fa-stack-2x text-primary"></i>
           <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
         </span>
-                <h4 class="service-heading">Web Security</h4>
+                <h4 class="service-heading">Geometria</h4>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
         </div>
@@ -96,7 +109,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading text-uppercase">Portfolio</h2>
+                <h2 class="section-heading text-uppercase">Videos</h2>
                 <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
             </div>
         </div>
