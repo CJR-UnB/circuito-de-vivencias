@@ -33,7 +33,7 @@ Entao('devo ser redirecionado para a pagina inicial') do
   assert_current_path(root_path)
 end
 
-Entao('ver a mensgem {string} na pagina') do |string|
+Entao('ver a mensagem {string} na pagina') do |string|
   expect(page).to have_content string
 end
 

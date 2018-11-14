@@ -1,11 +1,7 @@
 <div class='container'>
   <%= render 'alert' %>
 
-  <% if (current_user.adminRole || current_user.supervisorRole) %>
-    <%= render partial: 'workshops', object: @workshops %>
-  <% elsif (current_user.userRole) %>
-    <%= render partial: 'workshops', object: @myWorkshops %>
-  <% end %>
+  <%= render partial: 'workshops', object: @workshops %>
 
   <%= link_to 'Nova Oficina', new_workshop_path, class: 'btn btn-info' %>
   <%= link_to 'Voltar', root_path, class: 'btn btn-info' %>

@@ -1,4 +1,32 @@
-<%= current_user.name%>
-<%= current_user.surname%>
-<%= current_user.cpf%>
-<%= current_user.email%>
+<div class='mt-5'>
+    <table class='table table-striped'>
+      <thead class='thead-light'>
+        <tr>
+          <th scope='col' style="text-align: center">Meu Perfil</th>
+        </tr>
+        <tr>
+
+          <td style="text-align: center"><span>Nome:  <%= current_user.name%></span></td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><span>Sobrenome: <%= current_user.surname%></span></td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><span>CPF: <%= current_user.cpf%></span></td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><span>E-mail:  <%= current_user.email%></span></td>
+        </tr>
+
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+<div class="d-flex justify-content-center">
+  <div>
+    <%= link_to 'Oficinas rejeitadas', rejected_workshops_path(id: current_user.id), class: 'btn btn-md btn-danger' %>
+    <%= link_to 'Voltar', root_path, class: 'btn btn-info' %>
+  </div>
+</div>

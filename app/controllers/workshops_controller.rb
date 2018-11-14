@@ -2,9 +2,20 @@
 
 class WorkshopsController < ApplicationController
   before_action :authenticate_user!
+  before_action :verify_workshop, only: [:show]
+
+
+  def verify_workshop
+    @workshop = Workshop.find(params[:id])
+    if @workshop.status != 'accepted'
+      if Role.find(current_user.role_id).name != 'Supervisor'
+        redirect_to root_path
+      end
+    end
+  end
 
   def index
-    @workshops = Workshop.order(:id)
+    @workshops = Workshop.where(status: 'accepted')
     @myWorkshops = Workshop.where(author_id: current_user.id)
   end
 
@@ -37,7 +48,7 @@ class WorkshopsController < ApplicationController
 
   def update
     @workshop = Workshop.find(params[:id])
-
+    @workshop.put_in_hold
     if @workshop.update(workshop_params)
       flash[:notice] = 'Workshop atualizado com sucesso!'
       redirect_to workshops_path
