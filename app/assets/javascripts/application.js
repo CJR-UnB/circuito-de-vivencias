@@ -18,5 +18,8 @@
 //= require_tree .
 //= require popper
 //= require bootstrap-sprockets
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap.min
 
 import '../../../vendor/assets/Adminator-admin-dashboard-master/src/assets/scripts/index'
