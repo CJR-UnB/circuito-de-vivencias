@@ -12,11 +12,11 @@
 //
 //= require rails-ujs
 //= require jquery3
+//= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
 //= require toastr
 //= require_tree .
 //= require popper
-//= require bootstrap-sprockets
 
 import '../../../vendor/assets/Adminator-admin-dashboard-master/src/assets/scripts/index'
