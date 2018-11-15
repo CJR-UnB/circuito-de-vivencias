@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery2
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
@@ -18,8 +18,5 @@
 //= require_tree .
 //= require popper
 //= require bootstrap-sprockets
-//= require jquery
-//= require jquery_ujs
-//= require bootstrap.min
 
 import '../../../vendor/assets/Adminator-admin-dashboard-master/src/assets/scripts/index'
