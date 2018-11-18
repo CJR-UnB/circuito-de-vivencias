@@ -21,3 +21,6 @@ Rails.application.config.assets.precompile += %w[login.scss]
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+
+# Precompile das imagens do template do admin
+Rails.application.config.assets.precompile += %w( *.jpg *.png)

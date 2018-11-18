@@ -16,7 +16,7 @@ supervisorRole = Role.new(name: 'Supervisor')
 supervisorRole.id = 2
 supervisorRole.save!
 
-userRole = Role.create(name: 'User')
+userRole = Role.new(name: 'User')
 userRole.id = 3
 userRole.save!
 

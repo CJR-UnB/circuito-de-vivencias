@@ -10,11 +10,12 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require supervisor_dashboard
  */
 
 @import "bootstrap";
-@import "supervisor_dashboard";
 @import "src/assets/styles/index";
+
 .custom-alert-position {
     position: fixed;
     top: 1vw;
