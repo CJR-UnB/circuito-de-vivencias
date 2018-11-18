@@ -48,3 +48,38 @@
 .content-field {
     resize: none;
 }
+
+.header-image {
+    margin-top: 3.5%;
+    height: 500px;
+    width: 100%;
+    padding: 0;
+}
+
+.bg-image-full {
+    height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
+}
+
+.no_workshops_message {
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.accepted-tex {
+    color: green;
+}
+
+.in-hold-text {
+    color: gray;
+}
+
+.rejected-text {
+    color: red;
+}
+
+.rejected-text:hover {
+    color: #D80F46;
+}

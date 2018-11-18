@@ -53,6 +53,7 @@ gem 'cpf_validator'
 gem 'rails_admin'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'jquery-ui-rails'
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
