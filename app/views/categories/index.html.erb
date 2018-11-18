@@ -1,26 +1,26 @@
-<div class='mt-5'>
-    <table class='table table-striped'>
-      <thead class='thead-light'>
-        <tr>
-          <th scope='col'>#</th>
-          <th scope='col'>Nome</th>
-          <th scope='col'>Editar</th>
-          <th scope='col'>Excluir</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if @categories.present? %>
-          <% @categories.each do |category| %>
-            <tr>
-              <th scope='row'><%= category.id %></th>
-              <td><%= category.name %></td>
-              <td><%= link_to 'Editar', edit_category_path(category.id) %></td>
-              <td><%= link_to 'Excluir', categories_path(id: category.id), method: 'delete', data: {confirm: 'Tem certeza?'} %></td>
-            </tr>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
+<div class='d-flex align-items-start flex-column mb-3'>
+  <%= link_to 'Nova Categoria', new_category_path, class: 'btn btn-outline-primary' %>
+</div>
 
-    <%= link_to 'Nova Categoria', new_category_path, class: 'btn btn-success' %>
-  </div>
+<table class='table table-striped'>
+  <thead class='thead-light'>
+    <tr>
+      <th scope='col'>#</th>
+      <th scope='col'>Nome</th>
+      <th scope='col'>Editar</th>
+      <th scope='col'>Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @categories.present? %>
+      <% @categories.each do |category| %>
+        <tr>
+          <th scope='row'><%= category.id %></th>
+          <td><%= category.name %></td>
+          <td><%= link_to 'Editar', edit_category_path(category.id), class: 'btn-sm btn-info' %></td>
+          <td><%= link_to 'Excluir', categories_path(id: category.id), class: 'btn-sm btn-info', method: 'delete', data: {confirm: 'Tem certeza?'} %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

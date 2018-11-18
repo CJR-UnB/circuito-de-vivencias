@@ -19,4 +19,5 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-import "src/assets/scripts/index.js";
+import "../../../vendor/assets/Adminator-admin-dashboard-master/src/assets/scripts/index.js";
+import "admin_dashboard.js";

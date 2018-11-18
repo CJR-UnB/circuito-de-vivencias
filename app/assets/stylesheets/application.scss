@@ -25,27 +25,6 @@
     cursor: pointer;
 }
 
-.dashboard-navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: black;
-    color: white;
-}
-
-.dashboard-items {
-    padding: 0;
-    margin: 0.25em;
-    display: flex;
-    vertical-align: 50%;
-    justify-content: space-evenly;
-}
-
-.dashboard-items li {
-    list-style-type: none;
-}
-
 .content-field {
     resize: none;
 }
