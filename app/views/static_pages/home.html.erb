@@ -28,13 +28,12 @@
                 <% if user_signed_in? %>
                     <%= link_to 'Perfil', profile_path(), class: 'nav-link btn btn-outline-info btn-nav' %>
                     <%= link_to 'Sair', destroy_user_session_path, method: 'delete', class: 'nav-link btn btn-outline-danger btn-nav' %>
-                    <% if Role.find(current_user.role_id).name == 'Admin' %>
+                    <% if current_user.isAdmin? %>
                         <%= link_to 'Area de Admin', adminDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
-                    <% else %>
-                        <% if Role.find(current_user.role_id).name == 'Supervisor' %>
-                            <%= link_to 'Area do Supervisor', supervisorDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
-                        <% end %>
+                    <% elsif current_user.isSupervisor? %>
+                        <%= link_to 'Area do Supervisor', supervisorDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
                     <% end %>
+
                 <% else %>
                     <%= link_to 'Entrar', new_user_session_path, class: 'nav-link btn btn-outline-primary btn-nav' %>
                     <%= link_to 'Cadastrar-se', new_user_registration_path, class: 'nav-link btn btn-outline-success btn-nav'%>
