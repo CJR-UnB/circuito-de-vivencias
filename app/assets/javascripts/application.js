@@ -19,8 +19,9 @@
 //= require activestorage
 //= require turbolinks
 //= require toastr
-//= require_tree .
 //= require popper
 //= require bootstrap-sprockets
+//= require_tree .
 
-import '../../../vendor/assets/Adminator-admin-dashboard-master/src/assets/scripts/index'
+import "../../../vendor/assets/Adminator-admin-dashboard-master/src/assets/scripts/index.js";
+import "admin_dashboard.js";

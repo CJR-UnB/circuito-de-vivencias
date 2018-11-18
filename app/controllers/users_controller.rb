@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:profile, :rejected_workshops]
+  before_action :authenticate_user!, only: [:profile, :user_workshops]
 
-  def show
-  end
+  def show; end
+
+  def profile; end
+  
   def profile
   end
   def user_workshops

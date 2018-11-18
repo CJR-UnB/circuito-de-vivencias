@@ -1,8 +1,1 @@
-<nav class="dashboard-navbar">
-  <ul class="dashboard-items">
-    <li>Dashboard</li>
-    <li><%= link_to 'Usuários', adminDashboard_users_path %></li>
-    <li><%= link_to 'Categorias', categories_path %></li>
-    <li>Sair</li>
-  </ul>
-</nav>
+<h1>Bem-vindo, <%= current_user.name %> <%= current_user.surname %>!</h1>
