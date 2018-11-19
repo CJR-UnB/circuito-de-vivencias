@@ -1,0 +1,6 @@
+<% @videos.each do |video| %>
+    <%= video.title %><br>
+    <iframe src='<%= video.url %>' frameborder='0' allowfullscreen></iframe>
+    <%= link_to "Remover", adminDashboard_delete_video_path(id: video.id), class: "btn btn-md btn-outline-danger",method: :delete %>
+<% end %>
+<%= link_to 'Postar video', adminDashboard_post_video_path, class: "btn btn-md btn-outline-success"%>

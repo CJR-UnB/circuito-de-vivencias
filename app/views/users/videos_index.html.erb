@@ -1,0 +1,4 @@
+<%= @videos.each do |video| %>
+    <%= video.title %><br>
+    <iframe src='<%= video.url %>' frameborder='0' allowfullscreen></iframe>
+<% end %>
