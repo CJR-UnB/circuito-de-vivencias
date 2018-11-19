@@ -4,6 +4,8 @@ class AdminDashboardController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin
 
+  layout 'adminDashboard/adminDashboard'
+
   def home; end
 
   def users

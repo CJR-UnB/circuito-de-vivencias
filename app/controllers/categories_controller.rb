@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
 
+  layout 'adminDashboard/adminDashboard'
+
   def index
     @categories = Category.order(:name)
   end

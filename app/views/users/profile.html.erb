@@ -26,7 +26,7 @@
   </div>
 <div class="d-flex justify-content-center">
   <div>
-    <%= link_to 'Oficinas rejeitadas', rejected_workshops_path(id: current_user.id), class: 'btn btn-md btn-danger' %>
+    <%= link_to 'Minhas Oficinas', user_workshops_path(id: current_user.id, page: 1), class: 'btn btn-md btn-danger' %>
     <%= link_to 'Voltar', root_path, class: 'btn btn-info' %>
   </div>
 </div>

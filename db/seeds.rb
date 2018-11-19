@@ -28,3 +28,5 @@ admin.save
 supervisor = User.new(name: 'Supervisor', surname: 'Supervisor', cpf: '11111111111', email: 'supervisor@email.com', password: '12345678')
 supervisor.turnIntoSupervisor
 supervisor.save
+
+Category.find_or_create_by(name: 'Algebra')

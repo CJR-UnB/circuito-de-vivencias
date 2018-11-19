@@ -31,4 +31,16 @@ class User < ApplicationRecord
     self.role_id = Role.find_by(name: 'Supervisor').id
   end
 
+  def isAdmin?
+    self.role_id == Role.find_by(name: 'Admin').id
+  end
+
+  def isSupervisor?
+    self.role_id == Role.find_by(name: 'Supervisor').id
+  end
+
+  def isUser?
+    self.role_id == Role.find_by(name: 'User').id
+  end
+
 end

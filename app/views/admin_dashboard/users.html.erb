@@ -1,39 +1,32 @@
-<div class='mt-5'>
-    <table class='table table-striped'>
-      <thead class='thead-light'>
-        <tr>
-          <th scope='col'>#</th>
-          <th scope='col'>Nome</th>
-          <th scope='col'>C.P.F.</th>
-          <th scope='col'>Tipo</th>
-          <th scope='col'>Editar</th>
-          <th scope='col'>Excluir</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if @users.present? %>
-          <% @users.each do |user| %>
-            <% if user == current_user %>
-              <tr>
-                <th scope='row'><%= user.id %></th>
-                <td><%= user.name %> <%= user.surname %></td>
-                <td><%= user.cpf %></td>
-                <td><%= Role.find(user.role_id).name %></td>
-                <td><%= link_to 'Editar', adminDashboard_edit_user_path(user.id) %></td>
-                <td><%#= link_to 'Excluir', adminDashboard_users_path(id: user.id), method: 'delete', data: {confirm: 'Tem certeza?'} %></td>
-              </tr>
+<table class='table table-striped'>
+  <thead class='thead-light'>
+    <tr>
+      <th scope='col'>#</th>
+      <th scope='col'>Nome</th>
+      <th scope='col'>C.P.F.</th>
+      <th scope='col'>Tipo</th>
+      <th scope='col'>Editar</th>
+      <th scope='col'>Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @users.present? %>
+      <% @users.each do |user| %>
+        <tr class='centralizado-verticalmente'>
+          <th scope='row'><%= user.id %></th>
+          <td><%= user.name %> <%= user.surname %></td>
+          <td><%= user.cpf %></td>
+          <td><%= Role.find(user.role_id).name %></td>
+          <td><%= link_to 'Editar', adminDashboard_edit_user_path(user.id), class: 'btn-sm btn-info' %></td>
+          <td>
+            <% if(current_user == user) %>
+              <span class='btn-sm btn-secondary disabled'>Excluir</span>
             <% else %>
-              <tr>
-                <th scope='row'><%= user.id %></th>
-                <td><%= user.name %> <%= user.surname %></td>
-                <td><%= user.cpf %></td>
-                <td><%= Role.find(user.role_id).name %></td>
-                <td><%= link_to 'Editar', adminDashboard_edit_user_path(user.id) %></td>
-                <td><%= link_to 'Excluir', adminDashboard_users_path(id: user.id), method: 'delete', data: {confirm: 'Tem certeza?'} %></td>
-              </tr>
+              <%= link_to 'Excluir', adminDashboard_users_path(id: user.id), class: 'btn-sm btn-info', method: 'delete', data: {confirm: 'Tem certeza?'} %>
             <% end %>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

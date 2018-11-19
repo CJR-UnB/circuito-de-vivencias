@@ -16,8 +16,11 @@ Rails.application.config.assets.precompile += %w[js/contact_me.js]
 Rails.application.config.assets.precompile += %w[js/agency.min.js]
 Rails.application.config.assets.precompile += %w[vendor/jquery-easing/jquery.easing.min.js]
 Rails.application.config.assets.precompile += %w[login.scss]
-
+Rails.application.config.assets.precompile += %w( *.jpg *.png)
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+
+# Precompile das imagens do template do admin
+Rails.application.config.assets.precompile += %w( *.jpg *.png)
