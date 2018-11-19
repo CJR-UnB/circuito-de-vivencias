@@ -26,8 +26,8 @@
 
 <header class="bg-primary text-white">
   <div class="container text-center">
-    <h1>Porcentagem e Números Irracionais</h1>
-    <p class="lead">Nilza Eigenheer Bertoni - 2010</p>
+    <h1><%= @workshop.title %></h1>
+    <p class="lead"><%= User.find(@workshop.author_id).name %> - ano de publicacao</p>
   </div>
 </header>
 
@@ -36,7 +36,7 @@
     <div class="row">
       <div class="col-lg-8 mx-auto">
         <h2>Resumo</h2>
-        <p class="lead">Oficina realizada em 2010 no dia 18 de Setembro na escola Centro de Ensino Fundamental 01 do Núcleo Bandeirante do Distrito Federal</p>
+        <p class="lead"><%= @workshop.resume %></p>
           <p> </p>
         <p>Palavras relacionadas a oficina:</p>
         <ul>
