@@ -24,4 +24,3 @@
 //= require_tree .
 
 import "../../../vendor/assets/Adminator-admin-dashboard-master/src/assets/scripts/index.js";
-import "admin_dashboard.js";
