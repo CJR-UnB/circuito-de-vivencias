@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authenticate_admin
 
   layout 'adminDashboard/adminDashboard'
 
@@ -36,4 +38,9 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name)
   end
+
+  def authenticate_admin
+    redirect_to(root_path) unless Role.find(current_user.role_id).name == 'Admin'
+  end
+
 end
