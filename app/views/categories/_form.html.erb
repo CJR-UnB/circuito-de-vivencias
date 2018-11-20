@@ -1,5 +1,5 @@
 <div class='container'>
-  <%= form_for @category, url: form_url, method: form_method do |f| %>
+  <%= form_for @category do |f| %>
     <div class='form-group'>
       <%= f.label(:name, 'Nome') %>
       <%= f.text_field(:name, class: 'form-control') %>

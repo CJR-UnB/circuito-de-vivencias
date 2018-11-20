@@ -1,6 +1,4 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :authenticate_admin
 
   layout 'adminDashboard/adminDashboard'
 
@@ -15,7 +13,7 @@ class CategoriesController < ApplicationController
   def create
     category = Category.new(category_params)
     if category.save
-      redirect_to adminDashboard_categories_path
+      redirect_to categories_path
     else
     end
   end
@@ -27,17 +25,10 @@ class CategoriesController < ApplicationController
   def update
     category = Category.find(params[:id])
     if category.update(category_params)
-      redirect_to adminDashboard_categories_path
+      redirect_to categories_path
     else
     end
-  end
 
-  def destroy
-    category = Category.find(params[:id])
-    if category.destroy
-      redirect_to adminDashboard_categories_path
-    else
-    end
   end
 
   private
@@ -45,9 +36,4 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name)
   end
-
-  def authenticate_admin
-    redirect_to(root_path) unless Role.find(current_user.role_id).name == 'Admin'
-  end
-
 end
