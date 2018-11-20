@@ -26,17 +26,26 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <% if user_signed_in? %>
-                    <%= link_to 'Perfil', profile_path(), class: 'nav-link btn btn-outline-info btn-nav' %>
-                    <%= link_to 'Sair', destroy_user_session_path, method: 'delete', class: 'nav-link btn btn-outline-danger btn-nav' %>
-                    <% if current_user.isAdmin? %>
-                        <%= link_to 'Area de Admin', adminDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
-                    <% elsif current_user.isSupervisor? %>
-                        <%= link_to 'Area do Supervisor', supervisorDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
-                    <% end %>
-
+                    <li class="nav-item">
+                        <%= link_to 'Perfil', profile_path(), class: 'nav-link btn btn-outline-info btn-nav' %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to 'Sair', destroy_user_session_path, method: 'delete', class: 'nav-link btn btn-outline-danger btn-nav' %>
+                    </li>
+                    <li class="nav-item">
+                        <% if current_user.isAdmin? %>
+                            <%= link_to 'Area de Admin', adminDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
+                        <% elsif current_user.isSupervisor? %>
+                            <%= link_to 'Area do Supervisor', supervisorDashboard_home_path, class: 'nav-link btn btn-outline-info btn-nav' %>
+                        <% end %>
+                    </li>
                 <% else %>
-                    <%= link_to 'Entrar', new_user_session_path, class: 'nav-link btn btn-outline-primary btn-nav' %>
-                    <%= link_to 'Cadastrar-se', new_user_registration_path, class: 'nav-link btn btn-outline-success btn-nav'%>
+                    <li class="nav-item">
+                        <%= link_to 'Entrar', new_user_session_path, class: 'nav-link btn btn-outline-primary btn-nav' %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to 'Cadastrar-se', new_user_registration_path, class: 'nav-link btn btn-outline-success btn-nav'%>
+                    </li>
                 <% end %>
             </ul>
         </div>
@@ -44,7 +53,7 @@
 </nav>
 
 <!-- Header -->
-<header class="masthead">
+<header class="masthead" style="background-image: url(<%= url_for(Background.find_by(active: true).image) %>);">
     <div class="container">
         <div class="intro-text">
             <div class="intro-lead-in">Bem vindo ao Circuito de Vivencias!</div>
@@ -64,11 +73,9 @@
                 <h2 class="section-heading text-uppercase">Oficinas</h2>
                 <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mx-auto">
                         <% if user_signed_in? %>
-                            <%= link_to 'Ver mais oficinas', workshops_path(current_user), class: 'nav-link btn btn-outline-danger btn-nav' %>
+                            <%= link_to 'Ver mais oficinas', workshops_path(current_user), class: 'nav-link btn btn-outline-danger btn-nav mb-5' %>
                         <% end %>
                     </div>
                 </div>
