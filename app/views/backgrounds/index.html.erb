@@ -1,1 +1,18 @@
-<h1>Boa, Vinícius!</h1>
+<div class='d-flex align-items-start flex-column mb-3'>
+  <%= link_to 'Nova Imagem', new_adminDashboard_background_path, class: 'btn btn-outline-primary' %>
+</div>
+
+<div class='row d-flex flex-row flex-wrap'>
+  <% @backgrounds.each do |b| %>
+    <div class='col-xxl-3 col-xl-4 col-md-6 col-12 mb-3'>
+      <%= link_to(edit_adminDashboard_background_path(b)) do %>
+        <% if b.active %>
+          <%= image_tag(b.image, class: 'img-fluid img-thumbnail', style: 'background-color: #3ab832; border-color: #41cd38;') %>
+        <% else %>
+          <%= image_tag(b.image, class: 'img-fluid img-thumbnail') %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+</div>

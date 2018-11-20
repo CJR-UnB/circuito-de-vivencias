@@ -1,4 +1,4 @@
-<%= form_for @background do |f| %>
+<%= form_for @background, url: form_url, method: form_method do |f| %>
   <div class='form-group'>
     <%= f.label(:image, 'Imagem') %>
     <%= f.file_field(:image, accept: '.jpg, .jpeg, .png', class: 'form-control-file', id: 'image') %>

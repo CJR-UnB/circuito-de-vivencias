@@ -20,9 +20,12 @@ class BackgroundsController < ApplicationController
     background = Background.find(params[:id])
 
     if background.update(background_params)
-      redirect_to backgrounds_path
+      if background.active
+        only_one_active(background)
+      end
+      redirect_to adminDashboard_backgrounds_path
     else
-      redirect_to backgrounds_path
+      redirect_to adminDashboard_backgrounds_path
     end
   end
 
@@ -34,9 +37,12 @@ class BackgroundsController < ApplicationController
     background = Background.new(background_params)
 
     if background.save
-      redirect_to backgrounds_path
+      if background.active
+        only_one_active(background)
+      end
+      redirect_to adminDashboard_backgrounds_path
     else
-      redirect_to new_background_path
+      redirect_to new_adminDashboard_background_path
     end
   end
 
@@ -48,6 +54,12 @@ class BackgroundsController < ApplicationController
 
   def authenticate_admin
     redirect_to(root_path) unless Role.find(current_user.role_id).name == 'Admin'
+  end
+
+  def only_one_active(background)
+    Background.where.not(id: background.id).where(active: true).each do |b|
+      b.unactivate
+    end
   end
 
 end

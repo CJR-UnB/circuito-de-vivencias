@@ -91,11 +91,19 @@
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to(categories_path, class: 'sidebar-link') do %>
+                <%= link_to(adminDashboard_categories_path, class: 'sidebar-link') do %>
                   <span class="icon-holder">
                     <i class="c-blue-500 ti-tag"></i>
                   </span>
                   <span class="title">Categorias</span>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to(adminDashboard_backgrounds_path, class: 'sidebar-link') do %>
+                  <span class="icon-holder">
+                    <i class="c-blue-500 ti-image"></i>
+                  </span>
+                  <span class="title">Imagem Inicial</span>
                 <% end %>
               </li>
             </ul>

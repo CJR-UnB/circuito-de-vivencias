@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   scope path: 'adminDashboard', as: 'adminDashboard' do
+    resources :backgrounds
+    resources :categories
     get '/home', to: 'admin_dashboard#home'
     get '/users', to: 'admin_dashboard#users'
     delete '/users', to: 'admin_dashboard#delete_user'
@@ -37,8 +39,6 @@ Rails.application.routes.draw do
   resources :workshops
   resources :evaluations
   resources :comment
-  resources :categories
-  resources :backgrounds
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
