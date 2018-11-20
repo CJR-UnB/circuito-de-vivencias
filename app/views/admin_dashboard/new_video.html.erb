@@ -1,0 +1,14 @@
+<h3>Postar um video</h3>
+<%= form_for @video, url: adminDashboard_post_video_path do |f| %>
+  <div class='form-group'>
+    <%= f.label(:title, 'Titulo') %>
+    <%= f.text_field(:title, class: 'form-control', id: "title") %>
+  </div>
+  <div class='form-group'>
+    <%= f.label(:url, 'Url') %>
+    <%= f.text_field(:url, class: 'form-control', id: "url") %>
+  </div>
+  <div class='form-group'>
+    <%= f.submit('Postar', class: 'btn btn-sm btn-success') %>
+  </div>
+<% end %>
