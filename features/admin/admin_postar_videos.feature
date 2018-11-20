@@ -28,3 +28,4 @@ Funcionalidade: admin_postar_videos
     Entao devo ser reedirecionado para a pagina de gerenciamento videos
     E devo ver na pagina o nome do video:
       |title|Como jogar Mancala|
+    E ver o video da url "https://www.youtube.com/embed/zYiXGWqb3YY" na pagina

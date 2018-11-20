@@ -14,6 +14,8 @@ class UsersController < ApplicationController
   end
 
   def videos_index
-    @videos = Video.all
+    @page = params[:page]
+    @last_page = Video.all.page(1).per(20).total_pages
+    @videos = Video.all.order(:created_at).page(@page).per(20)
   end
 end

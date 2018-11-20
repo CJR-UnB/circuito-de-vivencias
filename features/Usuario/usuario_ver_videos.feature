@@ -22,4 +22,5 @@ Funcionalidade: usuario_ver_videos
     Entao devo ser redirecionado para a pagina de videos do sistema
     E devo ver na pagina o nome do video:
       |title|Como jogar Mancala|
+    E ver o video da url "https://www.youtube.com/embed/zYiXGWqb3YY" na pagina
 

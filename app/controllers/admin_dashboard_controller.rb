@@ -9,7 +9,9 @@ class AdminDashboardController < ApplicationController
   def home; end
 
   def videos_index
-    @videos = Video.all
+    @page = params[:page]
+    @last_page = Video.all.page(1).per(20).total_pages
+    @videos = Video.all.order(:created_at).page(@page).per(20)
   end
 
   def new_video
@@ -19,7 +21,7 @@ class AdminDashboardController < ApplicationController
   def create_video
     @video = Video.new(video_params)
     if @video.save
-      redirect_to adminDashboard_videos_path
+      redirect_to adminDashboard_videos_path(page: 1)
     else
       redirect_to adminDashboard_post_video_path
     end
@@ -28,7 +30,7 @@ class AdminDashboardController < ApplicationController
   def delete_video
     @video = Video.find(params[:id])
     @video.delete
-    redirect_to adminDashboard_videos_path
+    redirect_to adminDashboard_videos_path(page: params[:page])
   end
 
   def users
