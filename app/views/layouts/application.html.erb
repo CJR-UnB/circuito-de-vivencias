@@ -16,7 +16,9 @@
 
     <!-- Custom styles for this template -->
     <%= stylesheet_link_tag 'css/agency.min.css'%>
-
+    <% if Rails.env.production?%>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <% end %>
   </head>
 
   <body>
