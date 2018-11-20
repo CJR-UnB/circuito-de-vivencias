@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     delete '/users', to: 'admin_dashboard#delete_user'
     get '/edit_user/:id', to: 'admin_dashboard#edit_user', as: 'edit_user'
     patch '/edit_user/:id', to: 'admin_dashboard#update_user', as: 'update_user'
+    get '/videos', to: 'admin_dashboard#videos_index', as: 'videos'
+    get '/post_video', to: 'admin_dashboard#new_video', as: 'post_video'
+    post '/post_video', to: 'admin_dashboard#create_video'
+    delete '/delete_video', to: 'admin_dashboard#delete_video', as: 'delete_video'
   end
 
   scope path: 'supervisorDashboard', as: 'supervisorDashboard' do
@@ -32,6 +36,7 @@ Rails.application.routes.draw do
   end
 
   get '/users', to: 'users/registrations#new'
+  get '/videos', to: 'users#videos_index'
   get '/my_profile', to: 'users#profile', as: "profile"
   get '/my_profile/user_workshops', to: 'users#user_workshops', as: "user_workshops"
   get '/my_profile/user_workshop/feedback', to: 'feedbacks#show', as: "rejected_workshop_feedback"

@@ -1,73 +1,94 @@
-<div class='container my-5'>
-  <%= render 'alert' %>
-
-  <!-- Page Content -->
-  <div class="row">
-
-    <!-- Post Content Column -->
-    <div class="col-lg-12">
-      <!-- Title -->
-      <h1 class="mt-4"><%= @workshop.title %></h1>
-
-      <!-- Author -->
-      <p class="lead">
-      by
-      <%= User.find(@workshop.author_id).name %>
-      </p>
-
-      <hr>
-
-      <!-- Date/Time -->
-      <p><%= @workshop.updated_at.strftime("Última atualização: %d/%m/%Y às %H:%M") %></p>
-
-      <hr>
-
-      <!-- Post Content -->
-      <p class="lead"><%= @workshop.resume %></p>
-
-      <hr>
-
-      <!-- Attachment -->
-      <%= link_to  "Baixar", @workshop.document, download: true, class: 'btn btn-sm btn-success' %>
-      <hr>
-      <% if Role.find(current_user.role_id).name == 'Supervisor' %>
-        <% if @workshop.status == 'in_hold' || @workshop.status == 'rejected'%>
-          <%= link_to 'Aceitar', supervisorDashboard_accept_workshop_path(id: @workshop.id), class: 'btn btn-md btn-success', method: :put%>
-        <% end %>
-        <br>
-        <% if @workshop.status == 'in_hold' || @workshop.status == 'accepted'%>
-          <%= link_to 'Rejeitar', supervisorDashboard_write_feedback_path(id: @workshop.id), class: 'btn btn-md btn-danger'%>
-        <% end %>
-        <hr>
-      <% end %>
-
-      <!-- Comments Form -->
-      <div class="card my-4">
-        <h5 class="card-header">Leave a Comment:</h5>
-        <div class="card-body">
-          <%= form_for @comment, url: comment_index_path(@comment) do |f| %>
-            <div class='form-group'>
-              <%= f.text_field(:name, class: 'form-control', placeholder: 'Nome') %>
-              <%= f.text_field(:institution, class: 'form-control my-1', placeholder: 'Instituição') %>
-              <%= f.text_area(:commentContent, class: 'form-control', placeholder: 'Comentário') %>
-              <%= f.text_field(:workshop_id, hidden: true, value: @workshop.id) %>
-            </div>
-            <%= f.submit('Comentar', class: 'btn btn-sm btn-success') %>
-          <% end %>
-        </div>
-      </div>
-
-      <!-- Single Comment -->
-      <% Comment.where(workshop_id: @workshop.id).each do |c| %>
-        <div class="media mb-4">
-          <div class="media-body">
-            <h5 class="mt-0"><%= c.name %>, <%= c.institution %></h5>
-            <%= c.commentContent %>
-          </div>
-        </div>
-      <% end %>
-
-
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">Porcentagem e Números Irracionais</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#about">Página Inicial</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#about">Resumo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#services">Feedback</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#contact">Comentário</a>
+        </li>
+      </ul>
     </div>
   </div>
-</div>
+</nav>
+
+<header class="bg-primary text-white">
+  <div class="container text-center">
+    <h1><%= @workshop.title %></h1>
+    <p class="lead"><%= User.find(@workshop.author_id).name %> - ano de publicacao</p>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Resumo</h2>
+        <p class="lead"><%= @workshop.resume %></p>
+          <p> </p>
+        <p>Palavras relacionadas a oficina:</p>
+        <ul>
+          <li>Porcentagem</li>
+          <li>Números Irracionais</li>
+            <li>Divisão</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section id="services" class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Feedback</h2>
+        <p class="lead">Responda nossa enquete.</p>
+            <ce:enquete id="8603910" question_size="5" option_size="6" font="Roboto, sans-serif" primary_color="#194d33" secondary_color="#ffffff" height="253" ></ce:enquete>
+            <script async type="text/javascript" src="https://www.criarenquete.com.br/user.js"></script>
+            <ce:enquete id="8604010" question_size="5" option_size="6" font="Roboto, sans-serif" primary_color="#9f0500" secondary_color="#000000" height="278" ></ce:enquete>
+            <script async type="text/javascript" src="https://www.criarenquete.com.br/user.js"></script>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Comentários</h2>
+        <p class="lead">Deixe aqui o comentário para o oficineiro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Departamento de Matemática da Universidade de brasília 2018</p>
+  </div>
+  <!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom JavaScript for this theme -->
+<script src="js/scrolling-nav.js"></script>

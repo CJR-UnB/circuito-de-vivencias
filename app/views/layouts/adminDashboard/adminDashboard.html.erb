@@ -106,6 +106,14 @@
                   <span class="title">Imagem Inicial</span>
                 <% end %>
               </li>
+              <li class="nav-item">
+                <%= link_to(adminDashboard_videos_path(page: 1), class: 'sidebar-link') do %>
+                  <span class="icon-holder">
+                    <i class="c-blue-500 ti-share"></i>
+                  </span>
+                  <span class="title">Videos</span>
+                <% end %>
+              </li>
             </ul>
           </div>
         </div>
@@ -141,32 +149,20 @@
                     </div>
                   </a>
                   <ul class="dropdown-menu fsz-sm">
-                    <li>
-                      <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                        <i class="ti-settings mR-10"></i>
-                        <span>Setting</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                        <i class="ti-user mR-10"></i>
-                        <span>Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="email.html" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                        <i class="ti-email mR-10"></i>
-                        <span>Messages</span>
-                      </a>
-                    </li>
-                    <li role="separator" class="divider"></li>
-                    <li>
-                      <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                        <i class="ti-power-off mR-10"></i>
-                        <span>Logout</span>
-                      </a>
-                    </li>
-                  </ul>
+                <li>
+                  <%= link_to profile_path(id: current_user.id), class: 'd-b td-n pY-5 bgcH-grey-100 c-grey-700' do %>
+                          <i class="fa fa-user mR-10"></i>
+                          <span>Perfil</span>
+                  <% end %>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                    <%= link_to destroy_user_session_path, class: 'd-b td-n pY-5 bgcH-grey-100 c-grey-700', method: :delete do %>
+                        <i class="fas fa-sign-out-alt mR-10"></i>
+                        <span>Sair</span>
+                    <% end %>
+                </li>
+                </ul>
                 </li>
               </ul>
             </div>

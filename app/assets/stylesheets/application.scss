@@ -15,7 +15,6 @@
 
 @import "bootstrap";
 @import "src/assets/styles/index";
-
 .custom-alert-position {
     position: fixed;
     top: 1vw;
@@ -235,3 +234,53 @@
       margin-left: 91.666667%;
     }
   }
+
+.pb-video-container {
+    padding-top: 20px;
+    background: #ffffff;
+    font-family: Lato;
+    border-radius: 25px;
+}
+
+.pb-video {
+    border: 1px solid #e6e6e6;
+    padding: 5px;
+}
+
+.pb-video:hover {
+    background: #F7DB47;
+}
+
+.pb-video-frame {
+    transition: width 2s, height 2s;
+}
+
+.pb-video-frame:hover {
+    height: 300px;
+}
+
+.pb-row {
+    margin-bottom: 10px;
+}
+
+.videos-index-title {
+    text-align: center;
+    margin-bottom: 5%;
+    color: white;
+}
+
+.video-background {
+    background-image: url('fundo_provisorio.jpg');
+    background-size: 100%;
+    padding-top: 5%;
+    padding-bottom: 20%;
+}
+
+.btn-voltar {
+    margin-left: 10%;
+}
+
+admin-videos-index-title {
+    text-align: center;
+    margin-bottom: 5%;
+}

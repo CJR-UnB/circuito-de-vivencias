@@ -8,6 +8,31 @@ class AdminDashboardController < ApplicationController
 
   def home; end
 
+  def videos_index
+    @page = params[:page]
+    @last_page = Video.all.page(1).per(20).total_pages
+    @videos = Video.all.order(:created_at).page(@page).per(20)
+  end
+
+  def new_video
+    @video = Video.new
+  end
+
+  def create_video
+    @video = Video.new(video_params)
+    if @video.save
+      redirect_to adminDashboard_videos_path(page: 1)
+    else
+      redirect_to adminDashboard_post_video_path
+    end
+  end
+
+  def delete_video
+    @video = Video.find(params[:id])
+    @video.delete
+    redirect_to adminDashboard_videos_path(page: params[:page])
+  end
+
   def users
     @users = User.order(:name)
   end
@@ -51,6 +76,13 @@ class AdminDashboardController < ApplicationController
       :surname,
       :cpf,
       :role_id
+    )
+  end
+
+  def video_params
+    params.require(:video).permit(
+      :url,
+      :title
     )
   end
 
