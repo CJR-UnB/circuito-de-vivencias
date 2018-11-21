@@ -28,3 +28,4 @@ Rails.application.config.assets.precompile += %w[https://www.criarenquete.com.br
 Rails.application.config.assets.precompile += %w[vendor/jquery/jquery.min.js]
 Rails.application.config.assets.precompile += %w[js/scrolling-nav.js]
 Rails.application.config.assets.precompile += %w( vendor/bootstrap/css/bootstrap.min.css )
+Rails.application.config.assets.precompile += %w( vendor/bootstrap/js/bootstrap.bundle.min.js )
