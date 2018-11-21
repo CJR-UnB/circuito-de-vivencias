@@ -8,6 +8,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Role.delete_all
+Feedback.delete_all
+Workshop.delete_all
+Category.delete_all
+Comment.delete_all
 User.delete_all
 adminRole = Role.new(name: 'Admin')
 adminRole.id = 1
@@ -23,7 +27,7 @@ userRole.save!
 
 admin = User.new(name: 'Admin', surname: 'Admin', cpf: '123.456.789-09', email: 'admin@email.com', password: '12345678')
 admin.turnIntoAdmin
-admin.save
+admin.save!
 
 supervisor = User.new(name: 'Supervisor', surname: 'Supervisor', cpf: '11111111111', email: 'supervisor@email.com', password: '12345678')
 supervisor.turnIntoSupervisor
