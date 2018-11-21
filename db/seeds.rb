@@ -12,6 +12,8 @@ Feedback.delete_all
 Workshop.delete_all
 Category.delete_all
 Comment.delete_all
+Video.delete_all
+Background.delete_all
 User.delete_all
 adminRole = Role.new(name: 'Admin')
 adminRole.id = 1
