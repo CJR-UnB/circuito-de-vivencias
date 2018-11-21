@@ -38,8 +38,8 @@ Funcionalidade: perfilde_usuario
       |subject|oficina invalida          |
       |content|essa oficina esta invalida|
     E que eu esteja na minha pagina de perfil
-    Quando eu clicar no link "Oficinas rejeitadas"
-    Entao devo ser redirecionado a pagina de oficinas rejeitadas
+    Quando eu clicar no link "Minhas Oficinas"
+    Entao devo ser redirecionado a pagina de oficinas do usuario
     E devo ver na tabela a oficina criada com os dados:
       |title|Teste 1|
 
@@ -61,7 +61,7 @@ Funcionalidade: perfilde_usuario
     E ela tenha sido rejeitada com um feedback com os dados:
       |subject|oficina invalida          |
       |content|essa oficina esta invalida|
-    E eu esteja na pagina de visualisacao de oficinas rejeitadas
+    E eu esteja na pagina de visualisacao de oficinas
     Quando eu clicar no link com o assunto do feedback
     Entao devo ser redirecionado para a pagina de visualisacao de feedback
     E devo ver o feedback na pagina com os dados:

@@ -39,6 +39,7 @@ rescue NameError
 end
 
 Before do
+  Role.delete_all
   adminRole = Role.new(name: 'Admin')
   adminRole.id = 1
   adminRole.save!
