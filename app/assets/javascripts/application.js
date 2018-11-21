@@ -15,12 +15,12 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require rails-ujs
+//= require popper
 //= require bootstrap.min
 //= require activestorage
 //= require turbolinks
 //= require toastr
 //= require_tree .
-//= require popper
 //= require bootstrap-sprockets
 
 import '../../../vendor/assets/Adminator-admin-dashboard-master/src/assets/scripts/index'
