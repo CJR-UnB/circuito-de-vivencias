@@ -23,4 +23,4 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
-import '../../../vendor/assets/Adminator-admin-dashboard-master/src/assets/scripts/index'
+//= import '../../../vendor/assets/Adminator-admin-dashboard-master/src/assets/scripts/index'
