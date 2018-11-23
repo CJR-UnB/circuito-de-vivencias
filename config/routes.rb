@@ -38,6 +38,9 @@ Rails.application.routes.draw do
   get '/users', to: 'users/registrations#new'
   get '/videos', to: 'users#videos_index'
   get '/my_profile', to: 'users#profile', as: "profile"
+  get '/my_profile/edit', to: 'users#edit_user'
+  put '/my_profile/edit', to: 'users#update_user'
+  delete '/my_profile', to: 'users#delete_user'
   get '/my_profile/user_workshops', to: 'users#user_workshops', as: "user_workshops"
   get '/my_profile/user_workshop/feedback', to: 'feedbacks#show', as: "rejected_workshop_feedback"
 

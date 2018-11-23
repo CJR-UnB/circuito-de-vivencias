@@ -31,7 +31,7 @@ class WorkshopsController < ApplicationController
 
     if @workshop.save
       flash[:notice] = 'Workshop criado com sucesso!'
-      redirect_to workshops_path
+      redirect_to user_workshops_path
     else
       flash[:alert] = 'Não foi possível criar o workshop!'
       render 'new'
@@ -51,7 +51,7 @@ class WorkshopsController < ApplicationController
     @workshop.put_in_hold
     if @workshop.update(workshop_params)
       flash[:notice] = 'Workshop atualizado com sucesso!'
-      redirect_to workshops_path
+      redirect_to user_workshops_path
     else
       flash[:alert] = 'Não foi possível atualizar o workshop!'
       render 'edit'
