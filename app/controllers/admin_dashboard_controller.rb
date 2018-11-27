@@ -19,8 +19,9 @@ class AdminDashboardController < ApplicationController
   end
 
   def create_video
-    @video = Video.new(video_params)
-    if @video.save
+    video = Video.new(video_params)
+    if video.save
+      six_actives(video)
       redirect_to adminDashboard_videos_path(page: 1)
     else
       redirect_to adminDashboard_post_video_path
@@ -41,6 +42,7 @@ class AdminDashboardController < ApplicationController
     video = Video.find(params[:id])
 
     if video.update(video_params)
+      six_actives(video)
       redirect_to adminDashboard_videos_path(page: params[:page])
     else
       redirect_to adminDashboard_videos_path(page: params[:page])
@@ -99,6 +101,12 @@ class AdminDashboardController < ApplicationController
       :title,
       :active
     )
+  end
+
+  def six_actives(video)
+    if Video.where(active: true).size > 6
+      Video.where.not(id: video.id).find_by(active: true).unactivate
+    end
   end
 
 end
