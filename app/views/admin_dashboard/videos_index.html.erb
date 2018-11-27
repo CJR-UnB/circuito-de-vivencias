@@ -6,7 +6,7 @@
                 <div class="col-md-3 pb-video">
                     <iframe class="pb-video-frame" width="100%" height="230" src="<%= video.url %>" frameborder="0" allowfullscreen></iframe>
                     <label class="form-control label-warning text-xs-center"><%= video.title %></label>
-                    <label class="form-control label-warning text-xs-center"><%= link_to "Remover", adminDashboard_delete_video_path(id: video.id, page: @page), class: "btn btn-md btn-outline-danger",method: :delete %></label>
+                    <label class="d-flex justify-content-around form-control label-warning text-xs-center"><%= link_to "Editar", adminDashboard_edit_video_path(id: video.id, page: @page), class: "btn btn-sm btn-outline-danger" %><%= link_to "Remover", adminDashboard_delete_video_path(id: video.id, page: @page), class: "btn btn-sm btn-outline-danger", method: :delete %></label>
                 </div>
             <% end %>
         </div>

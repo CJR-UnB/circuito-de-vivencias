@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     get '/videos', to: 'admin_dashboard#videos_index', as: 'videos'
     get '/post_video', to: 'admin_dashboard#new_video', as: 'post_video'
     post '/post_video', to: 'admin_dashboard#create_video'
+    get '/edit_video/:id', to: 'admin_dashboard#edit_video', as: 'edit_video'
+    patch '/edit_video/:id', to: 'admin_dashboard#update_video'
     delete '/delete_video', to: 'admin_dashboard#delete_video', as: 'delete_video'
   end
 

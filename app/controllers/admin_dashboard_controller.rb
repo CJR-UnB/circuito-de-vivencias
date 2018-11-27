@@ -33,6 +33,20 @@ class AdminDashboardController < ApplicationController
     redirect_to adminDashboard_videos_path(page: params[:page])
   end
 
+  def edit_video
+    @video = Video.find(params[:id])
+  end
+
+  def update_video
+    video = Video.find(params[:id])
+
+    if video.update(video_params)
+      redirect_to adminDashboard_videos_path(page: params[:page])
+    else
+      redirect_to adminDashboard_videos_path(page: params[:page])
+    end
+  end
+
   def users
     @users = User.order(:name)
   end
@@ -82,7 +96,8 @@ class AdminDashboardController < ApplicationController
   def video_params
     params.require(:video).permit(
       :url,
-      :title
+      :title,
+      :active
     )
   end
 
