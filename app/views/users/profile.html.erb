@@ -1,32 +1,48 @@
-<div class='mt-5'>
-    <table class='table table-striped'>
-      <thead class='thead-light'>
-        <tr>
-          <th scope='col' style="text-align: center">Meu Perfil</th>
-        </tr>
-        <tr>
+<%= render 'header'%>
+<%= render 'alert' %>
+<section id="about">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class='mt-5'>
+          <table class='table table-striped'>
+            <thead class='thead-light'>
+              <tr>
+                <th scope='col' style="text-align: center">Meu Perfil</th>
+              </tr>
+              <tr>
 
-          <td style="text-align: center"><span>Nome:  <%= current_user.name%></span></td>
-        </tr>
-        <tr>
-          <td style="text-align: center"><span>Sobrenome: <%= current_user.surname%></span></td>
-        </tr>
-        <tr>
-          <td style="text-align: center"><span>CPF: <%= current_user.cpf%></span></td>
-        </tr>
-        <tr>
-          <td style="text-align: center"><span>E-mail:  <%= current_user.email%></span></td>
-        </tr>
+                <td style="text-align: center"><span>Nome:  <%= current_user.name%></span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center"><span>Sobrenome: <%= current_user.surname%></span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center"><span>CPF: <%= current_user.cpf%></span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center"><span>E-mail:  <%= current_user.email%></span></td>
+              </tr>
+            </thead>
+            <tbody>
 
-      </thead>
-      <tbody>
-
-      </tbody>
-    </table>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex justify-content-center">
+        <div>
+          <%= link_to 'Minhas Oficinas', user_workshops_path(id: current_user.id, page: 1), class: 'btn btn-md btn-outline-success' %>
+          <%= link_to 'Editar Perfil', my_profile_edit_path(id: current_user.id), class: 'btn btn-md btn-outline-warning' %>
+          <%= link_to 'Deletar conta', my_profile_path(id: current_user.id), class: 'btn btn-md btn-outline-danger', method: :delete, data: { confirm: "Tem certeza que deseja deletar a conta?" }%>
+        </div>
+        </div>
+            </div>
+          </div>
+        </div>
+</section>
+<footer class="py-5 bg-dark" style="margin-top: 5%;">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Departamento de Matemática da universidade de Brásilia, 2018</p>
   </div>
-<div class="d-flex justify-content-center">
-  <div>
-    <%= link_to 'Minhas Oficinas', user_workshops_path(id: current_user.id, page: 1), class: 'btn btn-md btn-danger' %>
-    <%= link_to 'Voltar', root_path, class: 'btn btn-info' %>
-  </div>
-</div>
+  <!-- /.container -->
+</footer>
