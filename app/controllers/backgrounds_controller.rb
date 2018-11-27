@@ -25,7 +25,7 @@ class BackgroundsController < ApplicationController
       end
       redirect_to adminDashboard_backgrounds_path
     else
-      redirect_to adminDashboard_backgrounds_path
+      redirect_to edit_adminDashboard_background_path(background.id)
     end
   end
 

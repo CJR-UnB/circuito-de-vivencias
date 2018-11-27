@@ -19,8 +19,9 @@ class AdminDashboardController < ApplicationController
   end
 
   def create_video
-    @video = Video.new(video_params)
-    if @video.save
+    video = Video.new(video_params)
+    if video.save
+      six_actives(video)
       redirect_to adminDashboard_videos_path(page: 1)
     else
       redirect_to adminDashboard_post_video_path
@@ -31,6 +32,21 @@ class AdminDashboardController < ApplicationController
     @video = Video.find(params[:id])
     @video.delete
     redirect_to adminDashboard_videos_path(page: params[:page])
+  end
+
+  def edit_video
+    @video = Video.find(params[:id])
+  end
+
+  def update_video
+    video = Video.find(params[:id])
+
+    if video.update(video_params)
+      six_actives(video)
+      redirect_to adminDashboard_videos_path(page: params[:page])
+    else
+      redirect_to adminDashboard_videos_path(page: params[:page])
+    end
   end
 
   def users
@@ -82,8 +98,15 @@ class AdminDashboardController < ApplicationController
   def video_params
     params.require(:video).permit(
       :url,
-      :title
+      :title,
+      :active
     )
+  end
+
+  def six_actives(video)
+    if Video.where(active: true).size > 6
+      Video.where.not(id: video.id).find_by(active: true).unactivate
+    end
   end
 
 end
