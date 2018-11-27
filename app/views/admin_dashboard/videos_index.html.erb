@@ -4,7 +4,7 @@
         <div class="row pb-row">
             <% @videos.each do |video| %>
                 <div class="col-md-3 pb-video" style='<% if(video.active) %>background-color: #428bca;<% end %>'>
-                    <iframe class="pb-video-frame" width="100%" height="230" src="<%= video.url %>" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="pb-video-frame" width="100%" height="230" src="https://www.youtube.com/embed/<%= video.url.match(/https\:\/\/www\.youtube\.com\/watch\?v=([\w-]{1,})/)[1] %>" frameborder="0" allowfullscreen></iframe>
                     <label class="form-control label-warning text-xs-center"><%= video.title %></label>
                     <label class="d-flex justify-content-around form-control label-warning text-xs-center"><%= link_to "Editar", adminDashboard_edit_video_path(id: video.id, page: @page), class: "btn btn-sm btn-outline-danger" %><%= link_to "Remover", adminDashboard_delete_video_path(id: video.id, page: @page), class: "btn btn-sm btn-outline-danger", method: :delete %></label>
                 </div>
