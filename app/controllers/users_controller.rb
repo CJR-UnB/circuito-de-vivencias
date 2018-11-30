@@ -41,8 +41,13 @@ class UsersController < ApplicationController
 
   def videos_index
     @page = params[:page]
-    @last_page = Video.all.page(1).per(20).total_pages
-    @videos = Video.all.order(:created_at).page(@page).per(20)
+    if params[:title]
+      @last_page = Video.where('title LIKE ?', "%#{params[:title]}%").page(1).per(20).total_pages
+      @videos = Video.where('title LIKE ?', "%#{params[:title]}%").order(:created_at).page(@page).per(20)
+    else
+      @last_page = Video.all.page(1).per(20).total_pages
+      @videos = Video.all.order(:created_at).page(@page).per(20)
+    end
   end
 
   private
@@ -53,5 +58,9 @@ class UsersController < ApplicationController
         :cpf,
         :email
       )
+    end
+
+    def search_videos_params
+      params.require(:video).permit(:title)
     end
 end
