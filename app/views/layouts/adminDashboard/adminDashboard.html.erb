@@ -8,9 +8,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <%= stylesheet_link_tag 'vendor/fontawesome-free/css/all.min.css'%>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -18,13 +18,13 @@
     <!-- Custom styles for this template -->
     <%= stylesheet_link_tag 'css/agency.min.css'%>
     <% if Rails.env.production?%>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <% end %>
 
   </head>
 
   <body>
-    <div class="app">
+    <div class='app'>
       <!-- @TOC -->
       <!-- =================================================== -->
       <!--
@@ -46,29 +46,29 @@
       <!-- =================================================== -->
       <div>
         <!-- #Left Sidebar ==================== -->
-        <div class="sidebar">
-          <div class="sidebar-inner">
+        <div class='sidebar'>
+          <div class='sidebar-inner'>
             <!-- ### $Sidebar Header ### -->
-            <div class="sidebar-logo">
-              <div class="peers ai-c fxw-nw">
-                <div class="peer peer-greed">
-                  <a class="sidebar-link td-n" href="index.html">
-                    <div class="peers ai-c fxw-nw">
-                      <div class="peer">
-                        <div class="logo">
-                          <%= image_tag("src/assets/static/images/logo.png") %>
+            <div class='sidebar-logo'>
+              <div class='peers ai-c fxw-nw'>
+                <div class='peer peer-greed'>
+                  <a class='sidebar-link td-n' href='index.html'>
+                    <div class='peers ai-c fxw-nw'>
+                      <div class='peer'>
+                        <div class='logo'>
+                          <%= image_tag('src/assets/static/images/logo.png') %>
                         </div>
                       </div>
-                      <div class="peer peer-greed">
-                        <h5 class="lh-1 mB-0 logo-text">Adminator</h5>
+                      <div class='peer peer-greed'>
+                        <h5 class='lh-1 mB-0 logo-text'>Adminator</h5>
                       </div>
                     </div>
                   </a>
                 </div>
-                <div class="peer">
-                  <div class="mobile-toggle sidebar-toggle">
-                    <a href="" class="td-n">
-                      <i class="ti-arrow-circle-left"></i>
+                <div class='peer'>
+                  <div class='mobile-toggle sidebar-toggle'>
+                    <a href='' class='td-n'>
+                      <i class='ti-arrow-circle-left'></i>
                     </a>
                   </div>
                 </div>
@@ -76,69 +76,69 @@
             </div>
 
             <!-- ### $Sidebar Menu ### -->
-            <ul class="sidebar-menu scrollable pos-r">
-              <li class="nav-item mT-30 active">
+            <ul class='sidebar-menu scrollable pos-r'>
+              <li class='nav-item mT-30 active'>
                 <%= link_to(adminDashboard_home_path, class: 'sidebar-link') do %>
-                  <span class="icon-holder">
-                    <i class="c-blue-500 ti-home"></i>
+                  <span class='icon-holder'>
+                    <i class='c-blue-500 ti-home'></i>
                   </span>
-                  <span class="title">Dashboard</span>
+                  <span class='title'>Dashboard</span>
                 <% end %>
               </li>
-              <li class="nav-item">
+              <li class='nav-item'>
                 <%= link_to(adminDashboard_users_path, class: 'sidebar-link') do %>
-                  <span class="icon-holder">
-                    <i class="c-blue-500 ti-user"></i>
+                  <span class='icon-holder'>
+                    <i class='c-blue-500 ti-user'></i>
                   </span>
-                  <span class="title">Usuários</span>
+                  <span class='title'>Usuários</span>
                 <% end %>
               </li>
-              <li class="nav-item">
+              <li class='nav-item'>
                 <%= link_to(adminDashboard_categories_path, class: 'sidebar-link') do %>
-                  <span class="icon-holder">
-                    <i class="c-blue-500 ti-tag"></i>
+                  <span class='icon-holder'>
+                    <i class='c-blue-500 ti-tag'></i>
                   </span>
-                  <span class="title">Categorias</span>
+                  <span class='title'>Categorias</span>
                 <% end %>
               </li>
-              <li class="nav-item">
+              <li class='nav-item'>
                 <%= link_to(adminDashboard_backgrounds_path, class: 'sidebar-link') do %>
-                  <span class="icon-holder">
-                    <i class="c-blue-500 ti-image"></i>
+                  <span class='icon-holder'>
+                    <i class='c-blue-500 ti-image'></i>
                   </span>
-                  <span class="title">Imagem Inicial</span>
+                  <span class='title'>Imagem Inicial</span>
                 <% end %>
               </li>
-              <li class="nav-item">
+              <li class='nav-item'>
                 <%= link_to(adminDashboard_contacts_path, class: 'sidebar-link') do %>
-                  <span class="icon-holder">
-                    <i class="c-blue-500 ti-mobile"></i>
+                  <span class='icon-holder'>
+                    <i class='c-blue-500 ti-mobile'></i>
                   </span>
-                  <span class="title">Contato</span>
+                  <span class='title'>Contato</span>
                 <% end %>
               </li>
-              <li class="nav-item">
+              <li class='nav-item'>
                 <%= link_to(adminDashboard_videos_path(page: 1), class: 'sidebar-link') do %>
-                  <span class="icon-holder">
-                    <i class="c-blue-500 ti-youtube"></i>
+                  <span class='icon-holder'>
+                    <i class='c-blue-500 ti-control-play'></i>
                   </span>
-                  <span class="title">Videos</span>
+                  <span class='title'>Videos</span>
                 <% end %>
               </li>
-              <li class="nav-item">
+              <li class='nav-item'>
                 <%= link_to(adminDashboard_histories_path, class: 'sidebar-link') do %>
-                  <span class="icon-holder">
-                    <i class="c-blue-500 ti-calendar"></i>
+                  <span class='icon-holder'>
+                    <i class='c-blue-500 ti-calendar'></i>
                   </span>
-                  <span class="title">História</span>
+                  <span class='title'>História</span>
                 <% end %>
               </li>
-              <li class="nav-item">
+              <li class='nav-item'>
                 <%= link_to(adminDashboard_staff_members_path, class: 'sidebar-link') do %>
-                  <span class="icon-holder">
-                    <i class="c-blue-500 ti-id-badge"></i>
+                  <span class='icon-holder'>
+                    <i class='c-blue-500 ti-id-badge'></i>
                   </span>
-                  <span class="title">Membros</span>
+                  <span class='title'>Membros</span>
                 <% end %>
               </li>
             </ul>
@@ -146,50 +146,23 @@
         </div>
 
         <!-- #Main ============================ -->
-        <div class="page-container">
+        <div class='page-container'>
           <!-- ### $Topbar ### -->
-          <div class="header navbar">
-            <div class="header-container">
-              <ul class="nav-left">
-                <li>
-                  <a id='sidebar-toggle' class="sidebar-toggle" href="javascript:void(0);">
-                    <i class="ti-menu"></i>
-                  </a>
-                </li>
-                <li class="search-box">
-                  <a class="search-toggle no-pdd-right" href="javascript:void(0);">
-                    <i class="search-icon ti-search pdd-right-10"></i>
-                    <i class="search-icon-close ti-close pdd-right-10"></i>
-                  </a>
-                </li>
-                <li class="search-input">
-                  <input class="form-control" type="text" placeholder="Search...">
-                </li>
-              </ul>
-              <ul class="nav-right">
-                <li class="dropdown">
-                  <a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
-                    <div class="peer">
-                      <span class="fsz-sm c-grey-900">
-                        <%= current_user.name %> <%= current_user.surname %>
-                      </span>
-                    </div>
-                  </a>
-                  <ul class="dropdown-menu fsz-sm">
+          <div class='header navbar'>
+            <div class='header-container'>
+              <ul class='nav-right'>
                 <li>
                   <%= link_to profile_path(id: current_user.id), class: 'd-b td-n pY-5 bgcH-grey-100 c-grey-700' do %>
-                          <i class="fa fa-user mR-10"></i>
-                          <span>Perfil</span>
+                    <i class='fa fa-user mR-10'></i>
+                    <span>Perfil</span>
                   <% end %>
                 </li>
-                <li role="separator" class="divider"></li>
+                <li role='separator' class='divider'></li>
                 <li>
-                    <%= link_to destroy_user_session_path, class: 'd-b td-n pY-5 bgcH-grey-100 c-grey-700', method: :delete do %>
-                        <i class="fas fa-sign-out-alt mR-10"></i>
-                        <span>Sair</span>
-                    <% end %>
-                </li>
-                </ul>
+                  <%= link_to destroy_user_session_path, class: 'd-b td-n pY-5 bgcH-grey-100 c-grey-700', method: :delete do %>
+                    <i class='fas fa-sign-out-alt mR-10'></i>
+                    <span>Sair</span>
+                  <% end %>
                 </li>
               </ul>
             </div>

@@ -9,7 +9,9 @@
       <%= f.text_field(:role, class: 'form-control') %>
     </div>
     <% if @staff_member.image.present? %>
-      <%= image_tag(@staff_member.image, width: '480px', class: 'img-thumbnail') %>
+      <div class='form-group'>
+        <%= image_tag(@staff_member.image, style: 'width: 240px; height: 240px; object-fit: cover;', class: 'img-thumbnail') %>
+      </div>
     <% end %>
     <div class='form-group'>
       <%= f.label(:image, 'Imagem') %>

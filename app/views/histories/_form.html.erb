@@ -17,7 +17,9 @@
       <%= f.number_field(:order, class: 'form-control', min: @min, step: 1) %>
     </div>
     <% if @history.image.present? %>
-      <%= image_tag(@history.image, width: '480px', class: 'img-thumbnail') %>
+      <div class='form-group'>
+        <%= image_tag(@history.image, style: 'width: 240px; height: 240px; object-fit: cover;', class: 'img-thumbnail') %>
+      </div>
     <% end %>
     <div class='form-group'>
       <%= f.label(:image, 'Imagem') %>
