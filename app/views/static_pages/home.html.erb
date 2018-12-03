@@ -125,8 +125,8 @@
     </div>
     <div class="col-md-10 offset-md-1">
       <div class="row pb-row">
-        <% if Video.where(active: true).present? %>
-          <% Video.where(active: true).each do |video| %>
+        <% if @videos.present? %>
+          <% @videos.each do |video| %>
             <div class="col-md-4 pb-video">
               <iframe class="pb-video-frame" width="100%" height="240" src="https://www.youtube.com/embed/<%= video.url.match(/https\:\/\/www\.youtube\.com\/watch\?v=([\w-]{1,})/)[1] %>" frameborder="0" allowfullscreen></iframe>
               <a href="<%= video.url %>" class="form-control label-warning text-xs-center">
@@ -145,84 +145,29 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">About</h2>
-        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        <h2 class="section-heading text-uppercase">Circuito de Vivências</h2>
+        <h3 class="section-subheading text-muted">Um pouco da nossa história!</h3>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
         <ul class="timeline">
-          <li>
-            <div class="timeline-image">
-              <%= image_tag "img/about/1.jpg", class: "rounded-circle img-fluid"%>
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>2009-2011</h4>
-                <h4 class="subheading">Our Humble Beginnings</h4>
-              </div>
-              <div class="timeline-body">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius
-                  sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea
-                  quo dolore laudantium consectetur!</p>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-inverted">
-            <div class="timeline-image">
-              <%= image_tag "img/about/2.jpg", class: "rounded-circle img-fluid"%>
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>March 2011</h4>
-                <h4 class="subheading">An Agency is Born</h4>
-              </div>
-              <div class="timeline-body">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius
-                  sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea
-                  quo dolore laudantium consectetur!</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-image">
-              <%= image_tag "img/about/3.jpg", class: "rounded-circle img-fluid"%>
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>December 2012</h4>
-                <h4 class="subheading">Transition to Full Service</h4>
-              </div>
-              <div class="timeline-body">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius
-                  sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea
-                  quo dolore laudantium consectetur!</p>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-inverted">
-            <div class="timeline-image">
-              <%= image_tag "img/about/4.jpg", class: "rounded-circle img-fluid"%>
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>July 2014</h4>
-                <h4 class="subheading">Phase Two Expansion</h4>
-              </div>
-              <div class="timeline-body">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius
-                  sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea
-                  quo dolore laudantium consectetur!</p>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-inverted">
-            <div class="timeline-image">
-              <h4>Be Part
-                <br>Of Our
-                <br>Story!</h4>
-            </div>
-          </li>
+          <% if @histories.present? %>
+            <% @histories.each_with_index do |history, index| %>
+              <li class='<% if(index % 2 == 0) %>timeline-inverted<% end %>'>
+                <div class="timeline-image" style="background-image: url(<%= url_for(history.image) %>); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4><%= history.time %></h4>
+                    <h4 class="subheading"><%= history.title %></h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="text-muted"><%= history.body %></p>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -359,14 +304,14 @@
       </div>
     </div>
     <div class="row text-center">
-      <% if Contact.find_by(active: true).present? %>
+      <% if @contact.present? %>
         <div class="col-md-6">
           <span class="fa-stack fa-4x">
             <i class="fas fa-circle fa-stack-2x text-primary"></i>
             <i class="fas fa-phone fa-stack-1x fa-inverse"></i>
           </span>
           <h4 class="service-heading" style='color: #d9d9d9;'>
-            <%= Contact.find_by(active: true).phone %>
+            <%= @contact.phone %>
           </h4>
         </div>
         <div class="col-md-6">
@@ -375,7 +320,7 @@
             <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
           </span>
           <h4 class="service-heading" style='color: #d9d9d9;'>
-              <%= Contact.find_by(active: true).email %>
+              <%= @contact.email %>
           </h4>
         </div>
       <% end %>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :backgrounds
     resources :categories
     resources :contacts
+    resources :histories
     get '/home', to: 'admin_dashboard#home'
     get '/users', to: 'admin_dashboard#users'
     delete '/users', to: 'admin_dashboard#delete_user'
