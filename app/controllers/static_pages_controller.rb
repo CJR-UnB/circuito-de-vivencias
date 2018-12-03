@@ -5,5 +5,6 @@ class StaticPagesController < ApplicationController
     @videos = Video.where(active: true)
     @contact = Contact.find_by(active: true)
     @histories = History.order(order: :asc)
+    @staff_members = StaffMember.order(:name)
   end
 end
