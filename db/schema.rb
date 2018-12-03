@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_165245) do
+ActiveRecord::Schema.define(version: 2018_12_03_184200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_165245) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commentContent"
+    t.text "commentContent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "workshop_id"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_165245) do
   create_table "histories", force: :cascade do |t|
     t.string "time"
     t.string "title"
-    t.string "body"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order"
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_165245) do
 
   create_table "workshops", force: :cascade do |t|
     t.string "title"
-    t.string "resume"
+    t.text "resume"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "author_id"
