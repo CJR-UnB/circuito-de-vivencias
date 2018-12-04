@@ -73,42 +73,27 @@
       <div class="col-lg-12 text-center">
         <h2 class="section-heading text-uppercase">Oficinas</h2>
         <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-        <div class="row">
-          <div class="col-md-4 mx-auto">
-            <% if user_signed_in? %>
-              <%= link_to 'Ver mais oficinas', workshops_path(current_user), class: 'nav-link btn btn-outline-danger btn-nav mb-5' %>
-            <% end %>
-          </div>
-        </div>
       </div>
     </div>
     <div class="row text-center">
-      <div class="col-md-4">
-        <span class="fa-stack fa-4x">
-          <i class="fas fa-circle fa-stack-2x text-primary"></i>
-          <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-        </span>
-        <h4 class="service-heading">Álgebra</h4>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto
-          quo inventore harum ex magni, dicta impedit.</p>
-      </div>
-      <div class="col-md-4">
-        <span class="fa-stack fa-4x">
-          <i class="fas fa-circle fa-stack-2x text-primary"></i>
-          <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-        </span>
-        <h4 class="service-heading">Aritmética</h4>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto
-          quo inventore harum ex magni, dicta impedit.</p>
-      </div>
-      <div class="col-md-4">
-        <span class="fa-stack fa-4x">
-          <i class="fas fa-circle fa-stack-2x text-primary"></i>
-          <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-        </span>
-        <h4 class="service-heading">Geometria</h4>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto
-          quo inventore harum ex magni, dicta impedit.</p>
+      <% if @workshops.present? %>
+        <% @workshops.each do |workshop| %>
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x">
+              <i class="fas fa-circle fa-stack-2x text-primary"></i>
+              <i class="fas fa-book-open fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="service-heading"><%= workshop.title %></h4>
+            <p class="text-muted"><%= workshop.resume %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-4 mx-auto">
+        <% if user_signed_in? %>
+          <%= link_to 'Ver mais oficinas', workshops_path(current_user), class: 'nav-link btn btn-outline-danger btn-nav' %>
+        <% end %>
       </div>
     </div>
   </div>
