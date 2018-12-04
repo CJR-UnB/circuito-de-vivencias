@@ -10,8 +10,14 @@ class AdminDashboardController < ApplicationController
 
   def videos_index
     @page = params[:page]
-    @last_page = Video.all.page(1).per(20).total_pages
-    @videos = Video.all.order(:created_at).page(@page).per(20)
+    @title = params[:title]
+    if @title
+      @last_page = Video.where('title LIKE ?', "%#{params[:title]}%").page(1).per(20).total_pages
+      @videos = Video.where('title LIKE ?', "%#{params[:title]}%").order(:created_at).page(@page).per(20)
+    else
+      @last_page = Video.all.page(1).per(20).total_pages
+      @videos = Video.all.order(:created_at).page(@page).per(20)
+    end
   end
 
   def new_video
@@ -22,8 +28,14 @@ class AdminDashboardController < ApplicationController
     video = Video.new(video_params)
     if video.save
       six_actives(video)
+      flash[:notice] = "Video criado com sucesso"
       redirect_to adminDashboard_videos_path(page: 1)
     else
+      if video.title == nil
+        flash[:alert] = "Titulo não pode estar em branco"
+      else
+        flash[:alert] = "Url invalida"
+      end
       redirect_to adminDashboard_post_video_path
     end
   end
