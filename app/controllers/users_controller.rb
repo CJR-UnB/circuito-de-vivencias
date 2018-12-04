@@ -41,7 +41,8 @@ class UsersController < ApplicationController
 
   def videos_index
     @page = params[:page]
-    if params[:title]
+    @title = params[:title]
+    if @title
       @last_page = Video.where('title LIKE ?', "%#{params[:title]}%").page(1).per(20).total_pages
       @videos = Video.where('title LIKE ?', "%#{params[:title]}%").order(:created_at).page(@page).per(20)
     else
