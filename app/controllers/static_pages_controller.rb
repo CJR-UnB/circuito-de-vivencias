@@ -6,5 +6,6 @@ class StaticPagesController < ApplicationController
     @contact = Contact.find_by(active: true)
     @histories = History.order(order: :asc)
     @staff_members = StaffMember.order(:name)
+    @logo = Logo.find_by(active: :true)
   end
 end

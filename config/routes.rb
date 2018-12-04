@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :contacts
     resources :histories
     resources :staff_members
+    resources :logos
     get '/home', to: 'admin_dashboard#home'
     get '/users', to: 'admin_dashboard#users'
     delete '/users', to: 'admin_dashboard#delete_user'
