@@ -17,8 +17,6 @@ class Workshop < ApplicationRecord
 
   enum status: {in_hold: 0, accepted: 1, rejected: 2}
 
-
-
   def accept
     self.status = 'accepted'
   end
@@ -31,4 +29,7 @@ class Workshop < ApplicationRecord
     self.status = 'in_hold'
   end
 
+  def hide
+    self.update(active: false)
+  end
 end

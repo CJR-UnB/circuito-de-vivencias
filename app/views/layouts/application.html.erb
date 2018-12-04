@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CircuitoDeVivencias</title>
+    <%= favicon_link_tag url_for(Logo.find_by(active: :true).image) %>
+    <title>Circuito de Vivencias</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

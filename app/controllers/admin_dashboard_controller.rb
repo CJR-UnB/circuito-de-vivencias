@@ -120,5 +120,4 @@ class AdminDashboardController < ApplicationController
       Video.where.not(id: video.id).find_by(active: true).unactivate
     end
   end
-
 end
