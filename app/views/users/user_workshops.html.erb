@@ -4,7 +4,7 @@
      <!-- Page Heading -->
         <!-- Image Section - set the background image for the header in the line below -->
     <div class="container-fluid header-image">
-    <section class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1081');">
+    <section class="py-5 bg-image-full" style="<% if Background.find_by(active: true).present? %>background-image: url(<%= url_for(Background.find_by(active: true).image) %>); background-repeat: no-repeat; background-size: cover; background-position: center;<% end %>">
     </div>
     <div class="container">
 
