@@ -6,14 +6,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to 'Página Inicial', root_path %>
+         <li class="nav-item link-navbar">
+          <%= link_to 'Página Inicial', root_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Minhas oficinas', user_workshops_path %>
+        <li class="nav-item link-navbar">
+          <%= link_to 'Minhas oficinas', user_workshops_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Meu perfil', profile_path %>
+        <li class="nav-item link-navbar">
+          <%= link_to 'Meu perfil', profile_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item link-navbar">
+          <%= link_to 'Todas as oficinas', workshops_path(page: 1), class: "nav-link" %>
         </li>
       </ul>
     </div>

@@ -8,10 +8,7 @@ class Workshop < ApplicationRecord
   has_one :feedback
   has_many :users, through: :evaluations
   has_many :comments
-
-  has_many :workshop_categories
-  has_many :categories, through: :workshop_categories, source: :category
-
+  
   validates :title, presence: true
   validates :document, presence: true, blob: {content_type: ['application/vnd.oasis.opendocument.text', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']}
 

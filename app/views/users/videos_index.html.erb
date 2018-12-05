@@ -1,5 +1,5 @@
-<div class="video-background">
-    <%= link_to root_path, class: "btn btn-md btn-outline-warning btn-voltar" do%>
+<div class="video-background" style="<% if Background.find_by(active: true).present? %>background-image: url(<%= url_for(Background.find_by(active: true).image) %>); background-repeat: no-repeat; background-size: cover; background-position: center;<% end %>">
+    <%= link_to root_path, class: "btn btn-md btn-warning btn-voltar" do%>
         <i class="fa fa-home" aria-hidden="true">Voltar</i>
     <% end %>
     <div class="container">
