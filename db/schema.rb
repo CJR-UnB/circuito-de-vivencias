@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_122356) do
+ActiveRecord::Schema.define(version: 2018_12_03_225430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_122356) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commentContent"
+    t.text "commentContent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "workshop_id"
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 2018_11_19_122356) do
     t.string "name"
     t.string "institution"
     t.index ["workshop_id"], name: "index_comments_on_workshop_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "phone"
+    t.string "email"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -78,8 +86,31 @@ ActiveRecord::Schema.define(version: 2018_11_19_122356) do
     t.integer "workshop_id"
   end
 
+  create_table "histories", force: :cascade do |t|
+    t.string "time"
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order"
+  end
+
+  create_table "logos", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "staff_members", force: :cascade do |t|
+    t.string "name"
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -111,6 +142,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_122356) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active"
   end
 
   create_table "workshop_categories", force: :cascade do |t|
@@ -124,7 +156,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_122356) do
 
   create_table "workshops", force: :cascade do |t|
     t.string "title"
-    t.string "resume"
+    t.text "resume"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "author_id"

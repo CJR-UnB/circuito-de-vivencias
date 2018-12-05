@@ -25,7 +25,7 @@ class BackgroundsController < ApplicationController
       end
       redirect_to adminDashboard_backgrounds_path
     else
-      redirect_to adminDashboard_backgrounds_path
+      redirect_to edit_adminDashboard_background_path(background.id)
     end
   end
 
@@ -43,6 +43,16 @@ class BackgroundsController < ApplicationController
       redirect_to adminDashboard_backgrounds_path
     else
       redirect_to new_adminDashboard_background_path
+    end
+  end
+
+  def destroy
+    background = Background.find(params[:id])
+
+    if background.destroy
+      redirect_to adminDashboard_backgrounds_path
+    else
+      redirect_to edit_adminDashboard_background_path(background.id)
     end
   end
 

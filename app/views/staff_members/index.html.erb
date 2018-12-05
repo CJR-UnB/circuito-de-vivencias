@@ -1,0 +1,28 @@
+<div class='d-flex align-items-start flex-column mb-3'>
+  <%= link_to 'Novo Membro', new_adminDashboard_staff_member_path, class: 'btn btn-outline-primary' %>
+</div>
+
+<table class='table table-striped'>
+  <thead class='thead-light'>
+    <tr>
+      <th scope='col'>#</th>
+      <th scope='col'>Nome</th>
+      <th scope='col'>Cargo</th>
+      <th scope='col'>Editar</th>
+      <th scope='col'>Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @staff_members.present? %>
+      <% @staff_members.each do |staff| %>
+        <tr>
+          <th scope='row'><%= staff.id %></th>
+          <td><%= staff.name %></td>
+          <td><%= staff.role %></td>
+          <td><%= link_to 'Editar', edit_adminDashboard_staff_member_path(staff.id), class: 'btn-sm btn-info' %></td>
+          <td><%= link_to 'Excluir', adminDashboard_staff_member_path(id: staff.id), class: 'btn-sm btn-info', method: 'delete', data: {confirm: 'Tem certeza?'} %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

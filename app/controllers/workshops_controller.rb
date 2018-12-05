@@ -8,15 +8,25 @@ class WorkshopsController < ApplicationController
   def verify_workshop
     @workshop = Workshop.find(params[:id])
     if @workshop.status != 'accepted'
-      if Role.find(current_user.role_id).name != 'Supervisor'
+      if Role.find(current_user.role_id).name != 'Supervisor' && current_user.id != @workshop.author_id
+        puts current_user.id
+        puts @workshop.author_id
         redirect_to root_path
       end
     end
   end
 
   def index
-    @workshops = Workshop.where(status: 'accepted')
-    @myWorkshops = Workshop.where(author_id: current_user.id)
+    @title = params[:title]
+    @page = params[:page]
+    puts @title
+    if @title
+      @last_page = Workshop.where(status: 'accepted').where('title LIKE ?', "%#{@title}%").page(1).per(16).total_pages
+      @workshops = Workshop.where(status: 'accepted').where('title LIKE ?', "%#{@title}%").order(:updated_at).page(@page).per(16)
+    else
+      @last_page = Workshop.where(status: 'accepted' ).page(1).per(16).total_pages
+      @workshops = Workshop.where(status: 'accepted' ).order(:updated_at).page(@page).per(16)
+    end
   end
 
   def show
@@ -25,13 +35,14 @@ class WorkshopsController < ApplicationController
   end
 
   def create
-    @workshop = Workshop.new(workshop_params)
-    @workshop.author_id = current_user.id
-    @workshop.editor_id = current_user.id
+    workshop = Workshop.new(workshop_params)
+    workshop.author_id = current_user.id
+    workshop.editor_id = current_user.id
 
-    if @workshop.save
+    if workshop.save
+      three_actives(workshop) unless !workshop.display
       flash[:notice] = 'Workshop criado com sucesso!'
-      redirect_to workshops_path
+      redirect_to user_workshops_path
     else
       flash[:alert] = 'Não foi possível criar o workshop!'
       render 'new'
@@ -47,11 +58,12 @@ class WorkshopsController < ApplicationController
   end
 
   def update
-    @workshop = Workshop.find(params[:id])
-    @workshop.put_in_hold
-    if @workshop.update(workshop_params)
+    workshop = Workshop.find(params[:id])
+    workshop.put_in_hold
+    if workshop.update(workshop_params)
+      three_actives(workshop) unless !workshop.display
       flash[:notice] = 'Workshop atualizado com sucesso!'
-      redirect_to workshops_path
+      redirect_to user_workshops_path
     else
       flash[:alert] = 'Não foi possível atualizar o workshop!'
       render 'edit'
@@ -74,10 +86,17 @@ class WorkshopsController < ApplicationController
     def workshop_params
       params.require(:workshop).permit(
         :title,
-        :categories,
         :resume,
         :document
       )
     end
+    def search_workshop_params
+      params.require(:workshop).permit(:title)
+    end
 
+    def three_actives(workshop)
+      if Workshop.where(active: true).size > 3
+        Workshop.where.not(id: workshop.id).find_by(statur: 1, display: :true).hide
+      end
+    end
 end

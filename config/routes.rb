@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   scope path: 'adminDashboard', as: 'adminDashboard' do
     resources :backgrounds
     resources :categories
+    resources :contacts
+    resources :histories
+    resources :staff_members
+    resources :logos
     get '/home', to: 'admin_dashboard#home'
     get '/users', to: 'admin_dashboard#users'
     delete '/users', to: 'admin_dashboard#delete_user'
@@ -23,6 +27,8 @@ Rails.application.routes.draw do
     get '/videos', to: 'admin_dashboard#videos_index', as: 'videos'
     get '/post_video', to: 'admin_dashboard#new_video', as: 'post_video'
     post '/post_video', to: 'admin_dashboard#create_video'
+    get '/edit_video/:id', to: 'admin_dashboard#edit_video', as: 'edit_video'
+    patch '/edit_video/:id', to: 'admin_dashboard#update_video'
     delete '/delete_video', to: 'admin_dashboard#delete_video', as: 'delete_video'
   end
 
@@ -38,6 +44,9 @@ Rails.application.routes.draw do
   get '/users', to: 'users/registrations#new'
   get '/videos', to: 'users#videos_index'
   get '/my_profile', to: 'users#profile', as: "profile"
+  get '/my_profile/edit', to: 'users#edit_user'
+  put '/my_profile/edit', to: 'users#update_user'
+  delete '/my_profile', to: 'users#delete_user'
   get '/my_profile/user_workshops', to: 'users#user_workshops', as: "user_workshops"
   get '/my_profile/user_workshop/feedback', to: 'feedbacks#show', as: "rejected_workshop_feedback"
 

@@ -8,16 +8,11 @@ class Workshop < ApplicationRecord
   has_one :feedback
   has_many :users, through: :evaluations
   has_many :comments
-
-  has_many :workshop_categories
-  has_many :categories, through: :workshop_categories, source: :category
-
+  
   validates :title, presence: true
   validates :document, presence: true, blob: {content_type: ['application/vnd.oasis.opendocument.text', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']}
 
   enum status: {in_hold: 0, accepted: 1, rejected: 2}
-
-
 
   def accept
     self.status = 'accepted'
@@ -31,4 +26,7 @@ class Workshop < ApplicationRecord
     self.status = 'in_hold'
   end
 
+  def hide
+    self.update(active: false)
+  end
 end

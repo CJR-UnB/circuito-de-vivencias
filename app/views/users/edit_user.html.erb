@@ -1,0 +1,66 @@
+<%= render 'header' %>
+<%= render 'alert'%>
+<section id="about">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class='mt-5'>
+          <%= form_for @user, url:  my_profile_edit_path, method: :put do |f| %>
+            <div class='form-group'>
+                <%= f.label(:name, 'Nome') %>
+                <%= f.text_field(:name, class: 'form-control') %>
+            </div>
+            <div class='form-group'>
+                <%= f.label(:surname, 'Sobrenome') %>
+                <%= f.text_field(:surname, class: 'form-control') %>
+            </div>
+            <div class='form-group'>
+                <%= f.label(:cpf, 'C.P.F.') %>
+                <%= f.text_field(:cpf, onkeypress: "mascara(this, '###.###.###-##')", maxlength:"14", class: 'form-control') %>
+            </div>
+            <div class='form-group'>
+                <%= f.label(:email, 'Email') %>
+                <%= f.email_field(:email, class: 'form-control') %>
+            </div>
+            <div class='form-group'>
+                <%= f.submit('Salvar', class: 'btn btn-sm btn-success') %>
+            </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-5 bg-dark" style="margin-top: 5%;">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Departamento de Matemática da universidade de Brásilia, 2018</p>
+      </div>
+      <!-- /.container -->
+</footer>
+<script>
+    /*
+    A função Mascara tera como valores no argumento os dados inseridos no input (ou no evento onkeypress)
+    onkeypress="mascara(this, '## ####-####')"
+    onkeypress = chama uma função quando uma tecla é pressionada, no exemplo acima, chama a função mascara e define os valores do argumento na função
+    O primeiro valor é o this, é o Apontador/Indicador da Mascara, o '## ####-####' é o modelo / formato da mascara
+    no exemplo acima o # indica os números, e o - (hifen) o caracter que será inserido entre os números, ou seja, no exemplo acima o telefone ficara assim: 11-4000-3562
+    para o celular de são paulo o modelo deverá ser assim: '## #####-####' [11 98563-1254]
+    para o RG '##.###.###.# [40.123.456.7]
+    para o CPF '###.###.###.##' [789.456.123.10]
+    Ou seja esta mascara tem como objetivo inserir o hifen ou espaço automáticamente quando o usuário inserir o número do celular, cpf, rg, etc
+
+    lembrando que o hifen ou qualquer outro caracter é contado tambem, como: 11-4561-6543 temos 10 números e 2 hifens, por isso o valor de maxlength será 12
+    <input type="text" name="telefone" onkeypress="mascara(this, '## ####-####')" maxlength="12">
+    neste código não é possivel inserir () ou [], apenas . (ponto), - (hifén) ou espaço
+    */
+
+    function mascara(t, mask){
+        var i = t.value.length;
+        var saida = mask.substring(1,0);
+        var texto = mask.substring(i)
+        if (texto.substring(0,1) != saida){
+            t.value += texto.substring(0,1);
+        }
+    }
+</script>
