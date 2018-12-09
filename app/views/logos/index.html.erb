@@ -1,0 +1,19 @@
+<div class='d-flex align-items-start flex-column mb-3'>
+  <%= link_to 'Nova Logo', new_adminDashboard_logo_path, class: 'btn btn-outline-primary' %>
+</div>
+
+<div class='row d-flex flex-row flex-wrap'>
+  <% if @logos.present? %>
+    <% @logos.each do |l| %>
+      <div class='ml-3 mb-3'>
+        <%= link_to(edit_adminDashboard_logo_path(l)) do %>
+          <% if l.active %>
+            <%= image_tag(l.image, style: 'background-color: #428bca; width: 240px; height: 240px; object-fit: cover;', class: 'img-thumbnail') %>
+          <% else %>
+            <%= image_tag(l.image, style: 'width: 256px; height: 256px; object-fit: cover;', class: 'img-thumbnail') %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

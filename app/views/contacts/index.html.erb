@@ -1,0 +1,38 @@
+<div class='d-flex align-items-start flex-column mb-3'>
+  <%= link_to 'Novo Contato', new_adminDashboard_contact_path, class: 'btn btn-outline-primary' %>
+</div>
+
+<table class='table table-striped'>
+  <thead class='thead-light'>
+    <tr>
+      <th scope='col'>#</th>
+      <th scope='col'>Telefone</th>
+      <th scope='col'>Email</th>
+      <th scope='col'>Editar</th>
+      <th scope='col'>Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @contacts.present? %>
+      <% @contacts.each do |contact| %>
+        <% if contact.active %>
+          <tr style='background-color: #428bca; color: #ffffff;'>
+        <% else %>
+          <tr>
+        <% end %>
+          <th scope='row'><%= contact.id %></th>
+          <td><%= contact.phone %></td>
+          <td><%= contact.email %></td>
+          <td><%= link_to 'Editar', edit_adminDashboard_contact_path(contact.id), class: 'btn-sm btn-info' %></td>
+          <td>
+            <% if contact.active %>
+              <span class='btn-sm btn-secondary disabled'>Excluir</span>
+            <% else %>
+              <%= link_to 'Excluir', adminDashboard_contact_path(id: contact.id), class: 'btn-sm btn-info', method: 'delete', data: {confirm: 'Tem certeza?'} %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

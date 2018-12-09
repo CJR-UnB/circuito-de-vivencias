@@ -1,47 +1,49 @@
 <%= stylesheet_link_tag 'login'%>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card card-signin my-5">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Sign In</h5>
-                    <%= form_for @user, url: registration_path(resource_name) do |f| %>
-                        <%= devise_error_messages! %>
-                        <div class="form-label-group">
-                            <%= f.label :Email %><br /><br />
-                            <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "email", class: "form-control spacing-fields", placeholder: "Email" %>
-                        </div>
+<div style="min-height: 100vh; margin: 0; max-width: 100%; <% if Background.find_by(active: true).present? %>background-image: url(<%= url_for(Background.find_by(active: true).image) %>); background-repeat: no-repeat; background-size: cover; background-position: center;<% end %>">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Sign In</h5>
+                        <%= form_for @user, url: registration_path(resource_name) do |f| %>
+                            <%= devise_error_messages! %>
+                            <div class="form-label-group">
+                                <%= f.label :Email %><br /><br />
+                                <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "email", class: "form-control spacing-fields", placeholder: "Email" %>
+                            </div>
 
-                        <div class="form-label-group">
-                            <%= f.label :Nome %><br /><br />
-                            <%= f.text_field :name, id: "name", class: "form-control spacing-fields", placeholder: "Nome" %>
-                        </div>
+                            <div class="form-label-group">
+                                <%= f.label :Nome %><br /><br />
+                                <%= f.text_field :name, id: "name", class: "form-control spacing-fields", placeholder: "Nome" %>
+                            </div>
 
-                        <div class="form-label-group">
-                            <%= f.label :Sobrenome %><br /><br />
-                            <%= f.text_field :surname, id: "surname", class: "form-control spacing-fields", placeholder: "Sobrenome" %>
-                        </div>
+                            <div class="form-label-group">
+                                <%= f.label :Sobrenome %><br /><br />
+                                <%= f.text_field :surname, id: "surname", class: "form-control spacing-fields", placeholder: "Sobrenome" %>
+                            </div>
 
-                        <div class="form-label-group">
-                            <%= f.label :CPF %><br /><br />
-                            <%= f.text_field :cpf, id: "cpf", placeholder: "CPF",  autofocus: true, autocomplete: "off", onkeypress: "mascara(this, '###.###.###-##')", maxlength:"14", class: "form-control spacing-fields",placeholder: "Cpf" %>
-                        </div>
+                            <div class="form-label-group">
+                                <%= f.label :CPF %><br /><br />
+                                <%= f.text_field :cpf, id: "cpf", placeholder: "CPF",  autofocus: true, autocomplete: "off", onkeypress: "mascara(this, '###.###.###-##')", maxlength:"14", class: "form-control spacing-fields",placeholder: "Cpf" %>
+                            </div>
 
-                        <div class="form-label-group">
-                            <%= f.label :Senha %><br /><br />
-                            <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", id: "userPassword", class: "form-control spacing-fields" %>
-                        </div>
+                            <div class="form-label-group">
+                                <%= f.label :Senha %><br /><br />
+                                <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", id: "userPassword", class: "form-control spacing-fields" %>
+                            </div>
 
-                        <div class="form-label-group">
-                            <%= f.label :Confirmação_de_senha %><br /><br />
-                            <%= f.password_field :userPasswordConfirmation, placeholder: "Confirmação de Senha", autocomplete: "off", id: "userPasswordConfirmation", class: "form-control spacing-fields" %>
-                        </div>
+                            <div class="form-label-group">
+                                <%= f.label :Confirmação_de_senha %><br /><br />
+                                <%= f.password_field :userPasswordConfirmation, placeholder: "Confirmação de Senha", autocomplete: "off", id: "userPasswordConfirmation", class: "form-control spacing-fields" %>
+                            </div>
 
-                        <div class="actions">
-                            <%= f.submit "Cadastrar-se", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
-                        </div>
-                    <% end %>
-                    <%= render "devise/shared/links" %>
+                            <div class="actions">
+                                <%= f.submit "Cadastrar-se", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
+                            </div>
+                        <% end %>
+                        <%= render "devise/shared/links" %>
+                    </div>
                 </div>
             </div>
         </div>

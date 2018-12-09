@@ -1,0 +1,30 @@
+<div class='d-flex align-items-start flex-column mb-3'>
+  <%= link_to 'Novo Cartão', new_adminDashboard_history_path, class: 'btn btn-outline-primary' %>
+</div>
+
+<table class='table table-striped'>
+  <thead class='thead-light'>
+    <tr>
+      <th scope='col'>#</th>
+      <th scope='col'>Data</th>
+      <th scope='col'>Título</th>
+      <th scope='col'>Posição</th>
+      <th scope='col'>Editar</th>
+      <th scope='col'>Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @histories.present? %>
+      <% @histories.each do |history| %>
+        <tr>
+          <th scope='row'><%= history.id %></th>
+          <td><%= history.time %></td>
+          <td><%= history.title %></td>
+          <td><%= history.order %></td>
+          <td><%= link_to 'Editar', edit_adminDashboard_history_path(history.id), class: 'btn-sm btn-info' %></td>
+          <td><%= link_to 'Excluir', adminDashboard_history_path(id: history.id), class: 'btn-sm btn-info', method: 'delete', data: {confirm: 'Tem certeza?'} %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

@@ -39,7 +39,7 @@ Funcionalidade: perfilde_usuario
       |content|essa oficina esta invalida|
     E que eu esteja na minha pagina de perfil
     Quando eu clicar no link "Minhas Oficinas"
-    Entao devo ser redirecionado a pagina de oficinas rejeitadas
+    Entao devo ser redirecionado a pagina de oficinas do usuario
     E devo ver na tabela a oficina criada com os dados:
       |title|Teste 1|
 

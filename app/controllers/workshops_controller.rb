@@ -26,13 +26,14 @@ class WorkshopsController < ApplicationController
   end
 
   def create
-    @workshop = Workshop.new(workshop_params)
-    @workshop.author_id = current_user.id
-    @workshop.editor_id = current_user.id
+    workshop = Workshop.new(workshop_params)
+    workshop.author_id = current_user.id
+    workshop.editor_id = current_user.id
 
-    if @workshop.save
+    if workshop.save
+      three_actives(workshop) unless !workshop.display
       flash[:notice] = 'Workshop criado com sucesso!'
-      redirect_to workshops_path
+      redirect_to user_workshops_path
     else
       flash[:alert] = 'Não foi possível criar o workshop!'
       render 'new'
@@ -48,11 +49,12 @@ class WorkshopsController < ApplicationController
   end
 
   def update
-    @workshop = Workshop.find(params[:id])
-    @workshop.put_in_hold
-    if @workshop.update(workshop_params)
+    workshop = Workshop.find(params[:id])
+    workshop.put_in_hold
+    if workshop.update(workshop_params)
+      three_actives(workshop) unless !workshop.display
       flash[:notice] = 'Workshop atualizado com sucesso!'
-      redirect_to workshops_path
+      redirect_to user_workshops_path
     else
       flash[:alert] = 'Não foi possível atualizar o workshop!'
       render 'edit'
@@ -81,4 +83,9 @@ class WorkshopsController < ApplicationController
       )
     end
 
+    def three_actives(workshop)
+      if Workshop.where(active: true).size > 3
+        Workshop.where.not(id: workshop.id).find_by(statur: 1, display: :true).hide
+      end
+    end
 end

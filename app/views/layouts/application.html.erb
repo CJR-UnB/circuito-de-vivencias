@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CircuitoDeVivencias</title>
+    <%= favicon_link_tag url_for(Logo.find_by(active: :true).image) %>
+    <title>Circuito de Vivencias</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,9 +17,15 @@
 
     <!-- Custom styles for this template -->
     <%= stylesheet_link_tag 'css/agency.min.css'%>
+<<<<<<< HEAD
     <%= stylesheet_link_tag "vendor/bootstrap/css/bootstrap.min.css" %>
     <%= stylesheet_link_tag "css/scrolling-nav.css" %>
 
+=======
+    <% if Rails.env.production?%>
+      <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <% end %>
+>>>>>>> 24d8e60e8f7fd0b3fbf6e676d92600af86ffa482
   </head>
 
   <body>

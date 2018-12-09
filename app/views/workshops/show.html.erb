@@ -45,8 +45,8 @@
       <div class="col-lg-8 mx-auto">
         <% if @comments.present? %>
           <% @comments.each do |comment| %>
-            <div class="comment_container">
-              <%= comment.commentContent %>
+            <div class="comment_container container">
+              <%= simple_format(comment.commentContent) %>
             </div>
           <% end %>
         <% end %>

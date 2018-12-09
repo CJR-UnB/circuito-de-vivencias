@@ -1,0 +1,25 @@
+<%= form_for @logo, url: form_url, method: form_method do |f| %>
+  <div class='form-group'>
+    <%= f.label(:name, 'Nome') %>
+    <%= f.text_field(:name, class: 'form-control') %>
+  </div>
+  <% if @logo.image.present? %>
+    <div class='form-group'>
+      <%= image_tag(@logo.image, style: 'width: 240px; height: 240px; object-fit: cover;', class: 'img-thumbnail') %>
+    </div>
+  <% end %>
+  <div class='form-group'>
+    <%= f.label(:image, 'Imagem') %>
+    <%= f.file_field(:image, accept: '.ico, .png', class: 'form-control-file', id: 'image') %>
+  </div>
+  <div class='form-check'>
+    <%= f.check_box(:active, checked_value: true, unchecked_value: false, class: 'form-check-input') %>
+    <%= f.label(:active, 'Exibir', class: 'form-check-label') %>
+  </div>
+  <div class='form-group mt-3'>
+    <%= f.submit('Salvar', class: 'btn btn-sm btn-success') %>
+    <% if form_method == :patch %>
+      <%= link_to 'Excluir', adminDashboard_logo_path(@logo), class: 'btn btn-sm btn-danger', method: :delete %>
+    <% end %>
+  </div>
+<% end %>

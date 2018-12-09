@@ -71,12 +71,12 @@ Dado("que eu esteja na minha pagina de perfil") do
   visit(profile_path)
 end
 
-Entao("devo ser redirecionado a pagina de oficinas rejeitadas") do
-  assert_current_path(rejected_workshops_path(id: @user.id))
+Entao("devo ser redirecionado a pagina de oficinas do usuario") do
+  assert_current_path(user_workshops_path(id: @user.id, page: 1))
 end
 
-Dado("eu esteja na pagina de visualisacao de oficinas rejeitadas") do
-  visit(rejected_workshops_path(id: @user.id))
+Dado("eu esteja na pagina de visualisacao de oficinas") do
+  visit(user_workshops_path(id: @user.id, page: 1))
 end
 
 Entao("devo ser redirecionado para a pagina de visualisacao de feedback") do

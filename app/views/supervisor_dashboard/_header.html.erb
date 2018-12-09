@@ -72,10 +72,10 @@
             </a>
             <ul class="dropdown-menu fsz-sm">
                 <li>
-                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                    <i class="fa fa-user mR-10"></i>
-                    <span>Perfil</span>
-                </a>
+                <%= link_to profile_path(id: current_user.id), class: 'd-b td-n pY-5 bgcH-grey-100 c-grey-700' do %>
+                        <i class="fa fa-user mR-10"></i>
+                        <span>Perfil</span>
+                <% end %>
                 </li>
                 <li role="separator" class="divider"></li>
                 <li>

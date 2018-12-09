@@ -1,0 +1,17 @@
+<%= form_for @video, url: form_path, method: form_method do |f| %>
+  <div class='form-group'>
+    <%= f.label(:title, 'Titulo') %>
+    <%= f.text_field(:title, class: 'form-control', id: "title") %>
+  </div>
+  <div class='form-group'>
+    <%= f.label(:url, 'Url') %>
+    <%= f.text_field(:url, class: 'form-control', id: "url") %>
+  </div>
+  <div class='form-check'>
+    <%= f.check_box(:active, checked_value: true, unchecked_value: false, class: 'form-check-input') %>
+    <%= f.label(:active, 'Exibir', class: 'form-check-label') %>
+  </div>
+  <div class='form-group mt-3'>
+    <%= f.submit('Postar', class: 'btn btn-sm btn-success') %>
+  </div>
+<% end %>
