@@ -1,8 +1,101 @@
-<div class='container'>
-  <%= render 'alert' %>
+<!-- Navigation -->
+      <%= render 'header' %>
+      <!-- Page Content -->
+      <!-- Page Heading -->
+          <!-- Image Section - set the background image for the header in the line below -->
+      <div class="container-fluid header-image">
+      <section class="py-5 bg-image-full" style="<% if Background.find_by(active: true).present? %>background-image: url(<%= url_for(Background.find_by(active: true).image) %>); background-repeat: no-repeat; background-size: cover; background-position: center;<% end %>">
+      </div>
+      <div class="container">
 
-  <%= render partial: 'workshops', object: @workshops %>
+        <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+        <div style="height: 5em;"></div>
+      </section>
+      <%= render 'alert' %>
+      <% if @workshops.length != 0 %>
+        <h1 class="my-4">Lista de Oficinas </h1>
+        <div class="container">
+          <div class="row">
+              <div class="col-md-2">
+              </div>
+              <div class="col-md-6">
+                  <div class="search-form">
+                      <%= form_tag(workshops_path(page: 1), :method => :get) do %>
+                          <%= text_field_tag :title, "", class: 'form-control' %>
+                          <%= submit_tag 'Pesquisar', class: "btn btn-info" %>
+                      <% end %>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <% @workshops.each do |workshop| %>
+            <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <%= link_to workshop.title.truncate(17), workshop_path(id: workshop.id) %>
+                  </h4>
+                  <p class="card-text"><%= workshop.resume.truncate(29)  %></p>
+                  <p><%= workshop.updated_at.strftime("Última atualização: %d/%m/%Y às %H:%M")%></p>
+                </div>
+                <div class="card-footer">
+                  <p>Autor: <%= User.find(workshop.author_id).name %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <!-- /.row -->
 
-  <%= link_to 'Nova Oficina', new_workshop_path, class: 'btn btn-info' %>
-  <%= link_to 'Voltar', root_path, class: 'btn btn-info' %>
-</div>
+        <!-- Pagination -->
+        <% if @last_page.to_i != 1 %>
+          <ul class="pagination justify-content-center", style="margin-top: 5%;">
+            <%if @page.to_i != 1 %>
+              <li class="page-item">
+                <%= link_to workshops_path(page: @page.to_i-1, title: @title), class: "page-link" do %>
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                <% end %>
+              </li>
+            <% end %>
+            <li class="page-item">
+              <%= link_to @page, workshops_path(page: @page, title: @title), class: "page-link btn btn-primary" %>
+            </li>
+            <% if @page.to_i + 1 <= @last_page%>
+              <li class="page-item">
+                <%= link_to @page.to_i+1, workshops_path(page: @page.to_i+1, title: @title), class: "page-link" %>
+              </li>
+            <% end %>
+            <% if @page.to_i + 2 <= @last_page%>
+              <li class="page-item">
+                <%= link_to @page.to_i+2, workshops_path(page: @page.to_i+2, title: @title), class: "page-link" %>
+              </li>
+            <% end %>
+            <%if @page.to_i != @last_page.to_i %>
+              <li class="page-item">
+                <%= link_to workshops_path(page: @page.to_i+1, title: @title), class: "page-link", aria_label: "Next" do %>
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+          <% end %>
+      <% else %>
+        <h4 class="no_workshops_message">Nenhuma oficina encontrada</h4>
+      <% end %>
+      <!-- /.container -->
+      </div>
+      <!-- Footer -->
+      <footer class="py-5 bg-dark" style="margin-top: 5%;">
+        <div class="container">
+          <p class="m-0 text-center text-white">Copyright &copy; Departamento de Matemática da universidade de Brásilia, 2018</p>
+        </div>
+        <!-- /.container -->
+      </footer>
+
+      <!-- Bootstrap core JavaScript -->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
