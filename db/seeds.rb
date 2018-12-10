@@ -10,7 +10,6 @@
 Role.delete_all
 Feedback.delete_all
 Workshop.delete_all
-Category.delete_all
 Comment.delete_all
 Video.delete_all
 Background.delete_all
@@ -35,4 +34,3 @@ supervisor = User.new(name: 'Supervisor', surname: 'Supervisor', cpf: '111111111
 supervisor.turnIntoSupervisor
 supervisor.save
 
-Category.find_or_create_by(name: 'Algebra')

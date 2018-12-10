@@ -42,12 +42,6 @@ ActiveRecord::Schema.define(version: 2018_12_03_225430) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.text "commentContent"
     t.datetime "created_at", null: false
@@ -145,15 +139,6 @@ ActiveRecord::Schema.define(version: 2018_12_03_225430) do
     t.boolean "active"
   end
 
-  create_table "workshop_categories", force: :cascade do |t|
-    t.bigint "category_id"
-    t.bigint "workshop_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_workshop_categories_on_category_id"
-    t.index ["workshop_id"], name: "index_workshop_categories_on_workshop_id"
-  end
-
   create_table "workshops", force: :cascade do |t|
     t.string "title"
     t.text "resume"
@@ -170,6 +155,4 @@ ActiveRecord::Schema.define(version: 2018_12_03_225430) do
   add_foreign_key "evaluations", "workshops"
   add_foreign_key "feedbacks", "users", column: "supervisor_id"
   add_foreign_key "feedbacks", "workshops", on_delete: :cascade
-  add_foreign_key "workshop_categories", "categories"
-  add_foreign_key "workshop_categories", "workshops"
 end
