@@ -8,16 +8,13 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#about">Página Inicial</a>
+          <a class="nav-link js-scroll-trigger" href="#top">Página Inicial</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#about">Resumo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#services">Feedback</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#contact">Comentário</a>
+          <a class="nav-link js-scroll-trigger" href="#services">Comentário</a>
         </li>
       </ul>
     </div>
@@ -25,7 +22,7 @@
 </nav>
 
 <header class="bg-primary text-white">
-  <div class="container text-center">
+  <div class="container text-center" id="#top">
     <h1><%= @workshop.title %></h1>
     <p class="lead"><%= User.find(@workshop.author_id).name %> - ano de publicacao</p>
   </div>
@@ -37,13 +34,6 @@
       <div class="col-lg-8 mx-auto">
         <h2>Resumo</h2>
         <p class="lead"><%= @workshop.resume %></p>
-          <p> </p>
-        <p>Palavras relacionadas a oficina:</p>
-        <ul>
-          <li>Porcentagem</li>
-          <li>Números Irracionais</li>
-            <li>Divisão</li>
-        </ul>
       </div>
     </div>
   </div>
@@ -53,23 +43,36 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto">
-        <h2>Feedback</h2>
-        <p class="lead">Responda nossa enquete.</p>
-            <ce:enquete id="8603910" question_size="5" option_size="6" font="Roboto, sans-serif" primary_color="#194d33" secondary_color="#ffffff" height="253" ></ce:enquete>
-            <script async type="text/javascript" src="https://www.criarenquete.com.br/user.js"></script>
-            <ce:enquete id="8604010" question_size="5" option_size="6" font="Roboto, sans-serif" primary_color="#9f0500" secondary_color="#000000" height="278" ></ce:enquete>
-            <script async type="text/javascript" src="https://www.criarenquete.com.br/user.js"></script>
-        </div>
+        <% if @comments.present? %>
+          <% @comments.each do |comment| %>
+            <div class="comment_container container">
+              <%= simple_format(comment.commentContent) %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="services" class="bg-light">
+<section id="services">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto">
-        <h2>Comentários</h2>
-        <p class="lead">Deixe aqui o comentário para o oficineiro.</p>
+        <% if user_signed_in? %>
+          <%= form_with scope: :comment, url: comment_index_path do |f| %>
+            <div class='form-group'>
+              <%= f.label(:commentContent, 'Comentário') %>
+              <%= f.text_area(:commentContent, class: 'form-control') %>
+              <%= f.number_field(:workshop_id, hidden: true, value: @workshop.id) %>
+              <br>
+              <%= f.submit('Salvar', class: 'btn btn-success')%>
+              <%= link_to 'Voltar', workshops_path, class: 'btn btn-info'%>
+            </div>
+          <% end %>
+        <% else %>
+          <span><h2>Comentário não disponível, logue no sistema para comentar.</h2></span>
+        <%  end %>
       </div>
     </div>
   </div>

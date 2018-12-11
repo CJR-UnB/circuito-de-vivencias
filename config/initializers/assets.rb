@@ -23,4 +23,9 @@ Rails.application.config.assets.precompile += %w( *.jpg *.png)
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 # Precompile das imagens do template do admin
-Rails.application.config.assets.precompile += %w( *.jpg *.png)
+Rails.application.config.assets.precompile += %w[css/scrolling-nav.css]
+Rails.application.config.assets.precompile += %w[https://www.criarenquete.com.br/user.js]
+Rails.application.config.assets.precompile += %w[vendor/jquery/jquery.min.js]
+Rails.application.config.assets.precompile += %w[js/scrolling-nav.js]
+Rails.application.config.assets.precompile += %w( vendor/bootstrap/css/bootstrap.min.css )
+Rails.application.config.assets.precompile += %w( vendor/bootstrap/js/bootstrap.bundle.min.js )
