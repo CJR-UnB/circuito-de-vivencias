@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
   scope path: 'adminDashboard', as: 'adminDashboard' do
     resources :backgrounds
-    resources :categories
     resources :contacts
     resources :histories
     resources :staff_members

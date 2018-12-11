@@ -8,15 +8,25 @@ class WorkshopsController < ApplicationController
   def verify_workshop
     @workshop = Workshop.find(params[:id])
     if @workshop.status != 'accepted'
-      if Role.find(current_user.role_id).name != 'Supervisor'
+      if Role.find(current_user.role_id).name != 'Supervisor' && current_user.id != @workshop.author_id
+        puts current_user.id
+        puts @workshop.author_id
         redirect_to root_path
       end
     end
   end
 
   def index
-    @workshops = Workshop.where(status: 'accepted')
-    @myWorkshops = Workshop.where(author_id: current_user.id)
+    @title = params[:title]
+    @page = params[:page]
+    puts @title
+    if @title
+      @last_page = Workshop.where(status: 'accepted').where('title LIKE ?', "%#{@title}%").page(1).per(16).total_pages
+      @workshops = Workshop.where(status: 'accepted').where('title LIKE ?', "%#{@title}%").order(:updated_at).page(@page).per(16)
+    else
+      @last_page = Workshop.where(status: 'accepted' ).page(1).per(16).total_pages
+      @workshops = Workshop.where(status: 'accepted' ).order(:updated_at).page(@page).per(16)
+    end
   end
 
   def show
@@ -77,10 +87,12 @@ class WorkshopsController < ApplicationController
     def workshop_params
       params.require(:workshop).permit(
         :title,
-        :categories,
         :resume,
         :document
       )
+    end
+    def search_workshop_params
+      params.require(:workshop).permit(:title)
     end
 
     def three_actives(workshop)

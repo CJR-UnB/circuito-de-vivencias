@@ -10,10 +10,6 @@
       <%= f.text_field(:resume,  value: @workshop.resume, class: 'form-control', id: 'resume') %>
     </div>
     <div class='form-group'>
-      <%= f.label(:categories, 'Categorias') %><br>
-      <%= f.select(:categories, Category.all.collect { |p| [p.name, p.id] }, {}, id: 'categories', class: 'form-control', multiple: true) %>
-    </div>
-    <div class='form-group'>
       <%= f.label(:document, 'Documento') %>
       <%= f.file_field(:document, accept: '.docx, .odt', class: 'form-control-file', id: 'document') %>
     </div>

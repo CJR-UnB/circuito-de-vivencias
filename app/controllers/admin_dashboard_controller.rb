@@ -6,7 +6,12 @@ class AdminDashboardController < ApplicationController
 
   layout 'adminDashboard/adminDashboard'
 
-  def home; end
+  def home
+    @users = User.count
+    @workshops = Workshop.count
+    @supervisors = User.where(role_id: Role.find_by(name: 'Supervisor').id).length
+    @comments = Comment.count
+  end
 
   def videos_index
     @page = params[:page]
