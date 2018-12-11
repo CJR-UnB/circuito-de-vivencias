@@ -11,6 +11,7 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w[vendor/fontawesome-free/css/all.min.css]
 Rails.application.config.assets.precompile += %w[css/agency.min.css]
+Rails.application.config.assets.precompile += %w( vendor/bootstrap/css/bootstrap.min.css )
 Rails.application.config.assets.precompile += %w[js/jqBootstrapValidation.js]
 Rails.application.config.assets.precompile += %w[js/contact_me.js]
 Rails.application.config.assets.precompile += %w[js/agency.min.js]

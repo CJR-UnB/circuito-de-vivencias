@@ -8,13 +8,19 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#top">Página Inicial</a>
+          <%= link_to 'Pagina inicial', root_path, class: 'nav-link'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Outras oficinas', workshops_path, class: 'nav-link'%>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#about">Resumo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#services">Comentário</a>
+          <a class="nav-link js-scroll-trigger" href="#baixar">Baixar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#services">Comentários</a>
         </li>
       </ul>
     </div>
@@ -24,22 +30,47 @@
 <header class="bg-primary text-white">
   <div class="container text-center" id="#top">
     <h1><%= @workshop.title %></h1>
-    <p class="lead"><%= User.find(@workshop.author_id).name %> - ano de publicacao</p>
+    <p class="lead">Autor: <%= User.find(@workshop.author_id).name %> <%= User.find(@workshop.author_id).surname %></p>
+    <p><%= @workshop.updated_at.strftime("Última atualização: %d/%m/%Y às %H:%M") %></p>
   </div>
 </header>
 
-<section id="about">
+<section id="about" style="padding-bottom: 10px;">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto">
         <h2>Resumo</h2>
-        <p class="lead"><%= @workshop.resume %></p>
+        <p class="lead"><%= simple_format(@workshop.resume) %></p>
       </div>
     </div>
   </div>
 </section>
+<section id="baixar" style="padding-bottom: 50px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+      </div>
+      <%= link_to  "Baixar", @workshop.document, download: true, class: 'btn btn-md btn-success' %>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <% if Role.find(current_user.role_id).name == 'Supervisor' %>
+      <% if @workshop.status == 'in_hold' || @workshop.status == 'rejected'%>
+        <%= link_to 'Aceitar', supervisorDashboard_accept_workshop_path(id: @workshop.id), class: 'btn btn-md btn-success', method: :put%>
+      <% end %>
+      <br>
+      <% if @workshop.status == 'in_hold' || @workshop.status == 'accepted'%>
+        <%= link_to 'Rejeitar', supervisorDashboard_write_feedback_path(id: @workshop.id), class: 'btn btn-md btn-danger'%>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
-<section id="services" class="bg-light">
+<section id="services">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto">
@@ -54,6 +85,7 @@
     </div>
   </div>
 </section>
+<br>
 
 <section id="services">
   <div class="container">
@@ -66,8 +98,7 @@
               <%= f.text_area(:commentContent, class: 'form-control') %>
               <%= f.number_field(:workshop_id, hidden: true, value: @workshop.id) %>
               <br>
-              <%= f.submit('Salvar', class: 'btn btn-success')%>
-              <%= link_to 'Voltar', workshops_path, class: 'btn btn-info'%>
+              <%= f.submit('Comentar', class: 'btn btn-success')%>
             </div>
           <% end %>
         <% else %>
@@ -77,6 +108,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- Footer -->
 <footer class="py-5 bg-dark">
