@@ -13,10 +13,6 @@
       <%= f.label(:document, 'Documento') %>
       <%= f.file_field(:document, accept: '.docx, .odt', class: 'form-control-file', id: 'document') %>
     </div>
-    <div class='form-group form-check'>
-      <%= f.check_box(:display, checked_value: true, unchecked_value: false, class: 'form-check-input') %>
-      <%= f.label(:display, 'Exibir', class: 'form-check-label') %>
-    </div>
     <%= f.submit('Salvar', class: 'btn btn-outline-success')%>
     <%= link_to 'Voltar', user_workshops_path(page: 1), class: 'btn btn-outline-info'%>
   <% end %>
