@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_225430) do
+ActiveRecord::Schema.define(version: 2018_12_14_100430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2018_12_03_225430) do
     t.integer "reports", default: 0
     t.string "name"
     t.string "institution"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
     t.index ["workshop_id"], name: "index_comments_on_workshop_id"
   end
 
