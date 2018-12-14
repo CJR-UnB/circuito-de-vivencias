@@ -1,0 +1,26 @@
+<table class='table table-striped'>
+  <thead class='thead-light'>
+    <tr>
+      <th scope='col'>#</th>
+      <th scope='col'>Título</th>
+      <th scope='col'>Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @workshops.present? %>
+      <% @workshops.each do |workshop| %>
+        <tr class='centralizado-verticalmente'>
+          <th scope='row'><%= workshop.id %></th>
+          <td><%= workshop.title %></td>
+          <td>
+            <% if !workshop.display %>
+              <%= link_to 'Exibir', adminDashboard_workshops_path(id: workshop.id, display: :true), class: 'btn-sm btn-success', method: :patch %>
+            <% else %>
+              <%= link_to 'Ocultar', adminDashboard_workshops_path(id: workshop.id, display: :false), class: 'btn-sm btn-danger', method: :patch %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

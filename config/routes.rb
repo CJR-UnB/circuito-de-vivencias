@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     get '/edit_video/:id', to: 'admin_dashboard#edit_video', as: 'edit_video'
     patch '/edit_video/:id', to: 'admin_dashboard#update_video'
     delete '/delete_video', to: 'admin_dashboard#delete_video', as: 'delete_video'
+    get '/workshops', to: 'favorites#index'
+    patch '/workshops', to: 'favorites#update'
   end
 
   scope path: 'supervisorDashboard', as: 'supervisorDashboard' do
