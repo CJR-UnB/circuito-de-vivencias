@@ -13,12 +13,13 @@ class CommentController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
+    puts 'eai'
     if @comment.save
       flash[:notice] = 'Comentário criado com sucesso!'
-      redirect_to worshop_path
+      redirect_to workshop_path(id: @comment.workshop_id)
     else
       flash.now[:error] = 'Erro na insersão do comentário'
-      redirect_to worshop_path
+      redirect_to workshop_path(id: @comment.workshop_id)
     end
   end
 
@@ -34,6 +35,6 @@ class CommentController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:name, :institution, :commentContent, :workshop_id)
+    params.require(:comment).permit(:name, :institution, :commentContent, :workshop_id, :user_id)
   end
 end
