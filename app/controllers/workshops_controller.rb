@@ -41,7 +41,6 @@ class WorkshopsController < ApplicationController
     workshop.editor_id = current_user.id
 
     if workshop.save
-      three_actives(workshop) unless !workshop.display
       flash[:notice] = 'Workshop criado com sucesso!'
       redirect_to user_workshops_path
     else
@@ -62,7 +61,6 @@ class WorkshopsController < ApplicationController
     workshop = Workshop.find(params[:id])
     workshop.put_in_hold
     if workshop.update(workshop_params)
-      three_actives(workshop) unless !workshop.display
       flash[:notice] = 'Workshop atualizado com sucesso!'
       redirect_to user_workshops_path
     else
@@ -91,13 +89,8 @@ class WorkshopsController < ApplicationController
         :document
       )
     end
+
     def search_workshop_params
       params.require(:workshop).permit(:title)
-    end
-
-    def three_actives(workshop)
-      if Workshop.where(active: true).size > 3
-        Workshop.where.not(id: workshop.id).find_by(statur: 1, display: :true).hide
-      end
     end
 end

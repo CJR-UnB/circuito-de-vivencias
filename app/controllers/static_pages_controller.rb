@@ -7,6 +7,6 @@ class StaticPagesController < ApplicationController
     @histories = History.order(order: :asc)
     @staff_members = StaffMember.order(:name)
     @logo = Logo.find_by(active: :true)
-    @workshops = Workshop.where(display: true, status: 1)
+    @workshops = Workshop.where(display: true).order(:title)
   end
 end
