@@ -20,11 +20,13 @@
 
 <!-- @App Content -->
 <!-- =================================================== -->
-<div>
+<div class="app">
+    <div>
     <%= render partial: 'header' %>
     <!-- ### $App Screen Content ### -->
     <main class='main-content bgc-grey-100'>
         <div id='mainContent'>
+        <h1>Bem-vindo, <%= current_user.name %> <%= current_user.surname %>!</h1>
         <div class="row gap-20 masonry pos-r">
             <div class="masonry-sizer col-md-6"></div>
             <div class="masonry-item  w-100">
@@ -110,5 +112,6 @@
 
     <!-- ### $App Screen Footer ### -->
     <%= render partial: 'footer' %>
+    </div>
     </div>
 </div>

@@ -8,7 +8,7 @@ class Workshop < ApplicationRecord
   has_one :feedback
   has_many :users, through: :evaluations
   has_many :comments
-  
+
   validates :title, presence: true
   validates :document, presence: true, blob: {content_type: ['application/vnd.oasis.opendocument.text', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']}
 
@@ -27,6 +27,10 @@ class Workshop < ApplicationRecord
   end
 
   def hide
-    self.update(active: false)
+    self.update(display: false)
+  end
+
+  def show
+    self.update(display: true)
   end
 end

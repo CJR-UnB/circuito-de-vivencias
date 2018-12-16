@@ -1,15 +1,22 @@
-<div class="container">
-    <h2 class="feedback-title">Feedback</h2>
+<%= render 'user_header' %>
+<header class="bg-primary text-white">
+  <div class="container text-center" id="#top">
+    <h1>Feedback da oficina:<br><%= @feedback.workshop.title %></h1>
+    <p class="lead">Autor: <%= @supervisor_author.name %> <%= @supervisor_author.surname %></p>
+    <p><%= @feedback.created_at.strftime("Criado em: %d/%m/%Y às %H:%M") %></p>
+  </div>
+</header>
+
+<section style="padding-bottom: 10px;">
+  <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-1">
-            <h3 class="supervisor_author_title">Autor: <%= @supervisor_author.name %></h3>
-            <h3 class="subject_title">Assunto: <%= @feedback.subject %></h3>
-        </div>
+        <h4 class="subject_title">Assunto: <%= @feedback.subject %></h4>
     </div>
-    <div clas="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h3 class="content_title">Corpo:</h3>
-            <%= simple_format(@feedback.content) %>
-        </div>
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <p class="lead"><%= simple_format(@feedback.content) %></p>
+      </div>
     </div>
-</div>
+  </div>
+</section>
+<%= render 'user_footer' %>

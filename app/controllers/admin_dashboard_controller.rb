@@ -6,7 +6,12 @@ class AdminDashboardController < ApplicationController
 
   layout 'adminDashboard/adminDashboard'
 
-  def home; end
+  def home
+    @users = User.count
+    @workshops = Workshop.count
+    @supervisors = User.where(role_id: Role.find_by(name: 'Supervisor').id).length
+    @comments = Comment.count
+  end
 
   def videos_index
     @page = params[:page]
@@ -31,7 +36,7 @@ class AdminDashboardController < ApplicationController
       flash[:notice] = "Video criado com sucesso"
       redirect_to adminDashboard_videos_path(page: 1)
     else
-      if video.title == nil
+      if video.title == ""
         flash[:alert] = "Titulo não pode estar em branco"
       else
         flash[:alert] = "Url invalida"

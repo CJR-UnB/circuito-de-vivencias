@@ -19,9 +19,9 @@
 
     <!-- Custom styles for this template -->
     <%= stylesheet_link_tag 'css/agency.min.css'%>
-    <% if Rails.env.production?%>
-      <script src="/js/bootstrap.min.js" type="text/javascript"></script>
-    <% end %>
+    <%= stylesheet_link_tag "vendor/bootstrap/css/bootstrap.min.css" %>
+    <%= stylesheet_link_tag "css/scrolling-nav.css" %>
+
   </head>
 
   <body>
@@ -32,5 +32,10 @@
     <!-- Custom scripts for this template -->
     <%= javascript_include_tag 'js/agency.min.js' %>
     <%= javascript_include_tag 'vendor/jquery-easing/jquery.easing.min.js' %>
+    <%= javascript_include_tag "https://www.criarenquete.com.br/user.js" %>
+    <%= javascript_include_tag "vendor/jquery/jquery.min.js" %>
+    <%= javascript_include_tag "vendor/bootstrap/js/bootstrap.bundle.min.js" %>
+    <%= javascript_include_tag "vendor/jquery-easing/jquery.easing.min.js" %>
+    <%= javascript_include_tag "js/scrolling-nav.js" %>
   </body>
 </html>

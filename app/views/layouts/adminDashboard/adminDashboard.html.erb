@@ -101,14 +101,6 @@
                 <% end %>
               </li>
               <li class='nav-item'>
-                <%= link_to(adminDashboard_categories_path, class: 'sidebar-link') do %>
-                  <span class='icon-holder'>
-                    <i class='c-blue-500 ti-tag'></i>
-                  </span>
-                  <span class='title'>Categorias</span>
-                <% end %>
-              </li>
-              <li class='nav-item'>
                 <%= link_to(adminDashboard_backgrounds_path, class: 'sidebar-link') do %>
                   <span class='icon-holder'>
                     <i class='c-blue-500 ti-image'></i>
@@ -156,6 +148,22 @@
                   <span class='title'>Logomarca</span>
                 <% end %>
               </li>
+              <li class='nav-item'>
+                <%= link_to(adminDashboard_workshops_path, class: 'sidebar-link') do %>
+                  <span class='icon-holder'>
+                    <i class='c-blue-500 ti-book'></i>
+                  </span>
+                  <span class='title'>Oficinas Favoritas</span>
+                <% end %>
+              </li>
+              <li class='nav-item'>
+                <%= link_to(root_path, class: 'sidebar-link') do %>
+                  <span class='icon-holder'>
+                    <i class='c-blue-500 ti-share-alt'></i>
+                  </span>
+                  <span class='title'>Voltar ao site</span>
+                <% end %>
+              </li>
             </ul>
           </div>
         </div>
@@ -193,6 +201,9 @@
         </div>
       </div>
     </div>
+    <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
+        <span>© All rights Reserved. Developed by CJR.</span>
+</footer>
 
     <!-- Contact form JavaScript -->
     <%= javascript_include_tag 'js/jqBootstrapValidation.js' %>

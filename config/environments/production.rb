@@ -90,22 +90,19 @@ Rails.application.configure do
 
 
 
-  config.action_mailer.default_url_options = { :host => 'https://circuito-de-vivencias.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.action_mailer.delivery_method = :smtp
+
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: '587',
-    tls: true,
-    domain: ENV["GMAIL_DOMAIN"],
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => 'cdevivencia@gmail.com',
+    :password             => 'M4t3m4t1c4gr3g4',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
   }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?

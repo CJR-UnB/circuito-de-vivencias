@@ -58,16 +58,15 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
+  config.action_mailer.perform_deliveries = true
+
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 25,
-    domain: ENV["GMAIL_DOMAIN"],
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"],
-    ssl: true,
-    tls: true
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => 'cdevivencia@gmail.com',
+    :password             => 'M4t3m4t1c4gr3g4',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
   }
 
   # Raises error for missing translations
