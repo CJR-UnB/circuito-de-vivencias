@@ -10,12 +10,11 @@ class FavoritesController < ApplicationController
 
   def update
     workshop = Workshop.find(params[:id])
-
-    if params[:display]
+    if params[:display] == "true"
       workshop.show
       only_three_actives(workshop)
     else
-      worshop.hide
+      workshop.hide
     end
 
     redirect_to adminDashboard_workshops_path

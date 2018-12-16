@@ -14,9 +14,9 @@
           <td><%= workshop.title %></td>
           <td>
             <% if !workshop.display %>
-              <%= link_to 'Exibir', adminDashboard_workshops_path(id: workshop.id, display: :true), class: 'btn-sm btn-success', method: :patch %>
+              <%= link_to 'Exibir', adminDashboard_workshops_path(id: workshop.id, display: true), class: 'btn-sm btn-success', method: :patch %>
             <% else %>
-              <%= link_to 'Ocultar', adminDashboard_workshops_path(id: workshop.id, display: :false), class: 'btn-sm btn-danger', method: :patch %>
+              <%= link_to 'Ocultar', adminDashboard_workshops_path(id: workshop.id, display: false), class: 'btn-sm btn-danger', method: :patch %>
             <% end %>
           </td>
         </tr>
