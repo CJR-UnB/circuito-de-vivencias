@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :send_mail
+
   has_many :evaluations
   has_many :workshops, through: :evaluations
   has_many :feedbacks
@@ -44,4 +46,7 @@ class User < ApplicationRecord
     self.role_id == Role.find_by(name: 'User').id
   end
 
+  def send_mail
+    UserMailer.user_info(self).deliver
+  end
 end
