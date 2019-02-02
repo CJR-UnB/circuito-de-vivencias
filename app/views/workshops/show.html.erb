@@ -1,7 +1,11 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top"><%= Logo.find_by(active: :true).name%></a>
+    <% if Logo.find_by(active: :true) != nil %>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <%= Logo.find_by(active: :true).name %>
+      </a>
+    <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -90,7 +94,7 @@
 <!-- comments container -->
 		<div class="comment_block" style="overflow-y: scroll; margin-top: 5%; margin-bottom: 10%;" id="comments">
 
-		<!-- 
+		<!--
 			Comments are structured in the following way:
 
 			{ul} defines a new comment (singular)
@@ -100,7 +104,7 @@
 
 			<ul>
 				<comment>
-					
+
 				</comment
 
 					<li>
