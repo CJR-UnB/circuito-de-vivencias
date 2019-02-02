@@ -42,6 +42,7 @@ class WorkshopsController < ApplicationController
 
     if workshop.save
       flash[:notice] = 'Workshop criado com sucesso!'
+      WorkshopMailer.workshop_info(workshop).deliver
       redirect_to user_workshops_path
     else
       flash[:alert] = 'Não foi possível criar o workshop!'
