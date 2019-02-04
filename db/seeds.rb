@@ -9,8 +9,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Role.delete_all
 Feedback.delete_all
-Workshop.delete_all
 Comment.delete_all
+Workshop.delete_all
 Video.delete_all
 Background.delete_all
 User.delete_all
