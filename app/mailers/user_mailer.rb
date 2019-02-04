@@ -3,6 +3,8 @@ class UserMailer < ApplicationMailer
 
   def user_info(user)
     @user = user
-    mail(to: @user.email, subject: 'Sua conta no Circuito de Vivências')
+    if (@user.email !=  'supervisor@email.com' && @user.email != 'admin@email.com')
+      mail(to: @user.email, subject: 'Sua conta no Circuito de Vivências')
+    end
   end
 end
