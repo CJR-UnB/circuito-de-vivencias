@@ -30,7 +30,7 @@ admin = User.new(name: 'Admin', surname: 'Admin', cpf: '123.456.789-09', email: 
 admin.turnIntoAdmin
 admin.save!
 
-supervisor = User.new(name: 'Supervisor', surname: 'Supervisor', cpf: '11111111111', email: 'supervisorcv2019@email.com', password: '12345678')
+supervisor = User.new(name: 'Supervisor', surname: 'Supervisor', cpf: '11111111111', email: 'supervisorcv2019@gmail.com', password: '12345678')
 supervisor.turnIntoSupervisor
 supervisor.save
 
