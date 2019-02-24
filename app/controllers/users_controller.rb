@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def edit_user
     @user = User.find(current_user.id)
+    @states = State.all
   end
 
   def update_user
@@ -59,7 +60,8 @@ class UsersController < ApplicationController
         :cpf,
         :email,
         :profession,
-        :institution
+        :institution,
+        :state
       )
     end
 

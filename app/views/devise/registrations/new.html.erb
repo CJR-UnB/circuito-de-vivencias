@@ -29,6 +29,22 @@
                             </div>
 
                             <div class="form-label-group">
+                                <%= f.label :Profissão %><br /><br />
+                                <%= f.text_field :profession, id: "profession", placeholder: "Profissão", class: "form-control spacing-fields" %>
+                            </div>
+
+                            <div class="form-label-group">
+                                <%= f.label :Instituicao %><br /><br />
+                                <%= f.text_field :institution, id: "institution", placeholder: "Instituição", class: "form-control spacing-fields" %>
+                            </div>
+
+                            <div class="form-label-group">
+                                <%= f.label :Estado %><br /><br />
+                                <%= options_from_collection_for_select(State.all, :id, :name) %>
+                                <%= f.collection_select(:state_id, State.all, :id, :name) %>
+                            </div>
+
+                            <div class="form-label-group">
                                 <%= f.label :Senha %><br /><br />
                                 <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", id: "userPassword", class: "form-control spacing-fields" %>
                             </div>
