@@ -30,7 +30,7 @@
         </div>
         <div class="d-flex justify-content-center">
         <div>
-          <%= link_to 'Minhas Oficinas', user_workshops_path(id: current_user.id, page: 1), class: 'btn btn-md btn-outline-success' %>
+          <%= link_to 'Minhas Vivências', user_workshops_path(id: current_user.id, page: 1), class: 'btn btn-md btn-outline-success' %>
           <%= link_to 'Editar Perfil', my_profile_edit_path(id: current_user.id), class: 'btn btn-md btn-outline-warning' %>
           <%= link_to 'Deletar conta', my_profile_path(id: current_user.id), class: 'btn btn-md btn-outline-danger', method: :delete, data: { confirm: "Tem certeza que deseja deletar a conta?" }%>
         </div>
