@@ -46,12 +46,12 @@
                             <td style="color: green;">Aceito</td>
                         <% else %>
                             <% if workshop.status == 'rejected' %>
-                                <td style="color: red;">Rejeitado</td>
+                                <td style="color: red;">Em fase de ajustes</td>
                             <% else %>
                                 <td style="color: gray;">Em espera</td>
                             <%end%>
                         <% end %>
-                        <td><%= link_to 'Ver oficina', workshop_path(workshop) %></td>
+                        <td><%= link_to 'Ver vivência', workshop_path(workshop) %></td>
                         </tr>
                     <% end %>
                     <% end %>

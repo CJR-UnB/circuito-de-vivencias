@@ -1,7 +1,7 @@
 <%= render 'user_header' %>
 <header class="bg-primary text-white">
   <div class="container text-center" id="#top">
-    <h1>Feedback da oficina:<br><%= @feedback.workshop.title %></h1>
+    <h1>Feedback da vivência:<br><%= @feedback.workshop.title %></h1>
     <p class="lead">Autor: <%= @supervisor_author.name %> <%= @supervisor_author.surname %></p>
     <p><%= @feedback.created_at.strftime("Criado em: %d/%m/%Y às %H:%M") %></p>
   </div>

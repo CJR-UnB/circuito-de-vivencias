@@ -13,7 +13,7 @@
     </section>
     <%= render 'alert' %>
     <% if @workshops.length != 0 %>
-      <h1 class="my-4">Lista de Oficinas
+      <h1 class="my-4">Lista de Vivências
           <p>de <%=current_user.name%></p>
       </h1>
 
@@ -32,7 +32,7 @@
                   <% if workshop.status == "in_hold" %>
                     <p class="card-text badge badge-secondary">Em aguardo</p>
                   <% else %>
-                    <p class="card-text badge badge-danger">Rejeitado</p><br>
+                    <p class="card-text badge badge-danger">Fase de ajustes</p><br>
                     <h6>Feedback</h6>
                     <%= link_to workshop.feedback.subject, rejected_workshop_feedback_path(workshop_id: workshop.id), class: "rejected-text" %>
                   <% end %>
@@ -82,7 +82,7 @@
         </ul>
         <% end %>
     <% else %>
-      <h4 class="no_workshops_message">Nenhuma oficina criada por <%= current_user.name %></h4>
+      <h4 class="no_workshops_message">Nenhuma vivência criada por <%= current_user.name %></h4>
     <% end %>
     <!-- /.container -->
     </div>
@@ -91,7 +91,7 @@
         <div class="col-md-5">
         </div>
         <div class="col-md-4">
-          <%= link_to "Criar uma oficina", new_workshop_path, class: "btn btn-md btn-outline-success"  %>
+          <%= link_to "Criar uma vivência", new_workshop_path, class: "btn btn-md btn-outline-success"  %>
         </div>
       </div>
     </div>
