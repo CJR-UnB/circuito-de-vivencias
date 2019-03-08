@@ -33,7 +33,7 @@
                     <p class="card-text badge badge-secondary">Em aguardo</p>
                   <% else %>
                     <p class="card-text badge badge-danger">Rejeitado</p><br>
-                    <h6>Feedback</h6>
+                    <h6>Comentários</h6>
                     <%= link_to workshop.feedback.subject, rejected_workshop_feedback_path(workshop_id: workshop.id), class: "rejected-text" %>
                   <% end %>
                 <% end %>
