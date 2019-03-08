@@ -15,7 +15,7 @@
           <%= link_to 'Pagina inicial', root_path, class: 'nav-link'%>
         </li>
         <li class="nav-item">
-          <%= link_to 'Outras oficinas', workshops_path, class: 'nav-link'%>
+          <%= link_to 'Outras vivências', workshops_path, class: 'nav-link'%>
         </li>
         <li class="nav-item">
           <%= link_to 'Meu perfil', profile_path, class: 'nav-link'%>
@@ -38,7 +38,6 @@
     <p><%= @workshop.updated_at.strftime("Última atualização: %d/%m/%Y às %H:%M") %></p>
   </div>
 </header>
-
 <section id="about" style="padding-bottom: 10px;">
   <div class="container">
     <div class="row">
@@ -49,6 +48,7 @@
     </div>
   </div>
 </section>
+<%= render 'alert' %>
 <section id="baixar" style="padding-bottom: 50px;">
   <div class="container">
     <div class="row">
@@ -74,7 +74,7 @@
 </section>
 <div class="container" style="margin-top: 5%;">
   <% if Role.find(current_user.role_id).name == 'Supervisor' %>
-    <h3 style="text-align: center;">Validação da oficina</h3><br>
+    <h3 style="text-align: center;">Validação da vivência</h3><br>
     <div class="row">
       <div class="col-md-4">
       </div>
@@ -84,7 +84,7 @@
         <% end %>
         <br>
         <% if @workshop.status == 'in_hold' || @workshop.status == 'accepted'%>
-          <%= link_to 'Rejeitar', supervisorDashboard_write_feedback_path(id: @workshop.id), class: 'btn btn-md btn-outline-danger'%>
+          <%= link_to 'Colocar em fase de ajustes', supervisorDashboard_write_feedback_path(id: @workshop.id), class: 'btn btn-md btn-outline-danger'%>
         <% end %>
       </div>
     </div>
@@ -155,7 +155,11 @@
 
 		 		<!-- current #{user} avatar -->
 			 <div class="comment_body">
-			 		<p><%= simple_format(comment.commentContent)%></p>
+          <% if comment.excluded == false %>
+			 		  <p><%= simple_format(comment.commentContent)%></p>
+          <% else %>
+            <h4><em>Comentário excluído por conteúdo impróprio</em></h4>
+          <% end %>
 			 	</div>
 
 			 	<!-- comments toolbar -->
@@ -166,6 +170,9 @@
 			 			<ul>
 			 				<li><i class="fa fa-clock-o"></i><%= comment.updated_at.strftime("%H:%M") %></li>
 			 				<li><i class="fa fa-calendar"></i><%= comment.updated_at.strftime("%d/%m/%Y")%></li>
+              <% if comment.excluded == false %>
+                <li><i class="fas fa-bug"></i><span class="user"><%= link_to 'reportar', report_path(user_id: current_user.id, comment_id: comment.id, workshop_id: @workshop.id), method: 'post'%></span></li>
+              <% end %>
               <% if comment.user != nil%>
 			 				  <li><i class="fa fa-user"></i><span class="user"><%=comment.user.name%></span></li>
               <% end %>

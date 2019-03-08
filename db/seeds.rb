@@ -14,6 +14,7 @@ Workshop.delete_all
 Video.delete_all
 Background.delete_all
 User.delete_all
+Report.delete_all
 adminRole = Role.new(name: 'Admin')
 adminRole.id = 1
 adminRole.save!

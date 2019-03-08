@@ -43,6 +43,10 @@ Rails.application.routes.draw do
   end
 
   get '/users', to: 'users/registrations#new'
+  post '/report', to: 'reports#create'
+  get '/reports', to: 'reports#index'
+  put '/exclude_comment', to: 'reports#exclude_comment'
+  put '/accept_comment', to: 'reports#accept_comment'
   get '/videos', to: 'users#videos_index'
   get '/my_profile', to: 'users#profile', as: "profile"
   get '/my_profile/edit', to: 'users#edit_user'
