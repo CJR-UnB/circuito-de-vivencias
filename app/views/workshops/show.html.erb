@@ -38,7 +38,6 @@
     <p><%= @workshop.updated_at.strftime("Última atualização: %d/%m/%Y às %H:%M") %></p>
   </div>
 </header>
-
 <section id="about" style="padding-bottom: 10px;">
   <div class="container">
     <div class="row">
@@ -49,6 +48,7 @@
     </div>
   </div>
 </section>
+<%= render 'alert' %>
 <section id="baixar" style="padding-bottom: 50px;">
   <div class="container">
     <div class="row">
@@ -155,7 +155,11 @@
 
 		 		<!-- current #{user} avatar -->
 			 <div class="comment_body">
-			 		<p><%= simple_format(comment.commentContent)%></p>
+          <% if comment.excluded == false %>
+			 		  <p><%= simple_format(comment.commentContent)%></p>
+          <% else %>
+            <h4><em>Comentário excluído por conteúdo impróprio</em></h4>
+          <% end %>
 			 	</div>
 
 			 	<!-- comments toolbar -->
@@ -166,6 +170,9 @@
 			 			<ul>
 			 				<li><i class="fa fa-clock-o"></i><%= comment.updated_at.strftime("%H:%M") %></li>
 			 				<li><i class="fa fa-calendar"></i><%= comment.updated_at.strftime("%d/%m/%Y")%></li>
+              <% if comment.excluded == false %>
+                <li><i class="fas fa-bug"></i><span class="user"><%= link_to 'reportar', report_path(user_id: current_user.id, comment_id: comment.id, workshop_id: @workshop.id), method: 'post'%></span></li>
+              <% end %>
               <% if comment.user != nil%>
 			 				  <li><i class="fa fa-user"></i><span class="user"><%=comment.user.name%></span></li>
               <% end %>

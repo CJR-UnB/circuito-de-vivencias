@@ -25,6 +25,24 @@
     cursor: pointer;
 }
 
+.custom-alert-position-report {
+    position: fixed;
+    top: 10vw;
+    right: 1vw;
+    text-align: right;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.custom-alert-position-workshop {
+    position: fixed;
+    top: 10vw;
+    right: 2vw;
+    text-align: right;
+    z-index: 1;
+    cursor: pointer;
+}
+
 .content-field {
     resize: none;
 }
@@ -460,4 +478,38 @@ body {
 .navbar {
     position: fixed !important;
     display: block !important;
+}
+
+.reported-comment-container {
+    background-color: white;
+    border-radius: 5%;
+    border-color: #333;
+    border-style: solid;
+}
+
+.reported-comment-content {
+    text-align: center;
+}
+
+.reported-comment-user {
+    font-size: 75%;
+    text-align: center;
+}
+
+.reported-comments-title {
+    margin-top: 5%;
+    margin-bottom: 10%;
+    margin-left: 25%;
+}
+
+.reporter-users {
+    list-style-type: none;
+}
+
+.user-reporter-container {
+    overflow-y: scroll;
+}
+
+.exclude-comment-btn {
+    text-align: center;
 }
