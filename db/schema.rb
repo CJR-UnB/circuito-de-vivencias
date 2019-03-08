@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_14_100430) do
+ActiveRecord::Schema.define(version: 2019_03_07_223649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_100430) do
     t.string "name"
     t.string "institution"
     t.bigint "user_id"
+    t.boolean "excluded", default: false
     t.index ["user_id"], name: "index_comments_on_user_id"
     t.index ["workshop_id"], name: "index_comments_on_workshop_id"
   end
@@ -98,6 +99,16 @@ ActiveRecord::Schema.define(version: 2018_12_14_100430) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reports", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "users_id"
+    t.bigint "comments_id"
+    t.boolean "resolved", default: false
+    t.index ["comments_id"], name: "index_reports_on_comments_id"
+    t.index ["users_id"], name: "index_reports_on_users_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -128,6 +139,8 @@ ActiveRecord::Schema.define(version: 2018_12_14_100430) do
     t.string "surname"
     t.string "cpf"
     t.integer "role_id", default: 3
+    t.string "profession"
+    t.string "institution"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
