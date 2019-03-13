@@ -32,7 +32,7 @@ class WorkshopsController < ApplicationController
   def show
     @workshop = Workshop.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.where(workshop_id: params[:id])
+    @comments = Comment.where(workshop_id: params[:id], excluded: false).order(created_at: :desc)
   end
 
   def create
