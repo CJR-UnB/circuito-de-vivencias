@@ -221,136 +221,138 @@
 <%= render 'footer' %>
 
 <script>
-  $("#star5").click(function () {
-    console.log('oi');
-    let data = {user_id: <%= current_user.id %>,
-              workshop_id: <%= @workshop.id %>,
-              evaluationContent: 5};
-    $.ajax({
-      type: "POST",
-      url: '<%=evaluation_path%>',
-      data: data,
-      success: function () {alert('Avaliação criada com sucesso');}
+  $(document).ready(function() {
+    $("#star5").click(function () {
+      console.log('oi');
+      let data = {user_id: <%= current_user.id %>,
+                workshop_id: <%= @workshop.id %>,
+                evaluationContent: 5};
+      $.ajax({
+        type: "POST",
+        url: '<%=evaluation_path%>',
+        data: data,
+        success: function () {alert('Avaliação criada com sucesso');}
+      });
     });
-  });
-  $("#star4half").click(function () {
-    console.log('oi');
-    let data = {user_id: <%= current_user.id %>,
-              workshop_id: <%= @workshop.id %>,
-              evaluationContent: 4.5};
-    $.ajax({
-      type: "POST",
-      url: '<%=evaluation_path%>',
-      data: data,
-      success: function () {alert('Avaliação criada com sucesso');}
+    $("#star4half").click(function () {
+      console.log('oi');
+      let data = {user_id: <%= current_user.id %>,
+                workshop_id: <%= @workshop.id %>,
+                evaluationContent: 4.5};
+      $.ajax({
+        type: "POST",
+        url: '<%=evaluation_path%>',
+        data: data,
+        success: function () {alert('Avaliação criada com sucesso');}
+      });
     });
-  });
-  $("#star4").click(function () {
-    console.log('oi');
-    let data = {user_id: <%= current_user.id %>,
-              workshop_id: <%= @workshop.id %>,
-              evaluationContent: 4};
-    $.ajax({
-      type: "POST",
-      url: '<%=evaluation_path%>',
-      data: data,
-      success: function () {alert('Avaliação criada com sucesso');}
+    $("#star4").click(function () {
+      console.log('oi');
+      let data = {user_id: <%= current_user.id %>,
+                workshop_id: <%= @workshop.id %>,
+                evaluationContent: 4};
+      $.ajax({
+        type: "POST",
+        url: '<%=evaluation_path%>',
+        data: data,
+        success: function () {alert('Avaliação criada com sucesso');}
+      });
     });
-  });
-  $("#star3half").click(function () {
-    console.log('oi');
-    let data = {user_id: <%= current_user.id %>,
-              workshop_id: <%= @workshop.id %>,
-              evaluationContent: 3.5};
-    $.ajax({
-      type: "POST",
-      url: '<%=evaluation_path%>',
-      data: data,
-      success: function () {alert('Avaliação criada com sucesso');}
+    $("#star3half").click(function () {
+      console.log('oi');
+      let data = {user_id: <%= current_user.id %>,
+                workshop_id: <%= @workshop.id %>,
+                evaluationContent: 3.5};
+      $.ajax({
+        type: "POST",
+        url: '<%=evaluation_path%>',
+        data: data,
+        success: function () {alert('Avaliação criada com sucesso');}
+      });
     });
-  });
-  $("#star3").click(function () {
-    console.log('oi');
-    let data = {user_id: <%= current_user.id %>,
-              workshop_id: <%= @workshop.id %>,
-              evaluationContent: 3};
-    $.ajax({
-      type: "POST",
-      url: '<%=evaluation_path%>',
-      data: data,
-      success: function () {alert('Avaliação criada com sucesso');}
+    $("#star3").click(function () {
+      console.log('oi');
+      let data = {user_id: <%= current_user.id %>,
+                workshop_id: <%= @workshop.id %>,
+                evaluationContent: 3};
+      $.ajax({
+        type: "POST",
+        url: '<%=evaluation_path%>',
+        data: data,
+        success: function () {alert('Avaliação criada com sucesso');}
+      });
     });
-  });
-  $("#star2half").click(function () {
-    console.log('oi');
-    let data = {user_id: <%= current_user.id %>,
-              workshop_id: <%= @workshop.id %>,
-              evaluationContent: 2.5};
-    $.ajax({
-      type: "POST",
-      url: '<%=evaluation_path%>',
-      data: data,
-      success: function () {alert('Avaliação criada com sucesso');}
+    $("#star2half").click(function () {
+      console.log('oi');
+      let data = {user_id: <%= current_user.id %>,
+                workshop_id: <%= @workshop.id %>,
+                evaluationContent: 2.5};
+      $.ajax({
+        type: "POST",
+        url: '<%=evaluation_path%>',
+        data: data,
+        success: function () {alert('Avaliação criada com sucesso');}
+      });
     });
-  });
-  $("#star2").click(function () {
-    console.log('oi');
-    let data = {user_id: <%= current_user.id %>,
-              workshop_id: <%= @workshop.id %>,
-              evaluationContent: 2};
-    $.ajax({
-      type: "POST",
-      url: '<%=evaluation_path%>',
-      data: data,
-      success: function () {alert('Avaliação criada com sucesso');}
+    $("#star2").click(function () {
+      console.log('oi');
+      let data = {user_id: <%= current_user.id %>,
+                workshop_id: <%= @workshop.id %>,
+                evaluationContent: 2};
+      $.ajax({
+        type: "POST",
+        url: '<%=evaluation_path%>',
+        data: data,
+        success: function () {alert('Avaliação criada com sucesso');}
+      });
     });
-  });
-  $("#star1half").click(function () {
-    console.log('oi');
-    let data = {user_id: <%= current_user.id %>,
-              workshop_id: <%= @workshop.id %>,
-              evaluationContent: 1.5};
-    $.ajax({
-      type: "POST",
-      url: '<%=evaluation_path%>',
-      data: data,
-      success: function () {alert('Avaliação criada com sucesso');}
+    $("#star1half").click(function () {
+      console.log('oi');
+      let data = {user_id: <%= current_user.id %>,
+                workshop_id: <%= @workshop.id %>,
+                evaluationContent: 1.5};
+      $.ajax({
+        type: "POST",
+        url: '<%=evaluation_path%>',
+        data: data,
+        success: function () {alert('Avaliação criada com sucesso');}
+      });
     });
-  });
-  $("#star1").click(function () {
-    console.log('oi');
-    let data = {user_id: <%= current_user.id %>,
-              workshop_id: <%= @workshop.id %>,
-              evaluationContent: 1};
-    $.ajax({
-      type: "POST",
-      url: '<%=evaluation_path%>',
-      data: data,
-      success: function () {alert('Avaliação criada com sucesso');}
+    $("#star1").click(function () {
+      console.log('oi');
+      let data = {user_id: <%= current_user.id %>,
+                workshop_id: <%= @workshop.id %>,
+                evaluationContent: 1};
+      $.ajax({
+        type: "POST",
+        url: '<%=evaluation_path%>',
+        data: data,
+        success: function () {alert('Avaliação criada com sucesso');}
+      });
     });
-  });
-  $("#starhalf").click(function () {
-    console.log('oi');
-    let data = {user_id: <%= current_user.id %>,
-              workshop_id: <%= @workshop.id %>,
-              evaluationContent: 0.5};
-    $.ajax({
-      type: "POST",
-      url: '<%=evaluation_path%>',
-      data: data,
-      success: function () {alert('Avaliação criada com sucesso');}
+    $("#starhalf").click(function () {
+      console.log('oi');
+      let data = {user_id: <%= current_user.id %>,
+                workshop_id: <%= @workshop.id %>,
+                evaluationContent: 0.5};
+      $.ajax({
+        type: "POST",
+        url: '<%=evaluation_path%>',
+        data: data,
+        success: function () {alert('Avaliação criada com sucesso');}
+      });
     });
-  });
-  $("#starnone").click(function () {
-    console.log('oi');
-    let data = {user_id: <%= current_user.id %>,
-              workshop_id: <%= @workshop.id %>,
-              evaluationContent: 0};
-    $.ajax({
-      type: "POST",
-      url: '<%=evaluation_path%>',
-      data: data,
-      success: function () {alert('Avaliação criada com sucesso');}
+    $("#starnone").click(function () {
+      console.log('oi');
+      let data = {user_id: <%= current_user.id %>,
+                workshop_id: <%= @workshop.id %>,
+                evaluationContent: 0};
+      $.ajax({
+        type: "POST",
+        url: '<%=evaluation_path%>',
+        data: data,
+        success: function () {alert('Avaliação criada com sucesso');}
+      });
     });
   });
 </script>
