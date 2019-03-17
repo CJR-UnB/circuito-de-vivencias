@@ -39,9 +39,12 @@
                   </h4>
                   <p class="card-text"><%= workshop.resume.truncate(29)  %></p>
                   <p><%= workshop.updated_at.strftime("Última atualização: %d/%m/%Y às %H:%M")%></p>
+                  <p>Possui <%= workshop.comments.length %> comentário<% if workshop.comments.length != 1 %>s<%end%></p>
                 </div>
                 <div class="card-footer">
                   <p>Autor: <%= User.find(workshop.author_id).name %></p>
+                  <h4>Avaliação</h4>
+                  <%= render "evaluation", locals: {evaluation: workshop.evaluation, no_evaluation_msg: "Vivência ainda não avaliada"}%>
                 </div>
               </div>
             </div>

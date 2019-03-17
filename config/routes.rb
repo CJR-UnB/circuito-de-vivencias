@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 
   get '/users', to: 'users/registrations#new'
   post '/report', to: 'reports#create'
+  post '/evaluation', to: 'evaluations#give_an_evaluation'
   get '/reports', to: 'reports#index'
   put '/exclude_comment', to: 'reports#exclude_comment'
   put '/accept_comment', to: 'reports#accept_comment'
@@ -56,7 +57,6 @@ Rails.application.routes.draw do
   get '/my_profile/user_workshop/feedback', to: 'feedbacks#show', as: "rejected_workshop_feedback"
 
   resources :workshops
-  resources :evaluations
   resources :comment
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

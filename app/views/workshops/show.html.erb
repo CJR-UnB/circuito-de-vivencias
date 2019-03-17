@@ -7,6 +7,11 @@
     <p class="lead">Autor: <%= User.find(@workshop.author_id).name %> <%= User.find(@workshop.author_id).surname %></p>
     <p><%= @workshop.updated_at.strftime("Última atualização: %d/%m/%Y às %H:%M") %></p>
   </div>
+  <div class="evaluation-container">
+    <h3>Avaliação da vivência</h3>
+    <%= render 'evaluation', :locals => {evaluation: @workshop.evaluation, no_evaluation_msg: "Vivência ainda não avaliada"} %>
+    <%= @workshop.evaluation %> / 5
+  </div>
 </header>
 <section id="about" style="padding-bottom: 10px;">
   <div class="container">
@@ -45,6 +50,66 @@
       </div>
     </div>
   <% end %>
+</div>
+<div class="container">
+  <div class="row">
+    <h4>Que nota você daria para essa vivência?</h4>
+  </div>
+  <div class="row">
+    <fieldset class="rating">
+        <% if @user_evaluation != nil && @user_evaluation.evaluationContent == 5  %>
+          <input type="radio" id="star5" name="rating" value="5" checked /><label class = "full" for="star5" title="Excelente - 5 estrelas"></label>
+        <% else %>
+          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Excelente - 5 estrelas"></label>
+        <% end %>
+        <% if @user_evaluation != nil && @user_evaluation.evaluationContent == 4.5 %>
+          <input type="radio" id="star4half" name="rating" value="4 and a half" checked/><label class="half" for="star4half" title="Ótimo - 4.5 estrelas"></label>
+        <% else %>
+          <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Ótimo - 4.5 estrelas"></label>
+        <% end %>
+        <% if @user_evaluation != nil && @user_evaluation.evaluationContent == 4 %>
+          <input type="radio" id="star4" name="rating" value="4" checked/><label class = "full" for="star4" title="Muito bom - 4 estrelas"></label>
+        <% else %>
+          <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Muito bom - 4 estrelas"></label>
+        <% end %>
+        <% if @user_evaluation != nil && @user_evaluation.evaluationContent == 3.5 %>
+          <input type="radio" id="star3half" name="rating" value="3 and a half" checked /><label class="half" for="star3half" title="Acima da média - 3.5 estrelas"></label>
+        <% else %>
+          <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Acima da média - 3.5 estrelas"></label>
+        <% end %>
+        <% if @user_evaluation != nil && @user_evaluation.evaluationContent == 3 %>
+          <input type="radio" id="star3" name="rating" value="3" checked /><label class = "full" for="star3" title="Bom - 3 estrelas"></label>
+        <% else %>
+          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Bom - 3 estrelas"></label>
+        <% end %>
+        <% if @user_evaluation != nil && @user_evaluation.evaluationContent == 2.5 %>
+          <input type="radio" id="star2half" name="rating" value="2 and a half" checked /><label class="half" for="star2half" title="OK - 2.5 estrelas"></label>
+        <% else %>
+          <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="OK - 2.5 estrelas"></label>
+        <% end %>
+        <% if @user_evaluation != nil && @user_evaluation.evaluationContent == 2 %>
+          <input type="radio" id="star2" name="rating" value="2" checked /><label class = "full" for="star2" title="Razoavel - 2 estrelas"></label>
+        <% else %>
+          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Razoavel - 2 estrelas"></label>
+        <% end %>
+        <% if @user_evaluation != nil && @user_evaluation.evaluationContent == 1.5 %>
+          <input type="radio" id="star1half" name="rating" value="1 and a half" checked /><label class="half" for="star1half" title="Mediano - 1.5 estrelas"></label>
+        <% else %>
+          <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Mediano - 1.5 estrelas"></label>
+        <% end%>
+        <% if @user_evaluation != nil && @user_evaluation.evaluationContent == 1 %>
+          <input type="radio" id="star1" name="rating" value="1" checked /><label class = "full" for="star1" title="Pouco satisfatória - 1 estrela"></label>
+        <% else %>
+          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Pouco satisfatória - 1 estrela"></label>
+        <% end %>
+        <% if @user_evaluation != nil && @user_evaluation.evaluationContent == 0.5%>
+          <input type="radio" id="starhalf" name="rating" value="half" checked/><label class="half" for="starhalf" title="Insatisfatório - 0.5 estrelas"></label>
+        <% else %>
+          <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Insatisfatório - 0.5 estrelas"></label>
+        <% end %>
+          <input type="radio" id="starnone" style="opacity: 0;" name="rating" value="zero"/><label style="opacity: 0;" class="zero" for="starnone" title="Ruim - 0 estrelas"></label>
+    </fieldset>
+  </div>
 </div>
 <div class="container">
   <div class="row">
@@ -114,16 +179,16 @@
 
 			<!-- build comment -->
 		 	<ul class="user_comment">
-
 		 		<!-- current #{user} avatar -->
-			 <div class="comment_body">
+			  <div class="comment_body">
           <% if comment.excluded == false %>
 			 		  <p><%= simple_format(comment.commentContent)%></p>
           <% else %>
             <h4><em>Comentário excluído por conteúdo impróprio</em></h4>
           <% end %>
 			 	</div>
-
+        <br>
+        <%= render "evaluation", locals: {evaluation: Evaluation.find_by(workshop_id: @workshop.id, user_id: comment.user_id).evaluationContent, no_evaluation_msg: "Sem a avaliação do usuario"} %>
 			 	<!-- comments toolbar -->
 			 	<div class="comment_toolbar">
 
@@ -154,3 +219,138 @@
 
 
 <%= render 'footer' %>
+
+<script>
+  $("#star5").click(function () {
+    console.log('oi');
+    let data = {user_id: <%= current_user.id %>,
+              workshop_id: <%= @workshop.id %>,
+              evaluationContent: 5};
+    $.ajax({
+      type: "POST",
+      url: '<%=evaluation_path%>',
+      data: data,
+      success: function () {alert('Avaliação criada com sucesso');}
+    });
+  });
+  $("#star4half").click(function () {
+    console.log('oi');
+    let data = {user_id: <%= current_user.id %>,
+              workshop_id: <%= @workshop.id %>,
+              evaluationContent: 4.5};
+    $.ajax({
+      type: "POST",
+      url: '<%=evaluation_path%>',
+      data: data,
+      success: function () {alert('Avaliação criada com sucesso');}
+    });
+  });
+  $("#star4").click(function () {
+    console.log('oi');
+    let data = {user_id: <%= current_user.id %>,
+              workshop_id: <%= @workshop.id %>,
+              evaluationContent: 4};
+    $.ajax({
+      type: "POST",
+      url: '<%=evaluation_path%>',
+      data: data,
+      success: function () {alert('Avaliação criada com sucesso');}
+    });
+  });
+  $("#star3half").click(function () {
+    console.log('oi');
+    let data = {user_id: <%= current_user.id %>,
+              workshop_id: <%= @workshop.id %>,
+              evaluationContent: 3.5};
+    $.ajax({
+      type: "POST",
+      url: '<%=evaluation_path%>',
+      data: data,
+      success: function () {alert('Avaliação criada com sucesso');}
+    });
+  });
+  $("#star3").click(function () {
+    console.log('oi');
+    let data = {user_id: <%= current_user.id %>,
+              workshop_id: <%= @workshop.id %>,
+              evaluationContent: 3};
+    $.ajax({
+      type: "POST",
+      url: '<%=evaluation_path%>',
+      data: data,
+      success: function () {alert('Avaliação criada com sucesso');}
+    });
+  });
+  $("#star2half").click(function () {
+    console.log('oi');
+    let data = {user_id: <%= current_user.id %>,
+              workshop_id: <%= @workshop.id %>,
+              evaluationContent: 2.5};
+    $.ajax({
+      type: "POST",
+      url: '<%=evaluation_path%>',
+      data: data,
+      success: function () {alert('Avaliação criada com sucesso');}
+    });
+  });
+  $("#star2").click(function () {
+    console.log('oi');
+    let data = {user_id: <%= current_user.id %>,
+              workshop_id: <%= @workshop.id %>,
+              evaluationContent: 2};
+    $.ajax({
+      type: "POST",
+      url: '<%=evaluation_path%>',
+      data: data,
+      success: function () {alert('Avaliação criada com sucesso');}
+    });
+  });
+  $("#star1half").click(function () {
+    console.log('oi');
+    let data = {user_id: <%= current_user.id %>,
+              workshop_id: <%= @workshop.id %>,
+              evaluationContent: 1.5};
+    $.ajax({
+      type: "POST",
+      url: '<%=evaluation_path%>',
+      data: data,
+      success: function () {alert('Avaliação criada com sucesso');}
+    });
+  });
+  $("#star1").click(function () {
+    console.log('oi');
+    let data = {user_id: <%= current_user.id %>,
+              workshop_id: <%= @workshop.id %>,
+              evaluationContent: 1};
+    $.ajax({
+      type: "POST",
+      url: '<%=evaluation_path%>',
+      data: data,
+      success: function () {alert('Avaliação criada com sucesso');}
+    });
+  });
+  $("#starhalf").click(function () {
+    console.log('oi');
+    let data = {user_id: <%= current_user.id %>,
+              workshop_id: <%= @workshop.id %>,
+              evaluationContent: 0.5};
+    $.ajax({
+      type: "POST",
+      url: '<%=evaluation_path%>',
+      data: data,
+      success: function () {alert('Avaliação criada com sucesso');}
+    });
+  });
+  $("#starnone").click(function () {
+    console.log('oi');
+    let data = {user_id: <%= current_user.id %>,
+              workshop_id: <%= @workshop.id %>,
+              evaluationContent: 0};
+    $.ajax({
+      type: "POST",
+      url: '<%=evaluation_path%>',
+      data: data,
+      success: function () {alert('Avaliação criada com sucesso');}
+    });
+  });
+</script>
