@@ -26,6 +26,7 @@
                   <%= link_to workshop.title.truncate(17), workshop_path(id: workshop.id) %>
                 </h4>
                 <p class="card-text"><%= workshop.resume.truncate(29)  %></p>
+                <p>Possui <%= workshop.comments.length %> comentário<% if workshop.comments.length != 1 %>s<%end%></p>
                 <% if workshop.status == "accepted" %>
                   <p class="card-tex badge badge-success">Aceito</p>
                 <% else %>
@@ -39,6 +40,8 @@
                 <% end %>
               </div>
               <div class="card-footer">
+                <h4>Avaliação</h4>
+                <%= render "evaluation", :locals => {evaluation: workshop.evaluation, no_evaluation_msg: "Vivência ainda não avaliada"}%>
                 <%= link_to "Editar", edit_workshop_path(id: workshop.id), class: "btn btn-md btn-outline-warning"%>
               </div>
             </div>

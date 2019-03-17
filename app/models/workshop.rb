@@ -33,4 +33,17 @@ class Workshop < ApplicationRecord
   def show
     self.update(display: true)
   end
+
+  def evaluation
+    evaluations = Evaluation.where(workshop_id: self.id)
+    evaluation_total = 0
+    evaluations.each do |evaluation|
+      evaluation_total = evaluation_total + evaluation.evaluationContent
+    end
+    if evaluations.length != 0
+      workshop_evaluation = evaluation_total / evaluations.length
+    end
+    puts("---->" + workshop_evaluation.to_s)
+    return workshop_evaluation
+  end
 end

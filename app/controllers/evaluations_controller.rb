@@ -1,20 +1,14 @@
 # frozen_string_literal: true
 
 class EvaluationsController < ApplicationController
+
   before_action :authenticate_user!
-  def create
-    @workshop = Workshop.find(evaluation_params[:workshop_id])
+  protect_from_forgery with: :null_session
 
-    @evaluation = Evaluation.new(workshop: @workshop, user: current_user, evaluationContent: evaluation_params)
+  def give_an_evaluation
+    @evaluation = Evaluation.find_or_create_by(workshop_id: params[:workshop_id], user_id: params[:user_id])
+    @evaluation.evaluationContent = params[:evaluationContent]
+    @evaluation.save
   end
 
-  private
-
-  def evaluation_params
-    params.require(:evaluation).permit(
-      :user_id,
-      :workshop_id,
-      :evaluationContent
-    )
-  end
 end
