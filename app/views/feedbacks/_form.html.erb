@@ -1,5 +1,5 @@
 <div class='container mt-5'>
-  <h2>Enviar um feedback</h2>
+  <h2>Enviar um comentário</h2>
   <%= form_for @feedback, url: supervisorDashboard_feedback_path(@feedback, workshop_id: @workshop_id) do |f| %>
     <div class='form-group'>
       <%= f.label(:subject, 'Assunto') %>

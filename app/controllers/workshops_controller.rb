@@ -21,8 +21,8 @@ class WorkshopsController < ApplicationController
     @page = params[:page]
     puts @title
     if @title
-      @last_page = Workshop.where(status: 'accepted').where('title LIKE ?', "%#{@title}%").page(1).per(16).total_pages
-      @workshops = Workshop.where(status: 'accepted').where('title LIKE ?', "%#{@title}%").order(:updated_at).page(@page).per(16)
+      @last_page = Workshop.where(status: 'accepted').where('unaccent(lower(title)) ILIKE unaccent(lower(?))', "%#{params[:title]}%").page(1).per(16).total_pages
+      @workshops = Workshop.where(status: 'accepted').where('unaccent(lower(title)) ILIKE unaccent(lower(?))', "%#{params[:title]}%").order(:updated_at).page(@page).per(16)
     else
       @last_page = Workshop.where(status: 'accepted' ).page(1).per(16).total_pages
       @workshops = Workshop.where(status: 'accepted' ).order(:updated_at).page(@page).per(16)
@@ -31,8 +31,9 @@ class WorkshopsController < ApplicationController
 
   def show
     @workshop = Workshop.find(params[:id])
+    @user_evaluation = Evaluation.find_by(user_id: current_user.id, workshop_id: @workshop.id)
     @comment = Comment.new
-    @comments = Comment.where(workshop_id: params[:id])
+    @comments = Comment.where(workshop_id: params[:id], excluded: false).order(created_at: :desc)
   end
 
   def create

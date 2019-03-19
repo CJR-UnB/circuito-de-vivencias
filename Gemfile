@@ -14,6 +14,7 @@ gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'i18n'
 gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-turbolinks'

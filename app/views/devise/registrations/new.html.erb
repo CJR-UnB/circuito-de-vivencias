@@ -23,9 +23,9 @@
                                 <%= f.text_field :surname, id: "surname", class: "form-control spacing-fields", placeholder: "Sobrenome" %>
                             </div>
 
-                            <div class="form-label-group">
+                            <div class="form-label-group", style="text-transform: uppercase;">
                                 <%= f.label :CPF %><br /><br />
-                                <%= f.text_field :cpf, id: "cpf", placeholder: "CPF",  autofocus: true, autocomplete: "off", onkeypress: "mascara(this, '###.###.###-##')", maxlength:"14", class: "form-control spacing-fields",placeholder: "Cpf" %>
+                                <%= f.text_field :cpf, id: "cpf", placeholder: "CPF",  autofocus: true, autocomplete: "off", onkeypress: "mascara(this, '###.###.###-##')", maxlength:"14", class: "form-control spacing-fields",placeholder: "CPF" %>
                             </div>
 
                             <div class="form-label-group">

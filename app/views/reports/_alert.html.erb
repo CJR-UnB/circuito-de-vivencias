@@ -1,0 +1,11 @@
+<div class='custom-alert-position-report'>
+  <% if flash[:notice] %>
+    <div class='alert alert-success fade show' role='alert' data-dismiss='alert'>
+      <%= flash[:notice] %>
+    </div>
+  <% elsif flash[:alert] %>
+    <div class='alert alert-danger fade show' role='alert' data-dismiss='alert'>
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+</div>

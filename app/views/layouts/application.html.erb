@@ -4,19 +4,17 @@
     <% if Logo.find_by(active: :true) != nil %>
       <%= favicon_link_tag url_for(Logo.find_by(active: :true).image) %>
     <% end %>
-    <title>Circuito de Vivencias</title>
+    <title>Circuito de Vivências</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag 'vendor/fontawesome-free/css/all.min.css'%>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
     <!-- Custom styles for this template -->
     <%= stylesheet_link_tag 'css/agency.min.css'%>
     <%= stylesheet_link_tag "vendor/bootstrap/css/bootstrap.min.css" %>
