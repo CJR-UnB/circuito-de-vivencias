@@ -21,8 +21,8 @@ class WorkshopsController < ApplicationController
     @page = params[:page]
     puts @title
     if @title
-      @last_page = Workshop.where(status: 'accepted').where('lower(title) LIKE ?', "%#{@title.downcase}%").page(1).per(16).total_pages
-      @workshops = Workshop.where(status: 'accepted').where('lower(title) LIKE ?', "%#{@title.downcase}%").order(:updated_at).page(@page).per(16)
+      @last_page = Workshop.where(status: 'accepted').where('unaccent(lower(title)) ILIKE unaccent(lower(?))', "%#{params[:title]}%").page(1).per(16).total_pages
+      @workshops = Workshop.where(status: 'accepted').where('unaccent(lower(title)) ILIKE unaccent(lower(?))', "%#{params[:title]}%").order(:updated_at).page(@page).per(16)
     else
       @last_page = Workshop.where(status: 'accepted' ).page(1).per(16).total_pages
       @workshops = Workshop.where(status: 'accepted' ).order(:updated_at).page(@page).per(16)

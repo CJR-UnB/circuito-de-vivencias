@@ -342,6 +342,7 @@ DEPENDENCIES
   devise
   foreman
   gemaina (~> 1.0)
+  i18n
   jbuilder (~> 2.5)
   jquery-rails
   jquery-turbolinks

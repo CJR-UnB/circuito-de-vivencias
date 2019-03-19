@@ -43,8 +43,8 @@ class UsersController < ApplicationController
     @page = params[:page]
     @title = params[:title]
     if @title
-      @last_page = Video.where('lower(title) LIKE ?', "%#{params[:title].downcase}%").page(1).per(20).total_pages
-      @videos = Video.where('lower(title) LIKE ?', "%#{params[:title].downcase}%").order(:created_at).page(@page).per(20)
+      @last_page = Video.where('unaccent(lower(title)) ILIKE unaccent(lower(?))', "%#{params[:title]}%").page(1).per(20).total_pages
+      @videos = Video.where('unaccent(lower(title)) ILIKE unaccent(lower(?))', "%#{params[:title]}%").order(:created_at).page(@page).per(20)
     else
       @last_page = Video.all.page(1).per(20).total_pages
       @videos = Video.all.order(:created_at).page(@page).per(20)

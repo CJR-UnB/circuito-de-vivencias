@@ -16,10 +16,10 @@ class CommentController < ApplicationController
     puts 'eai'
     if @comment.save
       flash[:notice] = 'Comentário criado com sucesso!'
-      redirect_to workshop_path(id: @comment.workshop_id)
+      redirect_to workshop_path(id: @comment.workshop_id, :anchor => "#create_new_comment")
     else
       flash.now[:error] = 'Erro na insersão do comentário'
-      redirect_to workshop_path(id: @comment.workshop_id)
+      redirect_to workshop_path(id: @comment.workshop_id, :anchor => "#create_new_comment")
     end
   end
 
