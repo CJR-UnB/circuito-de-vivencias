@@ -158,7 +158,7 @@
 		 <!-- used by #{user} to create a new comment -->
      <% if user_signed_in? %>
           <%= form_for(@comment, url: comment_index_path) do |f| %>
-            <div class="create_new_comment" >
+            <div class="create_new_comment" id="create_new_comment" >
               <!-- current #{user} avatar -->
               <div class="input_comment">
                 <%= f.text_field(:commentContent, placeholder: "Comente aqui...") %>
