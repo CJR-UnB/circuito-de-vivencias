@@ -16,11 +16,13 @@ class Workshop < ApplicationRecord
 
   def accept
     self.status = 'accepted'
+    self.save
     WorkshopMailer.workshop_status_update(self).deliver
   end
 
   def reject
     self.status = 'rejected'
+    self.save
     WorkshopMailer.workshop_status_update(self).deliver
   end
 

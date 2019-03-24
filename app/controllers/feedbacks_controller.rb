@@ -15,10 +15,10 @@ class FeedbacksController < ApplicationController
         @feedback = Feedback.new(feedback_params)
         @feedback.supervisor = current_user
         workshop = Workshop.find(params[:workshop_id])
-        workshop.reject
         workshop.save
         @feedback.workshop = workshop
         if @feedback.save!
+            workshop.reject
             redirect_to supervisorDashboard_unvalidated_workshops_path
         else
             redirect_to supervisorDashboard_write_feedback_path(id: params[:workshop_id])
