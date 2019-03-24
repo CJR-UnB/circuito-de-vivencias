@@ -16,6 +16,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :surname, presence: true
   validates_presence_of :cpf
+  validates_cpf :cpf
 
   with_options allow_blank: true do |v|
     v.validates_uniqueness_of :cpf

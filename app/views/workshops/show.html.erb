@@ -10,7 +10,7 @@
   <div class="evaluation-container">
     <h3>Avaliação da vivência</h3>
     <%= render 'evaluation', :locals => {evaluation: @workshop.evaluation, no_evaluation_msg: "Vivência ainda não avaliada"} %>
-    <%= @workshop.evaluation %> / 5
+    <%= @workshop.evaluation %> <%if @workshop.evaluation != nil%>/ 5.00<%end%>
   </div>
 </header>
 <section id="about" style="padding-bottom: 10px;">
@@ -188,8 +188,12 @@
           <% end %>
 			 	</div>
         <br>
-        <%= render "evaluation", locals: {evaluation: Evaluation.find_by(workshop_id: @workshop.id, user_id: comment.user_id).evaluationContent, no_evaluation_msg: "Sem a avaliação do usuario"} %>
-			 	<!-- comments toolbar -->
+        <%if Evaluation.find_by(workshop_id: @workshop.id, user_id: comment.user_id) != nil%>
+          <%= render "evaluation", locals: {evaluation: Evaluation.find_by(workshop_id: @workshop.id, user_id: comment.user_id).evaluationContent, no_evaluation_msg: "Sem a avaliação do usuario"} %>
+			 	<% else %>
+          <%= render "evaluation", locals: {evaluation: nil, no_evaluation_msg: "Sem a avaliação do usuario"} %>
+        <% end %>
+        <!-- comments toolbar -->
 			 	<div class="comment_toolbar">
 
 			 		<!-- inc. date and time -->

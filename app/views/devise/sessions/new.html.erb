@@ -3,6 +3,11 @@
 
 <!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
 <%= stylesheet_link_tag 'login'%>
+<div class="return-container">
+    <%= link_to root_path, class: "btn btn-m btn-warning" do %>
+        <i class="fa fa-home"></i>
+    <%end%>
+</div>
 <div style="min-height: 100vh; margin: 0; max-width: 100%; <% if Background.find_by(active: true).present? %>background-image: url(<%= url_for(Background.find_by(active: true).image) %>); background-repeat: no-repeat; background-size: cover; background-position: center;<% end %>">
     <div class="container">
         <div class="row">
@@ -24,8 +29,8 @@
 
                             <% if devise_mapping.rememberable? -%>
                             <div class="custom-control custom-checkbox mb-3">
-                                <%= f.check_box :remember_me, class: "custom-control-input" %>
-                                <%= f.label :remember_me %>
+                                <%= f.check_box :remember_me %>
+                                <%= f.label :lembrar_de_mim %>
                             </div>
                             <% end %>
 

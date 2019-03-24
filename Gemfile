@@ -50,7 +50,7 @@ gem 'toastr-rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Para fazer a validacao do cpf
 gem 'cancancan'
-gem 'cpf_validator'
+gem 'validates_cpf_cnpj'
 gem 'rails_admin'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'jquery-ui-rails'
