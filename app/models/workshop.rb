@@ -10,16 +10,18 @@ class Workshop < ApplicationRecord
   has_many :comments
 
   validates :title, presence: true
-  validates :document, presence: true, blob: {content_type: ['application/vnd.oasis.opendocument.text', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']}
+  validates :document, presence: true, blob: {content_type: ['application/vnd.oasis.opendocument.text', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf']}
 
   enum status: {in_hold: 0, accepted: 1, rejected: 2}
 
   def accept
     self.status = 'accepted'
+    WorkshopMailer.workshop_status_update(self).deliver
   end
 
   def reject
     self.status = 'rejected'
+    WorkshopMailer.workshop_status_update(self).deliver
   end
 
   def put_in_hold

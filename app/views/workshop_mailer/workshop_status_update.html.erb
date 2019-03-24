@@ -1,0 +1,16 @@
+<% if @status == 'accepted' %>
+  <p>A vivência que você enviou para o Circuito de Vivências foi aprovada!</p>
+<% elsif @status == 'rejected' %>
+  <p>A vivência que você enviou para o Circuito de Vivências não foi aprovada.</p>
+  <p>Um supervisor deixou a seguinte mensagem na sua vivência:</p>
+  <p><strong><%= @workshop.feedback.subject%></strong><br />
+  <%= @workshop.feedback.content %></p>
+<% end %>
+
+<p>Esses são os dados da sua vivência:</p>
+
+<p>Título: <%= @workshop.title %><br>
+Resumo: <%= @workshop.resume %></p>
+
+<p>Atenciosamente,<br>
+Equipe do Circuito de Vivências</p>
