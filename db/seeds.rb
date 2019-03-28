@@ -10,6 +10,7 @@
 Role.delete_all
 Feedback.delete_all
 Comment.delete_all
+Evaluation.delete_all
 Workshop.delete_all
 Video.delete_all
 Background.delete_all
@@ -27,10 +28,10 @@ userRole = Role.new(name: 'User')
 userRole.id = 3
 userRole.save!
 
-admin = User.new(name: 'Admin', surname: 'Admin', cpf: '123.456.789-09', email: 'adm1ncv2019@gmail.com', password: '12345678')
+admin = User.new(name: 'Admin', surname: 'Admin', cpf: '665.397.716-14', email: 'adm1ncv2019@gmail.com', password: '519.467.544-55')
 admin.turnIntoAdmin
 admin.save!
 
-supervisor = User.new(name: 'Supervisor', surname: 'Supervisor', cpf: '111.111.111-11', email: 'supervisorcv2019@gmail.com', password: '12345678')
+supervisor = User.new(name: 'Supervisor', surname: 'Supervisor', cpf: '117.317.258-09', email: 'supervisorcv2019@gmail.com', password: '12345678')
 supervisor.turnIntoSupervisor
 supervisor.save
