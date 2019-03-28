@@ -28,7 +28,7 @@ userRole = Role.new(name: 'User')
 userRole.id = 3
 userRole.save!
 
-admin = User.new(name: 'Admin', surname: 'Admin', cpf: '665.397.716-14', email: 'adm1ncv2019@gmail.com', password: '519.467.544-55')
+admin = User.new(name: 'Admin', surname: 'Admin', cpf: '665.397.716-14', email: 'adm1ncv2019@gmail.com', password: '12345678')
 admin.turnIntoAdmin
 admin.save!
 
