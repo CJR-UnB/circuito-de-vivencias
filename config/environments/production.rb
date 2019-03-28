@@ -90,7 +90,7 @@ Rails.application.configure do
 
 
 
-  config.action_mailer.default_url_options = { host: 'http://www.circuitodevivencias.mat.unb.br/', only_path: false }
+  config.action_mailer.default_url_options = { host: 'https://circuito-de-vivencias.herokuapp.com/', only_path: false }
 
   config.action_mailer.delivery_method = :smtp
 
