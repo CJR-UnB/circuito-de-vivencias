@@ -29,10 +29,10 @@ userRole = Role.new(name: 'User')
 userRole.id = 3
 userRole.save!
 
-admin = User.new(name: 'Admin', surname: 'Admin', cpf: '665.397.716-14', email: 'adm1ncv2019@gmail.com', password: '12345678', state: "DF", profession: "professor", public_scholl?: true)
+admin = User.new(name: 'Admin', surname: 'Admin', cpf: '665.397.716-14', email: 'adm1ncv2019@gmail.com', password: '12345678', state: "DF", profession: "professor", institution_type: "pública")
 admin.turnIntoAdmin
 admin.save!
 
-supervisor = User.new(name: 'Supervisor', surname: 'Supervisor', cpf: '117.317.258-09', email: 'supervisorcv2019@gmail.com', password: '12345678', state: "DF", profession: "professor", public_scholl?: true)
+supervisor = User.new(name: 'Supervisor', surname: 'Supervisor', cpf: '117.317.258-09', email: 'supervisorcv2019@gmail.com', password: '12345678', state: "DF", profession: "professor", institution_type: "pública")
 supervisor.turnIntoSupervisor
 supervisor.save
