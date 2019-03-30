@@ -42,11 +42,11 @@ class WorkshopsController < ApplicationController
     workshop.editor_id = current_user.id
 
     if workshop.save
-      flash[:notice] = 'Workshop criado com sucesso!'
+      flash[:notice] = 'Vivência criada com sucesso!'
       WorkshopMailer.workshop_info(workshop).deliver
       redirect_to user_workshops_path
     else
-      flash[:alert] = 'Não foi possível criar o workshop!'
+      flash[:alert] = 'Não foi possível criar a vivência!'
       render 'new'
     end
   end
@@ -63,10 +63,10 @@ class WorkshopsController < ApplicationController
     workshop = Workshop.find(params[:id])
     workshop.put_in_hold
     if workshop.update(workshop_params)
-      flash[:notice] = 'Workshop atualizado com sucesso!'
+      flash[:notice] = 'Vivência atualizada com sucesso!'
       redirect_to user_workshops_path
     else
-      flash[:alert] = 'Não foi possível atualizar o workshop!'
+      flash[:alert] = 'Não foi possível atualizar a vivência!'
       render 'edit'
     end
   end
@@ -75,9 +75,9 @@ class WorkshopsController < ApplicationController
     @workshop = Workshop.find(params[:id])
 
     if @workshop.destroy
-      flash[:notice] = 'Workshop deletado com sucesso!'
+      flash[:notice] = 'Vivência deletada com sucesso!'
     else
-      flash[:alert] = 'Não foi possível deletar o workshop!'
+      flash[:alert] = 'Não foi possível deletar a vivência!'
     end
 
     redirect_to workshops_path

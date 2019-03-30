@@ -57,7 +57,10 @@ class UsersController < ApplicationController
         :name,
         :surname,
         :cpf,
-        :email
+        :email,
+        :profession,
+        :institution_type,
+        :state
       )
     end
 

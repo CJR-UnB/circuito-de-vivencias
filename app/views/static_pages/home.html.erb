@@ -86,6 +86,7 @@
               </span>
               <h4 class="service-heading"><%= workshop.title %></h4>
               <p class="text-muted"><%= truncate(workshop.resume, :length => 100) %></p>
+              <%= render 'evaluation', :locals => {evaluation: workshop.evaluation, no_evaluation_msg: "Vivência ainda não avaliada"} %>
             <% end %>
           </div>
         <% end %>
