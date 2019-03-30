@@ -1,0 +1,2 @@
+class UserVisitWorkshop < ApplicationRecord
+end

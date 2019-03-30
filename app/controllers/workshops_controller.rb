@@ -29,8 +29,16 @@ class WorkshopsController < ApplicationController
     end
   end
 
+  def create_visit
+    if (current_user != nil)
+      UserVisitWorkshop.find_or_create_by(user_id: current_user.id, workshop_id: params[:id])
+    end
+    redirect_to workshop_path(id: params[:id])
+  end
+
   def show
     @workshop = Workshop.find(params[:id])
+    @vizualization = UserVisitWorkshop.where(workshop_id: @workshop_id).length
     @user_evaluation = Evaluation.find_by(user_id: current_user.id, workshop_id: @workshop.id)
     @comment = Comment.new
     @comments = Comment.where(workshop_id: params[:id], excluded: false).order(created_at: :desc)

@@ -6,6 +6,7 @@
     <h1><%= @workshop.title %></h1>
     <p class="lead">Autor: <%= User.find(@workshop.author_id).name %> <%= User.find(@workshop.author_id).surname %></p>
     <p><%= @workshop.updated_at.strftime("Última atualização: %d/%m/%Y às %H:%M") %></p>
+    <p><%= UserVisitWorkshop.where(workshop_id: @workshop.id).length %> visualizaç<%if UserVisitWorkshop.where(workshop_id: @workshop.id).length == 1%>ão<%else%>ões<%end%></p>
   </div>
   <div class="evaluation-container">
     <h3>Avaliação da vivência</h3>

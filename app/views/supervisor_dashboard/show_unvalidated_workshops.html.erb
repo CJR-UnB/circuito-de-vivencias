@@ -51,7 +51,7 @@
                                 <td style="color: gray;">Em espera</td>
                             <%end%>
                         <% end %>
-                        <td><%= link_to 'Ver vivência', workshop_path(workshop) %></td>
+                        <td><%= link_to 'Ver vivência', visit_path(workshop), method: 'post' %></td>
                         </tr>
                     <% end %>
                     <% end %>
