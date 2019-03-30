@@ -23,10 +23,11 @@
             <div class="card h-100">
               <div class="card-body">
                 <h4 class="card-title">
-                  <%= link_to workshop.title.truncate(17), workshop_path(id: workshop.id) %>
+                  <%= link_to workshop.title.truncate(17), visit_path(id: workshop.id), method: 'post' %>
                 </h4>
                 <p class="card-text"><%= workshop.resume.truncate(29)  %></p>
                 <p>Possui <%= workshop.comments.length %> comentário<% if workshop.comments.length != 1 %>s<%end%></p>
+                <p><%= UserVisitWorkshop.where(workshop_id: workshop.id).length %> visualizaç<%if UserVisitWorkshop.where(workshop_id: workshop.id).length == 1%>ão<%else%>ões<%end%></p>
                 <% if workshop.status == "accepted" %>
                   <p class="card-tex badge badge-success">Aceito</p>
                 <% else %>

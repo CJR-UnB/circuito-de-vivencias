@@ -1,4 +1,5 @@
 <%= render 'header'%>
+<%= render 'alert'%>
 <section id="about">
   <div class="container-fluid">
     <div class="row">
@@ -10,7 +11,6 @@
                 <th scope='col' style="text-align: center">Meu Perfil</th>
               </tr>
               <tr>
-
                 <td style="text-align: center"><span>Nome:  <%= current_user.name%></span></td>
               </tr>
               <tr>
@@ -21,6 +21,15 @@
               </tr>
               <tr>
                 <td style="text-align: center"><span>E-mail:  <%= current_user.email%></span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center"><span>Profição:  <%= current_user.profession%></span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center"><span>Estado:  <%= current_user.state%></span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center"><span>Tipo de instituição:  <%= current_user.institution_type%></span></td>
               </tr>
             </thead>
             <tbody>

@@ -34,6 +34,21 @@
                             </div>
 
                             <div class="form-label-group">
+                                <%= f.label :Profissão %><br /><br />
+                                <%= f.text_field :profession, id: "profession", class: "form-control spacing-fields", placeholder: "Profissão" %>
+                            </div>
+                            
+                            <div class="form-label-group">
+                                <%= f.label :Estado_que_habita %><br /><br />
+                                <%= f.select :state, ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'], class: "form-control spacing-fields" %>
+                            </div>
+
+                            <div class="form-label-group">
+                                <%= f.label :Tipo_de_instituição %><br /><br />
+                                <%= f.select :institution_type, ['pública', 'privada'], class: "form-control spacing-fields" %>
+                            </div>
+
+                            <div class="form-label-group">
                                 <%= f.label :Senha %><br /><br />
                                 <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", id: "userPassword", class: "form-control spacing-fields" %>
                             </div>

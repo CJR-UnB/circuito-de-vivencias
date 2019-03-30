@@ -15,7 +15,7 @@
               <th scope='row'><%= workshop.id %></th>
               <td><%= workshop.title %></td>
               <td><%= User.find(workshop.author_id).name %></td>
-              <td><%= link_to 'Ver', workshop_path(workshop) %></td>
+              <td><%= link_to 'Ver', visit_path(workshop), method: 'post' %></td>
             </tr>
           <% end %>
         <% end %>

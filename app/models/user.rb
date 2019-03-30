@@ -7,13 +7,20 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   after_create :send_mail
+  enum state: {AC: 0, AL: 1, AP: 2, AM: 3, BA: 4, CE: 5, DF: 6, ES: 7, GO: 8,
+    MA: 9, MT: 10, MS: 11, MG: 12, PA: 13, PB: 14, PR: 15, PE: 16, PI: 17, RJ: 18,
+    RN: 19, RS: 20, RO: 21, RR: 22, SC: 23, SP: 24, SE: 25, TO: 26}
 
+  enum institution_type: {pública: 0, privada: 1}
   has_many :evaluations
   has_many :workshops, through: :evaluations
   has_many :feedbacks
   has_many :comments
 
   validates :name, presence: true
+  validates :state, presence: true
+  validates :profession, presence: true
+  validates :institution_type, presence: true
   validates :surname, presence: true
   validates_presence_of :cpf
   validates_cpf :cpf

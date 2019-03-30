@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_19_222705) do
+ActiveRecord::Schema.define(version: 2019_03_30_201900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,15 @@ ActiveRecord::Schema.define(version: 2019_03_19_222705) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_visit_workshops", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "workshop_id"
+    t.index ["user_id"], name: "index_user_visit_workshops_on_user_id"
+    t.index ["workshop_id"], name: "index_user_visit_workshops_on_workshop_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -142,6 +151,8 @@ ActiveRecord::Schema.define(version: 2019_03_19_222705) do
     t.integer "role_id", default: 3
     t.string "profession"
     t.string "institution"
+    t.integer "state"
+    t.integer "institution_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
