@@ -21,6 +21,7 @@ class User < ApplicationRecord
   validates :state, presence: true
   validates :profession, presence: true
   validates :institution_type, presence: true
+  validates :institution, presence: true
   validates :surname, presence: true
   validates_presence_of :cpf
   validates_cpf :cpf

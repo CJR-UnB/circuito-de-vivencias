@@ -59,6 +59,7 @@ class UsersController < ApplicationController
         :cpf,
         :email,
         :profession,
+        :institution,
         :institution_type,
         :state
       )

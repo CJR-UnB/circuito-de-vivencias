@@ -30,6 +30,7 @@ class WorkshopsController < ApplicationController
   end
 
   def create_visit
+    puts params[:id]
     if (current_user != nil)
       UserVisitWorkshop.find_or_create_by(user_id: current_user.id, workshop_id: params[:id])
     end

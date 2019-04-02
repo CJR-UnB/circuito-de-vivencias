@@ -37,15 +37,28 @@
                                 <%= f.label :Profissão %><br /><br />
                                 <%= f.text_field :profession, id: "profession", class: "form-control spacing-fields", placeholder: "Profissão" %>
                             </div>
-                            
-                            <div class="form-label-group">
-                                <%= f.label :Estado_que_habita %><br /><br />
-                                <%= f.select :state, ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'], class: "form-control spacing-fields" %>
+                            <br>
+                            <div class="form-label-group" style="margin-left: 10%;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-secondary" type="button">Estado de residência</button>
+                                    </div>
+                                   <%= f.select :state, ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'], class: "form-control spacing-fields" %>
+                                </div>
                             </div>
 
                             <div class="form-label-group">
-                                <%= f.label :Tipo_de_instituição %><br /><br />
-                                <%= f.select :institution_type, ['pública', 'privada'], class: "form-control spacing-fields" %>
+                                <%= f.label :Instituição %><br /><br />
+                                <%= f.text_field :institution, id: "institution", class: "form-control spacing-fields", placeholder: "Instituição" %>
+                            </div>
+                            <br>
+                            <div class="form-label-group" style="margin-left: 10%;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-secondary" type="button">Tipo de Instituição</button>
+                                    </div>
+                                   <%= f.select :institution_type, ['pública', 'privada'], class: "form-control spacing-fields" %>
+                                </div>
                             </div>
 
                             <div class="form-label-group">

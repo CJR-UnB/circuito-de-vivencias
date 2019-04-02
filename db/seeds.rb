@@ -7,32 +7,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Role.delete_all
-UserVisitWorkshop.delete_all
-Feedback.delete_all
-Comment.delete_all
-Evaluation.delete_all
-Workshop.delete_all
-Video.delete_all
-Background.delete_all
-User.delete_all
-Report.delete_all
-adminRole = Role.new(name: 'Admin')
-adminRole.id = 1
-adminRole.save!
+adminRole = Role.find_or_create_by(name: 'Admin', id: 1)
 
-supervisorRole = Role.new(name: 'Supervisor')
-supervisorRole.id = 2
-supervisorRole.save!
+supervisorRole = Role.find_or_create_by(name: 'Supervisor', id: 2)
 
-userRole = Role.new(name: 'User')
-userRole.id = 3
-userRole.save!
+userRole = Role.find_or_create_by(name: 'User', id: 3)
 
-admin = User.new(name: 'Admin', surname: 'Admin', cpf: '665.397.716-14', email: 'adm1ncv2019@gmail.com', password: '12345678', state: "DF", profession: "professor", institution_type: "pública")
-admin.turnIntoAdmin
-admin.save!
+if(User.find_by(email: 'adm1ncv2019@gmail.com') == nil)
+    admin = User.new(name: 'Admin', surname: 'Admin', cpf: '665.397.716-14', email: 'adm1ncv2019@gmail.com', password: '12345678', state: "DF", profession: "professor", institution_type: "pública")
+    admin.turnIntoAdmin
+    admin.save!
+end
 
-supervisor = User.new(name: 'Supervisor', surname: 'Supervisor', cpf: '117.317.258-09', email: 'supervisorcv2019@gmail.com', password: '12345678', state: "DF", profession: "professor", institution_type: "pública")
-supervisor.turnIntoSupervisor
-supervisor.save
+if(User.find_by(email: 'supervisorcv2019@gmail.com') == nil)
+    supervisor = User.new(name: 'Supervisor', surname: 'Supervisor', cpf: '117.317.258-09', email: 'supervisorcv2019@gmail.com', password: '12345678', state: "DF", profession: "professor", institution_type: "pública")
+    supervisor.turnIntoSupervisor
+    supervisor.save
+end

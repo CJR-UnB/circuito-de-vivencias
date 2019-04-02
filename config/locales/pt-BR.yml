@@ -7,6 +7,10 @@ pt-BR:
         name: 'Nome'
         surname: 'Sobrenome'
         password: 'Senha'
+        institution: 'Instituição'
+        institution_type: 'Tipo de instituição'
+        state: 'Estado'
+        profession: 'Profissão'
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
