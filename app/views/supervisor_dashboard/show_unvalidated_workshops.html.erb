@@ -25,7 +25,9 @@
     <!-- ### $App Screen Content ### -->
     <main class='main-content bgc-grey-100'>
         <div class='mt-5'>
-            <table class='table table-striped'>
+            <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+            <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+            <table class='table table-striped' id="myTable">
                 <thead class='thead-light'>
                     <tr>
                         <th scope='col'>#</th>
@@ -51,13 +53,31 @@
                                 <td style="color: gray;">Em espera</td>
                             <%end%>
                         <% end %>
-                        <td><%= link_to 'Ver vivência', visit_path(workshop), method: 'post' %></td>
+                        <td><%= link_to 'Ver vivência', visit_path(id: workshop.id), method: 'post' %></td>
                         </tr>
                     <% end %>
                     <% end %>
                 </tbody>
             </table>
         </div>
+        <script>
+            $('#myTable').DataTable(
+            {
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "Nada encontrado",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhuma data encontrada",
+                    "infoFiltered": "(filtrando _MAX_ de um total de registros)",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Próxima",
+                    },
+                    "search": "Procurar"
+                }
+            }
+        );
+        </script>
     </main>
 
     <!-- ### $App Screen Footer ### -->

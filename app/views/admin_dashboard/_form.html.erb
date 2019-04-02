@@ -1,23 +1,39 @@
 <%= form_for @user, url: adminDashboard_update_user_path do |f| %>
-  <div class='form-group'>
-    <%= f.label(:name, 'Nome') %>
-    <%= f.text_field(:name, class: 'form-control') %>
-  </div>
-  <div class='form-group'>
-    <%= f.label(:surname, 'Sobrenome') %>
-    <%= f.text_field(:surname, class: 'form-control') %>
-  </div>
-  <div class='form-group'>
-    <%= f.label(:cpf, 'C.P.F.') %>
-    <%= f.text_field(:cpf, onkeypress: "mascara(this, '###.###.###-##')", maxlength:"14", class: 'form-control') %>
-  </div>
-  <div class='form-group'>
-    <%= f.label(:role_id, 'Tipo de Usuário') %>
-    <%= f.select(:role_id, Role.all.collect { |p| [p.name, p.id] }, { selected: @user.role_id }, class: 'form-control') %>
-  </div>
-  <div class='form-group'>
-    <%= f.submit('Salvar', class: 'btn btn-sm btn-success') %>
-  </div>
+    <div class='form-group'>
+        <%= f.label(:name, 'Nome') %>
+        <%= f.text_field(:name, class: 'form-control') %>
+    </div>
+    <div class='form-group'>
+        <%= f.label(:surname, 'Sobrenome') %>
+        <%= f.text_field(:surname, class: 'form-control') %>
+    </div>
+    <div class='form-group'>
+        <%= f.label(:cpf, 'C.P.F.') %>
+        <%= f.text_field(:cpf, onkeypress: "mascara(this, '###.###.###-##')", maxlength:"14", class: 'form-control') %>
+    </div>
+    <div class='form-group'>
+        <%= f.label(:email, 'Email') %>
+        <%= f.email_field(:email, class: 'form-control') %>
+    </div>
+    <div class='form-group'>
+        <%= f.label(:profession, 'Profição') %>
+        <%= f.text_field(:profession, class: 'form-control') %>
+    </div>
+    <div class='form-group'>
+        <%= f.label(:state, 'Estado') %>
+        <%= f.select(:state, ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'], class: 'form-control') %>
+    </div>
+    <div class='form-group'>
+        <%= f.label(:institution, 'Instituição') %>
+        <%= f.text_field(:institution, class: 'form-control') %>
+    </div>
+    <div class='form-group'>
+        <%= f.label(:institution_type, 'Tipo de instituição') %>
+        <%= f.select(:institution_type, ['pública', 'privada'], class: 'form-control') %>
+    </div>
+    <div class='form-group'>
+        <%= f.submit('Salvar', class: 'btn btn-sm btn-success') %>
+    </div>
 <% end %>
 
 <script>

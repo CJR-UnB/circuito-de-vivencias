@@ -1,32 +1,36 @@
 <div class="container">
     <div class="row reported-comments-title">
-        <h2>Reported comments</h2>
+        <h2>comentários reportados</h2>
     </div>
     <%= render 'alert' %>
     <div class="row reported-comments-row">
-        <% @reported_comments.each do |reported_comment| %>
-            <div class="col-md-3 offset-2 reported-comment-container">
-                <h5 class="reported-comment-content"><%= simple_format(reported_comment.commentContent) %></h5>
-                <div class="row">
-                    <p class="reported-comment-user">responsavel pelo comentario: <%= reported_comment.user.email %></p>
-                </div>
-                <div class="row">
-                    <div class="offset-2">
-                        <%= link_to  "excluir comentário", exclude_comment_path(id: reported_comment.id), class: "btn btn-md btn-outline-danger", method: 'put' %>
-                        <%= link_to  "aceitar comentário", accept_comment_path(id: reported_comment.id), class: "btn btn-md btn-outline-success", method: 'put' %>
+        <% if @reported_comments.length != 0%>
+            <% @reported_comments.each do |reported_comment| %>
+                <div class="col-md-3 offset-2 reported-comment-container">
+                    <h5 class="reported-comment-content"><%= simple_format(reported_comment.commentContent) %></h5>
+                    <div class="row">
+                        <p class="reported-comment-user">responsavel pelo comentário: <%= reported_comment.user.email %></p>
+                    </div>
+                    <div class="row">
+                        <div class="offset-2">
+                            <%= link_to  "excluir comentário", exclude_comment_path(id: reported_comment.id), class: "btn btn-md btn-outline-danger", method: 'put' %>
+                            <%= link_to  "aceitar comentário", accept_comment_path(id: reported_comment.id), class: "btn btn-md btn-outline-success", method: 'put' %>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 offset-1 reported-comment-container user-reporter-container">
-                <h6><%= reported_comment.users.length %> pessoa<% if reported_comment.users.length > 1 %>s<%end%> <% if reported_comment.users.length > 1 %>reportaram<%else%>reportou<%end%> esses comentario</h6>
-                <ul>
-                    <% reported_comment.users.each do |user| %>
-                        <li class="reporter-users"><p class="reported-comment-user"><%= user.email %><p></li>
-                    <% end %>
-                </ul>
-            </div>
-            <div class="col-md-3">
-            </div>
+                <div class="col-md-3 offset-1 reported-comment-container user-reporter-container">
+                    <h6><%= reported_comment.users.length %> pessoa<% if reported_comment.users.length > 1 %>s<%end%> <% if reported_comment.users.length > 1 %>reportaram<%else%>reportou<%end%> esses comentario</h6>
+                    <ul>
+                        <% reported_comment.users.each do |user| %>
+                            <li class="reporter-users"><p class="reported-comment-user"><%= user.email %><p></li>
+                        <% end %>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                </div>
+            <% end %>
+        <% else %>
+            <h4>Nenhum comentário reportado</h4>
         <% end %>
     </div>
 </div>

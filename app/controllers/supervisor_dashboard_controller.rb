@@ -1,6 +1,7 @@
 class SupervisorDashboardController < ApplicationController
     before_action :authenticate_user!
     before_action :authenticate_supervisor
+    layout 'supervisorDashboard'
     def authenticate_supervisor
         redirect_to(root_path) unless Role.find(current_user.role_id).name == 'Supervisor'
     end
