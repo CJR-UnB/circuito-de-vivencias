@@ -78,7 +78,7 @@
     <div class="row text-center">
       <% if @workshops.present? %>
         <% @workshops.each do |workshop| %>
-          <div class="col-md-4" style="height: 300px; overflow: hidden;">
+          <div class="col-md-4" style="height: 350px; overflow: hidden;">
             <%= link_to(visit_path(id: workshop), style: 'text-decoration: none;', method: 'post') do %>
               <span class="fa-stack fa-4x">
                 <i class="fas fa-circle fa-stack-2x text-primary"></i>
@@ -86,7 +86,12 @@
               </span>
               <h4 class="service-heading"><%= workshop.title %></h4>
               <p class="text-muted"><%= truncate(workshop.resume, :length => 100) %></p>
-              <p><%= UserVisitWorkshop.where(workshop_id: workshop.id).length %> visualizaç<%if UserVisitWorkshop.where(workshop_id: workshop.id).length == 1%>ão<%else%>ões<%end%></p>
+                                <div>
+                    <i class="fa fa-eye" aria-hidden="true"></i><p style="display: inline;"> <%= UserVisitWorkshop.where(workshop_id: workshop.id).length %> visualizaç<%if UserVisitWorkshop.where(workshop_id: workshop.id).length == 1%>ão<%else%>ões<%end%></p>
+                  </div>
+                  <div>
+                    <i class="fa fa-download" aria-hidden="true"></i><p style="display: inline;"> <%= UserDownloadWorkshop.where(workshop_id: workshop.id).length%> download<%if UserDownloadWorkshop.where(workshop_id: workshop.id).length != 1%>s<%end%></p>
+                  </div>
               <%= render 'evaluation', :locals => {evaluation: workshop.evaluation, no_evaluation_msg: "Vivência ainda não avaliada"} %>
             <% end %>
           </div>

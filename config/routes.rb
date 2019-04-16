@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 
   get '/users', to: 'users/registrations#new'
   post '/visit', to: 'workshops#create_visit'
+  post '/download', to: 'workshops#create_download'
   post '/report', to: 'reports#create'
   post '/evaluation', to: 'evaluations#give_an_evaluation'
   get '/reports', to: 'reports#index'

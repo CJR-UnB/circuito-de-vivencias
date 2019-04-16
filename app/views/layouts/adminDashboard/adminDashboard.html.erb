@@ -181,6 +181,105 @@
           <!-- ### $Topbar ### -->
           <div class='header navbar'>
             <div class='header-container'>
+              <ul class="nav-left">
+                <div class="dropdown responsive-menu">
+                  <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                    <i class="ti-menu"></i>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <ul class='sidebar-menu scrollable pos-r'>
+                      <li class='nav-item mT-30 active'>
+                        <%= link_to(adminDashboard_home_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-home'></i>
+                          </span>
+                          <span class='title'>Dashboard</span>
+                        <% end %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to(adminDashboard_users_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-user'></i>
+                          </span>
+                          <span class='title'>Usuários</span>
+                        <% end %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to(adminDashboard_backgrounds_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-image'></i>
+                          </span>
+                          <span class='title'>Imagem Inicial</span>
+                        <% end %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to(adminDashboard_contacts_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-mobile'></i>
+                          </span>
+                          <span class='title'>Contato</span>
+                        <% end %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to(adminDashboard_videos_path(page: 1), class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-control-play'></i>
+                          </span>
+                          <span class='title'>Vídeos</span>
+                        <% end %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to(adminDashboard_histories_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-calendar'></i>
+                          </span>
+                          <span class='title'>História</span>
+                        <% end %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to(adminDashboard_staff_members_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-id-badge'></i>
+                          </span>
+                          <span class='title'>Membros</span>
+                        <% end %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to(adminDashboard_logos_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-bookmark-alt'></i>
+                          </span>
+                          <span class='title'>Logomarca</span>
+                        <% end %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to(adminDashboard_workshops_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-book'></i>
+                          </span>
+                          <span class='title'>Vivências Favoritas</span>
+                        <% end %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to(reports_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-close'></i>
+                          </span>
+                          <span class='title'>Comentarios reportados</span>
+                        <% end %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to(root_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-share-alt'></i>
+                          </span>
+                          <span class='title'>Voltar ao site</span>
+                        <% end %>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </ul>
               <ul class='nav-right'>
                 <li>
                   <%= link_to profile_path(id: current_user.id), class: 'd-b td-n pY-5 bgcH-grey-100 c-grey-700' do %>

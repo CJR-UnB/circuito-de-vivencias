@@ -1,0 +1,2 @@
+class UserDownloadWorkshop < ApplicationRecord
+end
