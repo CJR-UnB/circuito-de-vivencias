@@ -66,6 +66,41 @@
           <!-- ### $Topbar ### -->
           <div class='header navbar'>
             <div class='header-container'>
+              <ul class="nav-left">
+                <div class="dropdown responsive-menu">
+                  <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                    <i class="ti-menu"></i>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <ul class='sidebar-menu scrollable pos-r'>
+                      <li class='nav-item mT-30 active'>
+                        <%= link_to(supervisorDashboard_home_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-home'></i>
+                          </span>
+                          <span class='title'>Dashboard</span>
+                        <% end %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to(supervisorDashboard_unvalidated_workshops_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-clipboard'></i>
+                          </span>
+                          <span class='title'>Vivências</span>
+                        <% end %>
+                      </li>
+                      <li class='nav-item'>
+                        <%= link_to(root_path, class: 'sidebar-link') do %>
+                          <span class='icon-holder'>
+                            <i class='c-blue-500 ti-share-alt'></i>
+                          </span>
+                          <span class='title'>Voltar ao site</span>
+                        <% end %>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </ul>
               <ul class='nav-right'>
                 <li>
                   <%= link_to profile_path(id: current_user.id), class: 'd-b td-n pY-5 bgcH-grey-100 c-grey-700' do %>

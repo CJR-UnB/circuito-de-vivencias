@@ -27,7 +27,12 @@
                 </h4>
                 <p class="card-text"><%= workshop.resume.truncate(29)  %></p>
                 <p>Possui <%= workshop.comments.length %> comentário<% if workshop.comments.length != 1 %>s<%end%></p>
-                <p><%= UserVisitWorkshop.where(workshop_id: workshop.id).length %> visualizaç<%if UserVisitWorkshop.where(workshop_id: workshop.id).length == 1%>ão<%else%>ões<%end%></p>
+                <div>
+                  <i class="fa fa-eye" aria-hidden="true"></i><p style="display: inline;"> <%= UserVisitWorkshop.where(workshop_id: workshop.id).length %> visualizaç<%if UserVisitWorkshop.where(workshop_id: workshop.id).length == 1%>ão<%else%>ões<%end%></p>
+                </div>
+                <div>
+                  <i class="fa fa-download" aria-hidden="true"></i><p style="display: inline;"> <%= UserDownloadWorkshop.where(workshop_id: workshop.id).length%> download<%if UserDownloadWorkshop.where(workshop_id: workshop.id).length != 1%>s<%end%></p>
+                </div>
                 <% if workshop.status == "accepted" %>
                   <p class="card-tex badge badge-success">Aceito</p>
                 <% else %>

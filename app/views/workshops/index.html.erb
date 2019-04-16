@@ -43,7 +43,12 @@
                 </div>
                 <div class="card-footer">
                   <p>Autor: <%= User.find(workshop.author_id).name %></p>
-                  <p><%= UserVisitWorkshop.where(workshop_id: workshop.id).length %> visualizaç<%if UserVisitWorkshop.where(workshop_id: workshop.id).length == 1%>ão<%else%>ões<%end%></p>
+                  <div>
+                    <i class="fa fa-eye" aria-hidden="true"></i><p style="display: inline;"> <%= UserVisitWorkshop.where(workshop_id: workshop.id).length %> visualizaç<%if UserVisitWorkshop.where(workshop_id: workshop.id).length == 1%>ão<%else%>ões<%end%></p>
+                  </div>
+                  <div>
+                    <i class="fa fa-download" aria-hidden="true"></i><p style="display: inline;"> <%= UserDownloadWorkshop.where(workshop_id: workshop.id).length%> download<%if UserDownloadWorkshop.where(workshop_id: workshop.id).length != 1%>s<%end%></p>
+                  </div>
                   <h4>Avaliação</h4>
                   <%= render "evaluation", locals: {evaluation: workshop.evaluation, no_evaluation_msg: "Vivência ainda não avaliada"}%>
                 </div>

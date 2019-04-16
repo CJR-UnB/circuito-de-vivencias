@@ -3,7 +3,7 @@
 class WorkshopsController < ApplicationController
   before_action :authenticate_user!
   before_action :verify_workshop, only: [:show]
-
+  skip_before_action :verify_authenticity_token, :only => :create_download
 
   def verify_workshop
     @workshop = Workshop.find(params[:id])
@@ -35,6 +35,12 @@ class WorkshopsController < ApplicationController
       UserVisitWorkshop.find_or_create_by(user_id: current_user.id, workshop_id: params[:id])
     end
     redirect_to workshop_path(id: params[:id])
+  end
+
+  def create_download
+    if (current_user != nil)
+      UserDownloadWorkshop.find_or_create_by(user_id: current_user.id, workshop_id: params[:workshop_id])
+    end
   end
 
   def show
